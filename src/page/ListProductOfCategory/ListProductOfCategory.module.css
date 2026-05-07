@@ -1,0 +1,47 @@
+.ListProductOfCategory {
+    width: clamp( 150px, 100dvw, 100dvw);
+    height: clamp( 50px, 60dvh, 90dvh);
+
+    
+}
+
+.ListProductComp {
+    margin-top: clamp(5px, 25px, 900px);
+}
+
+.searchDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 20px;
+
+    background-color: var(--background-label);
+
+    width: max-content;
+
+    margin: auto;
+
+    margin-top: clamp(5px, 20px, 100px);
+
+    & > input {
+        background-color: var(--bg-color1);
+    }
+}
+
+.icon_img {
+    width: clamp(10px, 30px, 60px);
+    height: clamp(10px, 30px, 60px);
+    filter: invert(1);
+    cursor: pointer;
+    transition: 0.5;
+    &:hover {
+        filter: invert(0.5);
+    }
+}
+
+.inputSearchFood {
+    border-radius: 10px;
+    padding-left: 5px;
+}

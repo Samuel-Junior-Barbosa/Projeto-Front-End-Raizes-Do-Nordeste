@@ -1,0 +1,61 @@
+.BottomMenuDivMain {
+    display: flex;
+    background-color: var(--background-bottom-menu);
+    width: clamp(350px, 100dvw, 105vw);
+    height: clamp(100px, 20dvh, 20dvh);
+
+    
+    flex-direction: row;
+    justify-content: space-between;
+
+    border-radius: 50px 50px 0px 0px;
+
+    margin: 0px;
+    padding: 0px;
+
+
+    position: fixed;
+    bottom: 0;
+    
+}
+
+.bottomMenuButton {
+    border-radius: 50px;
+    padding: 0px;
+    padding: 10px;
+    margin: 0px 10px 0px 10px;
+
+    margin-top: auto;
+    margin-bottom: auto;
+    height: clamp(80px, 90px, 200px);
+    justify-content: center;
+    justify-items: center;
+
+
+    & > img {
+        width: 64px;
+        height: 64px;
+    }
+
+    
+
+}
+
+.bottomMenuButton:nth-last-child( 2 ) > img {
+    width: 50px;
+    height: 50px;
+
+}
+
+.countProductCart {
+    position: absolute;
+    top: 10%;
+    left: clamp(50%, 60%, 80%);
+    color: var(--color-font);
+
+    background-color: var(--background-button);
+
+    border-radius: 20px;
+
+    padding: clamp(2px, 5px, 10px);
+}

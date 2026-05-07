@@ -1,0 +1,33 @@
+
+.ButtonCompMainDiv {
+    background-color: var(--background-button);
+    border-radius: 20px;
+    height: clamp(200px, 100%, 5vh);
+    
+    
+    cursor: pointer;
+    color: var(--color-font);
+
+    box-shadow: 3px 3px 4px var(--shadow-buttom)
+    
+
+}
+
+
+.ButtonCompMainDiv:hover {
+    background-color: var(--background-button-hover);
+    color: var(--color-font-hover)
+
+}
+
+button > img {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+}
+
+
+.bgImage {
+    width: 100%;
+    height: 100%;
+}

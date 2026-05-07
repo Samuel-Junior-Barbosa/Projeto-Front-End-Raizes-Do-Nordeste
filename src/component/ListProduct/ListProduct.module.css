@@ -1,0 +1,104 @@
+
+
+
+.ListProductDivMain {
+    overflow-y: scroll;
+    width: clamp(300px, 100dvw, 2000px);
+    height: clamp(300px, 60dvh, 2000px);
+    padding-bottom: clamp(10px, 100px, 200px);
+    background-color: yellow;
+}
+
+
+.ListProductUl {
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+    
+    background-color: var(--background-label);
+    color: var(--color-font);
+
+    width: clamp(300px, 100dvw, 2000px);
+    height: clamp(300px, 60dvh, 2000px);
+
+    padding: clamp(5px, 10px, 60px) 0px;
+
+    border: 3px solid black;
+    border-left: 0px;
+    border-right: 0px;
+
+    border-radius: 20px;
+
+    box-shadow: 3px 4px 5px var(--shadow-color);
+
+    & > li {
+        display: flex;
+        justify-content: left;
+        flex-direction: row;
+        align-items: center;
+        
+        width: 100%;
+        height: 140px;
+        background-color: var( --background-window );
+        
+        padding: 0px;
+        margin-top: clamp(5px, 10px, 20px);
+    }
+
+    & > li:hover {
+        background-color: var(--background-label-hover);
+    }
+
+    & > li > label {
+        font-size: 2rem;
+        font-weight: bolder;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    & > li > label.labelDiv {
+        width: clamp(100px, 40dvw, 60dvw);
+        font-size: clamp(0.5rem, 1rem, 1.5rem);
+        word-wrap: break-word;
+        
+    }
+
+    & > li > label > label.ingredienteLabel {
+        font-weight: normal;
+        font-size: clamp(0.5rem, 0.9rem, 1.5rem);
+        word-wrap: break-word;
+    }
+
+    & > li > div > img.foodImage {
+        display: inline-block;
+        position: relative;
+        background-color: var(--background-image);
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+    }
+}
+
+.foodImageDiv {
+    width: clamp(40px, 100px, 250px);
+    height: clamp(40px, 100px, 250px);
+    margin: 20px;
+    & > label {
+        display: inline-block;
+        position: relative;
+        font-size: clamp(0.3rem, 0.5rem, 0.8rem);
+
+        top: -50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+    }
+    
+}
+
+
+.goBackButton {
+    width: clamp(50px, 100px, 300px);
+    height: clamp(50px, 100px, 300px);
+}

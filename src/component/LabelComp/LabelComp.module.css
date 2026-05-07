@@ -1,0 +1,18 @@
+.labelDiv {
+    display: flex;
+    flex-direction: column;
+    width: clamp(100px, 100%, 100dvh);
+    height: clamp(100px, 5dvh, 20dvh);
+    background-color: var(--background-label);
+    color: var(--color-font);
+
+    justify-content: center;
+    justify-items: center;
+
+    font-size: clamp(1rem, 1.5rem, 3rem);
+    text-align: center;
+
+    border-radius: 40px;
+    box-shadow: 3px 4px 5px var(--shadow-color);
+
+}
