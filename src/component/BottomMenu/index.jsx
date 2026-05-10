@@ -1,8 +1,8 @@
 
 import ButtonComp from '../ButtonComp';
 import styles from './BottomMenu.module.css';
-import menuIcone from '/src/assets/barra-de-menu.png';
-import shopping_car from '/src/assets/shopping-carts_64px.png';
+import menuIcone from '/src/assets/barra-de-menu-480px.png';
+import shopping_car from '/src/assets/shopping-carts_120px.png';
 import settingsIcon from '/src/assets/engrenagem.png';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -18,8 +18,7 @@ const BottomMenu = () => {
     }
 
     const handleGoToCar = () => {
-        //navigate('/cart')
-        navigate('/home')
+        navigate('/cart')
     }
 
     const handleGoToConfiguration = () => {
@@ -27,20 +26,24 @@ const BottomMenu = () => {
         navigate('/home')
 
     }
-    let tmp_cart_list = JSON.parse(localStorage.getItem("shoppingCart"))
+    let tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
     let tmp_count = 0
     let tmp_total = 0
-    for( let i = 0; i < tmp_cart_list.length; i ++ ) {
-        tmp_count += tmp_cart_list[i].quantidade
-    }
+    
+    if( tmp_cart_list ) {
+        for( let i = 0; i < tmp_cart_list.length; i ++ ) {
+            tmp_count += tmp_cart_list[i].quantidade
+        }
 
+    }
+    
     tmp_total = tmp_count
 
     useEffect(() => {
 
         setProductQuantityOnList( tmp_total )
         //console.log(" LSITA DE PRODUTOS ESCOLHIDOS: ", )
-        console.log(" QUANTIDADE DE PRODUTOS ESCOLHIDOS: ", tmp_total)
+        //console.log(" QUANTIDADE DE PRODUTOS ESCOLHIDOS: ", tmp_total)
 
     }, [tmp_total])
 
@@ -55,6 +58,7 @@ const BottomMenu = () => {
 
             <ButtonComp 
                 nameClass={styles.bottomMenuButton}
+                idValue={styles.shoppingCarButton}
                 icon={shopping_car}
                 onClickButton={ handleGoToCar }
             />

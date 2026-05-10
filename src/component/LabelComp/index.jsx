@@ -1,8 +1,9 @@
 import styles from './LabelComp.module.css'
 
-const LabelComp = ({text}) => {
+const LabelComp = ({text, nameClass=''}) => {
     return (
-        <label className={styles.labelDiv}>
+        <label
+            className={styles.labelDiv + ' ' + nameClass}>
             {text}
         </label>
     )

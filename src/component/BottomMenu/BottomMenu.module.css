@@ -2,7 +2,7 @@
     display: flex;
     background-color: var(--background-bottom-menu);
     width: clamp(350px, 100dvw, 105vw);
-    height: clamp(100px, 20dvh, 20dvh);
+    height: clamp(100px, 15dvh, 20dvh);
 
     
     flex-direction: row;
@@ -24,28 +24,24 @@
     padding: 0px;
     padding: 10px;
     margin: 0px 10px 0px 10px;
-
+    
     margin-top: auto;
     margin-bottom: auto;
-    height: clamp(80px, 90px, 200px);
+
+    width: clamp(80px, 80px, 200px);
+    
+    height: clamp(80px, 80px, 200px);
     justify-content: center;
     justify-items: center;
-
-
+    
     & > img {
-        width: 64px;
-        height: 64px;
+        margin: auto;
+        width: 50px;
+        height: 50px;
     }
 
-    
-
 }
 
-.bottomMenuButton:nth-last-child( 2 ) > img {
-    width: 50px;
-    height: 50px;
-
-}
 
 .countProductCart {
     position: absolute;
@@ -58,4 +54,9 @@
     border-radius: 20px;
 
     padding: clamp(2px, 5px, 10px);
+}
+
+#shoppingCarButton > img {
+    width: 50px;
+    height: 50px;
 }

@@ -17,12 +17,12 @@ const ChooseItem = () => {
     }
 
     const handleAddItemOnCar = () => {
-        console.log(" ADICIONANDO ITEM AO CARRINHO ID:", id)
-        console.log(" ADICIONANDO ITEM AO CARRINHO produto: ", produto)
-        console.log(" ADICIONANDO ITEM AO CARRINHO precovenda: ", precovenda)
-        console.log(" ADICIONANDO ITEM AO CARRINHO productQuantity: ", productQuantity)
+        //console.log(" ADICIONANDO ITEM AO CARRINHO ID:", id)
+        //console.log(" ADICIONANDO ITEM AO CARRINHO produto: ", produto)
+        //console.log(" ADICIONANDO ITEM AO CARRINHO precovenda: ", precovenda)
+        //console.log(" ADICIONANDO ITEM AO CARRINHO productQuantity: ", productQuantity)
         let added = false        
-        let tmp_cart_list = JSON.parse(localStorage.getItem("shoppingCart"))
+        let tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
         for( let i = 0; i < tmp_cart_list.length; i ++ ) {
             if( tmp_cart_list[i].id === id ) {
                 tmp_cart_list[i].quantidade += productQuantity
@@ -40,7 +40,7 @@ const ChooseItem = () => {
             added = true
         }
 
-        localStorage.setItem("shoppingCart", JSON.stringify(tmp_cart_list))
+        sessionStorage.setItem("shoppingCart", JSON.stringify(tmp_cart_list))
   
 
         handleGoBack()

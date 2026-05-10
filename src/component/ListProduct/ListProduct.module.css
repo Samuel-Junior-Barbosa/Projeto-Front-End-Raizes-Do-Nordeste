@@ -102,3 +102,36 @@
     width: clamp(50px, 100px, 300px);
     height: clamp(50px, 100px, 300px);
 }
+
+.divInputQuantity {
+    display: flex;
+    position: relative;
+    width: clamp( 50px, 100px, 100px);
+    gap: 5px;
+
+    left: clamp(-15px, -5px, 15px);
+    
+    & > button {
+        width: clamp( 20px, 30px, 100px);
+        height: clamp( 20px, 30px, 100px);
+        
+        border-radius: 10px;
+
+
+        text-align: center;
+        font-size: clamp( 1rem, 1.5rem, 2rem);
+
+        cursor: pointer;
+    }
+}
+
+.inputQuantity {
+    display: block;
+    position: relative;
+    width: clamp( 10px, 40px, 100px);
+ 
+    border-radius: 10px;
+
+    padding: clamp(2px, 5px, 10px);
+
+}

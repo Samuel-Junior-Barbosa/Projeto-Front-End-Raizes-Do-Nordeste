@@ -75,8 +75,13 @@ const Home = () => {
 
 
 
-    useEffect(() => {    
+    useEffect(() => {
         getCategoryList()
+        if( !sessionStorage.getItem('shoppingCart') ) {
+            sessionStorage.setItem('shoppingCart', '[]')
+        }
+        
+
     }, [])  
 
     return (

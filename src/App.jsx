@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Layout from '/src/component/Layout'
-import Home from './page/home'
-import ListProductOfCategory from '/src/page/ListProductOfCategory'
-import ChooseItem from './page/ChooseItem'
+import { useEffect, useState } from 'react';
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from '/src/component/Layout';
+import Home from './page/home';
+import ListProductOfCategory from '/src/page/ListProductOfCategory';
+import ChooseItem from './page/ChooseItem';
+import ReviewCart from './page/ReviewCart';
 
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
             <Route path="/meat" element={<ListProductOfCategory />} />
             <Route path="/drink" element={ <ListProductOfCategory  /> } />
             <Route path="/choose-item" element={<ChooseItem />} />
+            <Route path="/cart" element={<ReviewCart />} />
+
           </Route>
         </Routes>
       </BrowserRouter>

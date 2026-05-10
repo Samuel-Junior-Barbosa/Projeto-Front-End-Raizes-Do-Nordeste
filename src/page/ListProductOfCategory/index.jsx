@@ -1,42 +1,51 @@
 import styles from './ListProductOfCategory.module.css';
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import ListProduct from "../../component/ListProduct";
 import searchIcon from '/src/assets/search_icone2.svg'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ListProductOfCategory = () => {
 
     const [ productList, setProductList ] = useState([])
     const [ inputFoodSearchValue, setInputFoodSearchValue ] = useState('')
+    const [ productSelected, setProductSelected ] = useState([])
+    const [ searchItemStatus, setSearchItemStatus ] = useState(false)
+    const [ searchItem, setSearchItem ] = useState([])
 
     const location = useLocation()
+    const navigate = useNavigate()
 
     const { PlateType } = location.state || { PlateType : "" }
 
+    // Função responsavel por simular a pesquisa do item no banco de dados
     const handleSearchFood = async () => {
-        console.log(" INPUT : ", inputFoodSearchValue)
+        //console.log(" INPUT : ", inputFoodSearchValue)
         if( inputFoodSearchValue == '' || !inputFoodSearchValue || inputFoodSearchValue === undefined ) {
-            console.log(" OBTENDO LISTA DE PRODUTOS...")
+            //console.log(" OBTENDO LISTA DE PRODUTOS...")
             await getProductList()
+            setSearchItemStatus(false)
+            setSearchItem([])
             return
         }
-        
+        setSearchItemStatus(true)   
+
+        let tmp_list_found = []
         for( let i = 0; i < productList.length; i ++ ) {
-            let tmp_product_name = productList[i].produto.toUpperCase()
+            let tmp_product_name = productList[i].produto.toUpperCase()    
             //console.log(" SEARCH FOOD: ", productList[i])
             //console.log(" SEARCH FOOD: ", inputFoodSearchValue, productList[i].produto.toUpperCase().indexOf(inputFoodSearchValue))
             if( tmp_product_name.indexOf(inputFoodSearchValue.toUpperCase()) >= 0 ) {
                 //console.log(" SEARCH FOOD: ", productList[i])
-                setProductList( [productList[i]] )
-                return
+                tmp_list_found.push( productList[i] )
             }
+            
         }
+        //console.log(" ITEM FOUND LIST: ", tmp_list_found)
+        setSearchItem( tmp_list_found )
+        
+        //console.log(" ITEM NÃO ENCONTRADO")
 
-        console.log(" ITEM NÃO ENCONTRADO")
-        setProductList([])
-        
-        
     }
 
     // Simulação de uma API retornando dados do banco
@@ -51,17 +60,17 @@ const ListProductOfCategory = () => {
             data.content = [{
                     'produto' : 'Carne de sol',
                     'ingredientes' : ['Carne bovina salgada e seca'],
-                    'precovenda' : '00.000',
+                    'precovenda' : '01.00',
                     'id' : 1
                 }, {
                     'produto' : 'Buchada de bode',
                     'ingredientes' : ['Vísceras', 'bucho de bode (ou carneiro)'],
-                    'precovenda' : '00.0000',
+                    'precovenda' : '02.00',
                     'id' : 2
                 }, {
                     'produto' : 'Sarapatel',
                     'ingredientes' : ['Carne suína', 'vísceras'],
-                    'precovenda' : '00.000',
+                    'precovenda' : '03.00',
                     'id' : 3
                 }
             ]
@@ -73,17 +82,17 @@ const ListProductOfCategory = () => {
             data.content = [{
                     'produto' : 'Cuscuz',
                     'ingredientes' : ['flocão ou farinha de milho'],
-                    'precovenda' : '00.000',
+                    'precovenda' : '04.00',
                     'id' : 4
                 }, {
                     'produto' : 'Pamonha',
                     'ingredientes' : ['Milho verde fresco'],
-                    'precovenda' : '00.0000',
+                    'precovenda' : '05.00',
                     'id' : 5
                 }, {
                     'produto' : 'Bolo de milho',
                     'ingredientes' : ['milho-verde', 'leite de coco', 'ovos', 'açúcar', 'óleo e fubá'],
-                    'precovenda' : '00.000',
+                    'precovenda' : '06.00',
                     'id' : 6
                 }
             ]
@@ -94,39 +103,57 @@ const ListProductOfCategory = () => {
             data.content = [{
                     'produto' : 'Café Forte',
                     'ingredientes' : ['Café em pó'],
-                    'precovenda' : '00.000',
+                    'precovenda' : '07.00',
                     'id' : 7
                 }, {
                     'produto' : 'Caldo de cana',
                     'ingredientes' : ['Cana de açucar'],
-                    'precovenda' : '00.0000',
+                    'precovenda' : '08.00',
                     'id' : 8
                 }, {
                     'produto' : 'Cajuína',
                     'ingredientes' : ['suco clarificado esterilizado do caju'],
-                    'precovenda' : '00.000',
+                    'precovenda' : '09.00',
                     'id' : 9
                 }
             ]
         }
-
+        
         return data
 
     }
 
+    // Função responsavel por chamar a API de consulta
     const getProductList = async () => {
         const response = await getProductListApi( PlateType )
         if( response.status === 0 ) {
-            console.log(" RESPONSE: ", response)
+            //console.log(" RESPONSE: ", response)
             setProductList( response.content )
         }
     }
 
+    // Responsavel por abrir a tela de escolha do item, mostrando os ingredientes e pedindo
+    //     quantidade desejada
+   const handleChooseFood = (productData) => {
+        navigate('/choose-item', {state : productData})
+    }
 
-
-    useEffect(() => {
+    // Sempre que carregar a pagina, será chamada a feito a consulta dos itens no banco de dados
+    useLayoutEffect(() => {
         getProductList()
     }, [])
+
+    // Quando um item for selecionado, esse useEffect será responsavel por chamar a pagina de
+    //    de escolha do item
+    useEffect(() => {
+        //console.log(" ITEM SELECTED: ", productSelected)
+        if( Array.isArray(productSelected) && productSelected.length > 0) {
+            //console.log(" GO TO CHOSSE PAGE: ")
+            handleChooseFood( productSelected[0] )
+            setProductSelected([])
+            
+        }
+    }, [productSelected])
 
     return (
         <div className={styles.ListProductOfCategory}>
@@ -141,20 +168,41 @@ const ListProductOfCategory = () => {
                     placeholder={"PESQUISAR PELO PRATO"}
                     className={styles.inputSearchFood}
                     value={inputFoodSearchValue}
-                    onChange={ (e) => setInputFoodSearchValue(e.target.value.toUpperCase())}
+                    onChange={ (e) => (
+                        setInputFoodSearchValue(e.target.value.toUpperCase())
+                    )}
                 />
             </div>
 
-            { productList.length > 0 ? (
-                <ListProduct
-                    productList = { productList }
-                    nameClass={styles.ListProductComp}
-                />
+            { productList.length > 0 && (
 
-                ) : (
-                    <label> Nenhum item encontrado nesse cardapio</label>
-                )
+                ( searchItemStatus === false && (
+                    <ListProduct
+                        productListData = {  productList }
+                        setProductListData={ setProductList }
+                        nameClass={styles.ListProductComp}
+                        itemChoosedState={setProductSelected}
+                    />
+
+                ))
+            )}
+            { searchItem.length > 0 && (
+                ( searchItemStatus === true && (
+                    <ListProduct
+                        productListData = {  searchItem }
+                        setProductListData={ setSearchItemStatus }
+                        nameClass={styles.ListProductComp}
+                        itemChoosedState={setProductSelected}
+                    />
+
+                )))
             }
+
+            { (productList.length === 0 && searchItem.length === 0 ) && (
+                <label> Nenhum item encontrado nesse cardapio</label>
+            )}
+
+                                
         </div>
     )
 }
