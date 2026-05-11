@@ -1,0 +1,39 @@
+
+
+.ListPlaceDiv {
+    display: flex;
+
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+    width: clamp(100px, 100%, 100%);
+    height: clamp(10dvh, 55dvh, 60dvh);
+
+    border-radius: 10px;
+
+    background-color: var(--background-label);
+
+    margin-top: clamp(10px, 20px, 100px);
+}
+.ListPlace {
+    list-style: none;
+
+    font-size: clamp(1rem, 2rem, 4rem);
+
+    & > li {
+        width: clamp(100px, 100%, 100%);
+        background-color: var(--background-option);
+        color: var(--color-font);
+
+        margin: clamp(10px, 20px, 100px) auto;
+        padding: clamp(10px, 20px, 100px);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    & > li:hover {
+        background-color: var(--background-option-hover);
+    }
+}

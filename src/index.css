@@ -7,6 +7,7 @@
   --background-label-hover : #a8465b;
   --background-bottom-menu: var(--background-label);
   --background-option : #B9D4B4;
+  --background-option-hover : #71836e;
   --background-image : #1495CC;
   --color-font: #ffffff;
   --color-font-hover: #d1d1d1;
@@ -20,6 +21,13 @@
 
 * {
   font-family: 'Times New Roman', Times, serif;
+}
+
+hr {
+    color: var( --background-option);
+    background-color: var(--background-option);
+    height: 2px;
+    border-width: 0;
 }
 
 

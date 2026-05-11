@@ -6,6 +6,9 @@ import Home from './page/home';
 import ListProductOfCategory from '/src/page/ListProductOfCategory';
 import ChooseItem from './page/ChooseItem';
 import ReviewCart from './page/ReviewCart';
+import ChoosePlace from './page/ChoosePlace';
+import ChoosePaymentForm from './page/ChoosePaymentForm';
+import OrderReview from './page/OrderReview';
 
 function App() {
 
@@ -25,6 +28,9 @@ function App() {
             <Route path="/meat" element={<ListProductOfCategory />} />
             <Route path="/drink" element={ <ListProductOfCategory  /> } />
             <Route path="/choose-item" element={<ChooseItem />} />
+            <Route path="/choose-place" element={<ChoosePlace />} />
+            <Route path="/choose-payment" element={<ChoosePaymentForm />} />
+            <Route path="/order-review" element={<OrderReview />} />
             <Route path="/cart" element={<ReviewCart />} />
 
           </Route>

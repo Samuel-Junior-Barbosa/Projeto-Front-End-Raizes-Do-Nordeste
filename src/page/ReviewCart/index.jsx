@@ -3,10 +3,13 @@ import ListProduct from "../../component/ListProduct";
 import LabelComp from '/src/component/LabelComp'
 import styles from './ReviewCart.module.css'
 import ButtonComp from "../../component/ButtonComp";
+import { useNavigate } from "react-router-dom";
 
 const ReviewCart = () => {
 
     const [ productList, setProductList ] = useState([])
+
+    const navigate = useNavigate()
 
     let tmp_cart_list = []
     tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
@@ -17,7 +20,8 @@ const ReviewCart = () => {
 
 
     const handleFinishShop = () => {
-        return
+        sessionStorage.setItem("orderTotalCost", sumProduct)
+        navigate('/choose-place')
     }
 
     useEffect(() => {
@@ -64,7 +68,7 @@ const ReviewCart = () => {
                 <ButtonComp
                     nameClass={ styles.finishShopButton}
                     text={"Finalizar pedido"}
-                    onClickButton={ handleFinishShop}
+                    onClickButton={ handleFinishShop }
                 />
             </div>
         </div>

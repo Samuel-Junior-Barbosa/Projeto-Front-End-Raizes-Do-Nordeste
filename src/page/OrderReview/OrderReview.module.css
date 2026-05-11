@@ -1,0 +1,82 @@
+
+.OrderReviewMainDiv {
+
+}
+
+.OrderReviewDiv {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-label);
+
+    width: clamp(200px, 100dvw, 100dvw);
+    height: clamp(200px, 70dvh, 80dvh);
+
+
+    border-radius: 10px;
+    margin-top: clamp( 10px, 20px, 40px);
+
+    box-shadow: 3px 4px 5px var(--shadow-color);
+
+    overflow-y: scroll;
+    
+}
+
+
+
+.productListDiv {
+    
+    color: var(--color-font);
+}
+
+.productListLabel {
+    font-size: clamp(0.5rem, 1rem, 2rem);
+
+    height: clamp(30%, 50%, 60%);
+
+    box-shadow: none;
+
+    border-radius: 10px 10px 0px 0px;
+}
+
+.productList {
+
+    
+    margin-top: clamp( 5px, 10px, 20px);
+
+    height: clamp(100px, 40dvh, 60dvh);
+
+    overflow-y: scroll;
+    & > li {
+        background-color: var(--background-label-hover);
+        padding: clamp( 5px, 10px, 20px);
+        font-size: clamp(1rem, 1.2rem, 4rem);
+    }
+}
+
+.paymentDiv {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0px clamp(2px, 4px, 6px);
+
+    & > label:nth-child(1) {
+        font-size: 1.5rem;
+        text-align: center;
+        
+    }
+
+    & > label {
+        color: var(--color-font);
+    }
+}
+
+.inputDiscountCode {
+    border-radius: 10px;
+
+    padding-left: clamp(2px, 4px, 6px);
+
+}
+
+.discountButtom {
+    padding: clamp(2px, 3px, 10px);
+}

@@ -2,7 +2,7 @@
 .ButtonCompMainDiv {
     background-color: var(--background-button);
     border-radius: 20px;
-    height: clamp(200px, 100%, 5vh);
+    height: clamp(200px, max-content, 5vh);
     
     
     cursor: pointer;

@@ -1,0 +1,56 @@
+
+
+.PaymentParcelListDiv {
+    display: block;
+    position: absolute;
+
+    background-color: var(--background-label);
+
+    box-shadow: 3px 4px 5px var(--shadow-color);
+
+    border-radius: 20px;
+
+
+    width: clamp(200px, 400px, 600px);
+    height: clamp(200px, 400px, 500px);
+
+
+    transform: translate(-50%, -50%);
+    top: clamp(25%, 50%, 70%);
+    left: clamp(25%, 50%, 70%);
+    z-index: 1000;
+}
+
+
+.CloseButton {
+    display: block;
+    position: relative;
+
+    top: clamp(30%, 50%, 70%);
+
+    width: clamp(20px, 100px, 100%);
+    height: clamp( 20px, 60px, 100%);
+
+    margin: auto;
+
+    & > label {
+        font-size: clamp(1rem, 2rem, 4rem);
+    }
+}
+
+.PaymentParcelList {
+    list-style: none;
+
+    padding: clamp( 5px, 10px, 20px);
+
+    & > li {
+        border-radius: 5px;
+        background-color: var(--background-option);
+        margin-top: 10px;
+
+        font-size: clamp( 1rem, 2rem, 4rem);
+        color: var(--color-font);
+        text-align: center;
+        padding: clamp(2px, 4px, 10px);
+    }
+}
