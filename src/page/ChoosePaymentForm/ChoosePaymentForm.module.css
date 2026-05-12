@@ -1,10 +1,7 @@
-.paymentListMainDiv {
-
-    
+.paymentListMainDiv {    
     width: clamp( 10%, 100%, 100%);
-
     height: clamp( 10dvh, 50dvh, 60dvh);
-    
+
 }
 
 .paymentListDiv {
@@ -35,4 +32,62 @@
     & > li:hover {
         background-color: var(--background-option-hover);
     }
+}
+
+.moneyinputLabel {
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.moneyInputDiv {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+
+    background-color: var(--background-label);
+    box-shadow: 3px 4px 5px var(--shadow-color);
+    border-radius: 20px;
+
+    width: clamp(200px, 400px, 600px);
+    height: clamp(200px, 400px, 500px);
+
+
+    transform: translate(-50%, -50%);
+    top: clamp(25%, 50%, 70%);
+    left: clamp(25%, 50%, 70%);
+    z-index: 1000;
+
+
+    color: var(--color-font);
+
+    & > div {
+        margin-top: clamp(10px, 20px, 40px);
+        padding: clamp(10px, 20px, 30px);
+        
+    }
+
+    & > div > hr {
+        margin: clamp(5px, 10px, 15px) 0px;
+    }
+
+    & > div > label, & div > input {
+        font-size: clamp( 1rem, 1.2rem, 2rem);
+    }
+
+    & > div > input {
+        border-radius: 5px;
+        padding-left: clamp(2px, 4px, 6px);
+    }
+
+    & > label {
+        font-size: clamp(1rem, 1.2rem, 3rem);
+    }
+}
+
+.confirmButtonMoneyValue {
+
+    width: clamp(50%, 70%, 90%);
+
+    margin: 0px auto;
+    margin-top: clamp(10px, 20px, 20px);
 }

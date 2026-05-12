@@ -31,7 +31,7 @@
 .productListLabel {
     font-size: clamp(0.5rem, 1rem, 2rem);
 
-    height: clamp(30%, 50%, 60%);
+    height: clamp(1.2rem, 2.5rem, 4rem);
 
     box-shadow: none;
 
@@ -43,7 +43,7 @@
     
     margin-top: clamp( 5px, 10px, 20px);
 
-    height: clamp(100px, 40dvh, 60dvh);
+    height: clamp(100px, max-content, 58dvh);
 
     overflow-y: scroll;
     & > li {
@@ -58,6 +58,8 @@
     flex-direction: column;
 
     padding: 0px clamp(2px, 4px, 6px);
+
+    padding-bottom: clamp(5px, 15px, 20px);
 
     & > label:nth-child(1) {
         font-size: 1.5rem;
@@ -77,6 +79,25 @@
 
 }
 
+.discountDiv {
+    color: var(--color-font);
+    margin: auto;
+}
+
 .discountButtom {
     padding: clamp(2px, 3px, 10px);
+    
+}
+
+
+.confirmPaymentButton {
+    display: flex;
+
+    justify-content: center;
+    gap: clamp(10px, 20px, 40px);
+
+    margin-bottom: clamp(10px, 20px, 30px);
+    & > button {
+        padding: clamp(5px, 10px, 20px);
+    }
 }

@@ -3,10 +3,11 @@ import styles from './OrderReview.module.css';
 
 import LabelComp from '/src/component/LabelComp'
 import ButtonComp from '../../component/ButtonComp';
+import { useNavigate } from 'react-router-dom';
 
 const OrderReview = () => {
     const [ productList, setProductList ] = useState([])
-
+    const navigate = useNavigate()
     const sumProduct = JSON.parse( sessionStorage.getItem("orderTotalCost"))
     const [ discountAmount, setDiscountAmount ] = useState(0)
     const [ changeValue, setChangeValue ] = useState(0)
@@ -14,12 +15,16 @@ const OrderReview = () => {
     const [ totalValue, setTotalValue ] = useState(0)
     const [ discountCode, setDiscountCode ] = useState('')
 
-    const [ currentPaymentForm, setCurrentPaymentForm ] = useState()
+    const [ currentPaymentForm, setCurrentPaymentForm ] = useState({})
 
     const discountCodes = {
         'teste1' : 5,
         'teste2' : 10,
         'teste3' : 15,
+    }
+
+    const handleGoBack = () => {
+        navigate(-1)
     }
 
     const handleChangeDiscountValue = ( code ) => {
@@ -41,6 +46,10 @@ const OrderReview = () => {
         alert(" Nenhum cupom valido encontrado, tente outro codigo")
     }
 
+    const handleConfirmPayment = () => {
+        
+    }
+
     useEffect(() => {
         let tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
         setProductList( tmp_cart_list )
@@ -56,11 +65,12 @@ const OrderReview = () => {
         }
 
         let tmpPaymentForm = JSON.parse( sessionStorage.getItem('paymentForm'))
-
+        console.log(" tmpPaymentForm: ", tmpPaymentForm)
         if( tmpPaymentForm ) {
             setCurrentPaymentForm( tmpPaymentForm )
         }
 
+        
 
         
 
@@ -72,29 +82,27 @@ const OrderReview = () => {
         let tmpTotal = sumProduct - discountAmount
         tmpTotal += deliveryFee
         setTotalValue( tmpTotal )
+        //console.log(" currentPaymentForm: ", currentPaymentForm)
+        if( currentPaymentForm ) {
+            if( currentPaymentForm.id === 1 ) {
+                setChangeValue( currentPaymentForm.paymentValue - tmpTotal)
+            }
 
-        if( currentPaymentForm.id === 1 ) {
-            
         }
 
-    }, [deliveryFee, discountAmount, changeValue])
+    }, [deliveryFee, discountAmount, changeValue, currentPaymentForm])
 
     return (
-        <div
-            className={styles.OrderReviewMainDiv}
-        >
+        <div className={styles.OrderReviewMainDiv}>
             <LabelComp
                 text={" Resumo do pedido: "}
             />
 
-            <div
-                className={styles.OrderReviewDiv}
-            >
+            <div className={styles.OrderReviewDiv} >
 
                 <div className={styles.productListDiv}
                 >
-                    <LabelComp
-                        nameClass={styles.productListLabel}
+                    <LabelComp nameClass={styles.productListLabel} 
                         text={"Itens do pedido"}
                     />
 
@@ -132,6 +140,7 @@ const OrderReview = () => {
                 <div className={ styles.paymentDiv}
                 >
                     <label> Pagamento </label>
+                    <label> {currentPaymentForm.quantity}x : {currentPaymentForm.description} = {currentPaymentForm.paymentValue}</label>
                     <hr />
                     <label>  SubTotal: R${sumProduct}</label>
                     <label>  Descontos: R${discountAmount}</label>
@@ -142,8 +151,16 @@ const OrderReview = () => {
                 </div>
                 
                 
-
-
+                <div className={styles.confirmPaymentButton}>
+                    <ButtonComp
+                        text={"Confirmar"}
+                        onClickButton={ handleConfirmPayment }
+                    />
+                    <ButtonComp
+                        text={"Voltar"}
+                        onClickButton={ handleGoBack }
+                    />
+                </div>
             </div>
         </div>
     );
