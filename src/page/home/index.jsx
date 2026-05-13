@@ -68,7 +68,7 @@ const Home = () => {
     const getCategoryList = async() => {
         const response = await getCategoryListApi()
         if( response.status === 0 ) {
-            console.log(" SALVANDO RESPONSE: ", response.content)
+            //console.log(" SALVANDO RESPONSE: ", response.content)
             setCategoryList( response.content)
         }
     }
@@ -77,10 +77,16 @@ const Home = () => {
 
     useEffect(() => {
         getCategoryList()
-        if( !sessionStorage.getItem('shoppingCart') ) {
+        if( !JSON.parse(sessionStorage.getItem('shoppingCart')) ) {
             sessionStorage.setItem('shoppingCart', '[]')
         }
         
+        if( !JSON.parse(sessionStorage.getItem('currentAccount')) ) {
+            let tmpData = {
+                name : '',
+            }
+            sessionStorage.setItem('currentAccount', JSON.stringify( tmpData ))
+        }
 
     }, [])  
 

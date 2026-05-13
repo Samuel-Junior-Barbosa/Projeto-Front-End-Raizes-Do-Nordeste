@@ -8,7 +8,13 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) 
 
     const [ showParcelList, setShowParcelList ] = useState( true )
     const [ showCreditCardInfo, setShowCreditCardInfo ] = useState( false )
+    const [ showPixKey, setShowPixKey ] = useState( false)
+    const [ cpfTitular, setCpfTitular ] = useState('')
+    const [ cardNumber, setCardNumber ] = useState('')
+    const [ securityCardNumber, setSecurityCardNumber ] = useState('')
     const navigate = useNavigate();
+
+
     const handleChoosePayment = ( quantidade ) => {
         setQuantitySelected( quantidade )
         
@@ -16,21 +22,62 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) 
         let tmpPaymentForm = JSON.parse( sessionStorage.getItem("paymentForm"))
         //console.log(" tmpPaymentForm: ", tmpPaymentForm)
         tmpPaymentForm.quantity = quantidade
-
-        sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ))
+        let tmpOrderTotalCost = JSON.parse( sessionStorage.getItem("orderTotalCost"))
+        
         setShowParcelList( false )
-        setShowCreditCardInfo( true )
-        //setControlFrame(false)
-        //navigate('/order-review')
+        if( tmpPaymentForm.id === 2 || tmpPaymentForm.id === 3 )  {
+            tmpPaymentForm.paymentValue = tmpOrderTotalCost
+            setShowCreditCardInfo( true )   
+        }
+        else if (tmpPaymentForm.id === 4) {
+            tmpPaymentForm.paymentValue = tmpOrderTotalCost
+            setShowPixKey( true )
+        }
+        
+        sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ))
         
     }
+
+    const handleSetCpfTitular = ( num ) => {
+        if( !cpfTitular && !Number(num)) {
+            setCpfTitular('')
+        }
+        setCpfTitular( num )
+    }
+
+
+    const handleSetCardNumber = ( num ) => {
+        if( !cardNumber && !Number(num)) {
+            setCardNumber('')
+        }
+        setCardNumber( num )
+
+    }
+
+    const handleSetSecutyCardNumber = ( num ) => {
+        if( !securityCardNumber && !Number(num)) {
+            setSecurityCardNumber('')
+        }
+        setSecurityCardNumber( num )
+
+    }
+
 
     const handleGoBack = () => {
         setControlFrame(false)
     }
 
+    const handleChangeWindow = () => {
+        setControlFrame(false)
+        navigate('/order-review')
+    }
+
     useEffect(() => {
-        console.log(" PARCELLIST: ", parcelList)
+        let tmpPaymentForm = JSON.parse( sessionStorage.getItem("paymentForm"))
+        if( tmpPaymentForm.id === 2 ) {
+            setShowParcelList( false )
+            setShowCreditCardInfo( true )
+        }
     }, [])
 
     return (
@@ -50,7 +97,6 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) 
                             )}
                         >
                             {item[1]}
-                            {console.log(" item: ", item)}
                         </li>
                         ))
                     )}
@@ -59,15 +105,19 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) 
             )}
 
             { showCreditCardInfo && (
-                <div className={ styles.creditCardInfoDiv}>
-
+                <div className={ styles.paymentInfoDiv}>
                     <LabelComp
                         text={"confirme os dados do seu cartão"}
                     />
                     <div>
                         <label> CPF do titular</label>
                         <input 
+                            type={'text'}
                             placeholder={"insira os numeros do seu CPF"}
+                            value={ cpfTitular }
+                            onChange={ (e) => (
+                                handleSetCpfTitular(e.target.value.replace(/\D/g, ''))
+                            )}
                         />
                     </div>
                     <div>
@@ -78,8 +128,13 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) 
                     </div>
                     <div>
                         <label> Numero do cartão</label>
-                        <input 
+                        <input
+                            type={'text'}
                             placeholder={"insira os numeros do seu cartão"}
+                            value={ cardNumber }
+                            onChange={(e) => (
+                                handleSetCardNumber(e.target.value.replace(/\D/g, ''))
+                            )}
                         />
                     </div>
 
@@ -93,13 +148,37 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) 
                     <div>
                         <label> Codigo de segurança: </label>
                         <input
-                            type={"number"}
+                            type={"text"}
                             min={0}
                             max={1000}
+                            value={securityCardNumber}
+                            onChange={ (e) => (
+                                handleSetSecutyCardNumber( e.target.value.replace(/\D/g, '') )
+                            )}
                         />
                     </div>
+                    <ButtomComp
+                      text={"confirmar"}
+                      onClickButton={ handleChangeWindow }
+                    />
                 </div>
 
+            )}
+
+            { showPixKey && (
+                <div className={styles.pixPaymentInfoDiv}> 
+                    <div className={styles.pixKeyDiv}>
+                        <label> Chave PIX: 00.000.000/0001-00</label>
+                        <ButtomComp
+                            text={"copiar"}
+                        />
+                    </div>
+                    <ButtomComp
+                        text={"confirmar"}
+                        onClickButton={ handleChangeWindow }
+                    />
+
+                </div>
             )}
 
             <ButtomComp

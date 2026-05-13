@@ -95,7 +95,7 @@ const ChoosePaymentForm = () => {
                 }
 
                 else if( paymentFormList[i].parcel.length > 0 ) {
-                    console.log(" paymentFormList: ", paymentFormList[i].parcel.length)
+                    //console.log(" paymentFormList: ", paymentFormList[i].parcel.length)
                     tmpPaymentForm = paymentFormList[i]
                     tmpPaymentForm.quantity = 1
                     sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ))
@@ -104,9 +104,13 @@ const ChoosePaymentForm = () => {
                     return
                 }
                 else {
-                    tmpPaymentForm = paymentFormList[i].quantity = 1
+                    tmpPaymentForm = paymentFormList[i]
+                    tmpPaymentForm.quantity = 1
+                    tmpPaymentForm.paymentValue = orderTotalCost
                     sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ))
-                    navigate('/order-review')
+                    setPaymentFormParcelList( paymentFormList[i] )
+                    setSelectQuantityParcel( true )
+                    //navigate('/order-review')
                 }
             }
         }

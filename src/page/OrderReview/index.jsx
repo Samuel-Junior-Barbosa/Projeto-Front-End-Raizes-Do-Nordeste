@@ -47,7 +47,7 @@ const OrderReview = () => {
     }
 
     const handleConfirmPayment = () => {
-        
+        navigate('/finish-order')
     }
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const OrderReview = () => {
         }
 
         let tmpPaymentForm = JSON.parse( sessionStorage.getItem('paymentForm'))
-        console.log(" tmpPaymentForm: ", tmpPaymentForm)
+        //console.log(" tmpPaymentForm: ", tmpPaymentForm)
         if( tmpPaymentForm ) {
             setCurrentPaymentForm( tmpPaymentForm )
         }

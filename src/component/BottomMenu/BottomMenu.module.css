@@ -16,6 +16,10 @@
 
     position: fixed;
     bottom: 0;
+
+    box-shadow: -3px -4px 5px var(--shadow-color);
+
+    z-index: 999;
     
 }
 
@@ -45,8 +49,8 @@
 
 .countProductCart {
     position: absolute;
-    top: 10%;
-    left: clamp(50%, 60%, 80%);
+    top: 5%;
+    left: clamp(50%, 80%, 80%);
     color: var(--color-font);
 
     background-color: var(--background-button);

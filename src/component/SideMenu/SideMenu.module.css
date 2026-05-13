@@ -1,0 +1,32 @@
+
+
+.SideMenuDiv {
+
+    width: clamp(20px, 40%, 50dvw);
+    height: clamp(100px, 100dvh, 100dvh);
+
+    background-color: var(--background-label);
+    position: absolute;
+    color: var(--color-font);
+
+    box-shadow: 3px 4px 5px var(--shadow-color);
+
+    z-index: 1;
+}
+
+.SideMenuList {
+
+
+    font-size: clamp( 1rem, 1.5rem, 3rem);
+    & > li {
+        margin-top: clamp(1px, 2px, 5px);
+        cursor: pointer;
+
+        background-color: var(--background-option);
+    }
+
+
+    & > li:hover {
+        background-color: var(--background-option-hover);
+    }
+}

@@ -3,17 +3,32 @@ import ButtonComp from '../ButtonComp';
 import styles from './BottomMenu.module.css';
 import menuIcone from '/src/assets/barra-de-menu-480px.png';
 import shopping_car from '/src/assets/shopping-carts_120px.png';
-import settingsIcon from '/src/assets/engrenagem.png';
+import settingsIcon from '/src/assets/menu.png';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const BottomMenu = () => {
+const BottomMenu = ({controlSideMenu = undefined}) => {
 
     const [ productQuantityOnList, setProductQuantityOnList ] = useState(0);
     const navigate = useNavigate()
 
+    const [ showSideMenu, setShowSideMenu ] = useState( false )
+
     const handleGoToMenuPage = () => {
-        navigate('/home')
+        if( !controlSideMenu ) {
+            return
+        }
+
+        if( showSideMenu ) {
+            setShowSideMenu( false )
+            controlSideMenu(false)
+        }
+
+        else {
+            setShowSideMenu( true )
+            controlSideMenu( true )
+        }
+        
 
     }
 
@@ -56,6 +71,14 @@ const BottomMenu = () => {
                 onClickButton={ handleGoToMenuPage }
             />
 
+            
+
+            <ButtonComp 
+                nameClass={styles.bottomMenuButton}
+                icon={settingsIcon}
+                onClickButton={ handleGoToConfiguration }
+            />
+
             <ButtonComp 
                 nameClass={styles.bottomMenuButton}
                 idValue={styles.shoppingCarButton}
@@ -70,12 +93,6 @@ const BottomMenu = () => {
                     {productQuantityOnList}
                 </label>
             )}
-
-            <ButtonComp 
-                nameClass={styles.bottomMenuButton}
-                icon={settingsIcon}
-                onClickButton={ handleGoToConfiguration }
-            />
         </div>
     )
 };

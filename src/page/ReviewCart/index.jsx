@@ -21,7 +21,21 @@ const ReviewCart = () => {
 
     const handleFinishShop = () => {
         sessionStorage.setItem("orderTotalCost", sumProduct)
+        let current_acount = JSON.parse( sessionStorage.getItem('currentAccount'));
+        if( sumProduct <= 0 ) {
+            alert(" Nenhum item selecionado no carrinho")
+            return
+            
+        }
+        
+        else if( current_acount.name === "" ) {
+            
+            navigate('/login')
+            return
+        }
+
         navigate('/choose-place')
+        
     }
 
     useEffect(() => {

@@ -138,6 +138,13 @@ const ListProductOfCategory = () => {
         navigate('/choose-item', {state : productData})
     }
 
+    const handleKeydownSearchFood = ( key ) => {
+        if( key === 'Enter' || key === 'EnterNumpad' ) {
+            handleSearchFood()
+        }
+        return
+    }
+
     // Sempre que carregar a pagina, será chamada a feito a consulta dos itens no banco de dados
     useLayoutEffect(() => {
         getProductList()
@@ -171,6 +178,7 @@ const ListProductOfCategory = () => {
                     onChange={ (e) => (
                         setInputFoodSearchValue(e.target.value.toUpperCase())
                     )}
+                    onKeyDown={ (e) => handleKeydownSearchFood( e.key ) }
                 />
             </div>
 

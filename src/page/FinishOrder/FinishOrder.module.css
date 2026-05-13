@@ -1,0 +1,61 @@
+
+
+
+.progressCircleDiv {
+    display: flex;
+    flex-direction: column;
+
+    justify-items: center;
+    width: clamp(200px, 70dvw, 100dvw);
+    height: clamp(200px, 55dvh, 60dvh);
+
+    border-radius: clamp( 8px, 10px, 40px);
+    background-color: var( --background-label );
+    margin: auto;
+    margin-top: clamp(10px, 40px, 100px);
+
+    transition: 1s;
+}
+
+.subProgressCircleDiv, .thankDiv {
+    width: max-content;
+    margin: auto;
+    color: var(--color-font);
+    transition: 2s;
+    & > div {
+        margin: auto;
+    }
+}
+
+.thankDiv {
+    animation: showingComp 0.5s forwards;
+}
+
+.hiddenComp {
+    display: none;
+    opacity: 0;
+    animation: hiddindComp 0.5s forwards;
+}
+
+@keyframes showingComp {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+@keyframes hiddindComp {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+

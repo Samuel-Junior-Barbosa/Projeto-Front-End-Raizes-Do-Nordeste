@@ -9,6 +9,8 @@ import ReviewCart from './page/ReviewCart';
 import ChoosePlace from './page/ChoosePlace';
 import ChoosePaymentForm from './page/ChoosePaymentForm';
 import OrderReview from './page/OrderReview';
+import FinishOrderPage from './page/FinishOrder';
+import TrackOrderPage from './page/TrackOrder';
 
 function App() {
 
@@ -32,6 +34,8 @@ function App() {
             <Route path="/choose-payment" element={<ChoosePaymentForm />} />
             <Route path="/order-review" element={<OrderReview />} />
             <Route path="/cart" element={<ReviewCart />} />
+            <Route path="/finish-order" element={<FinishOrderPage />} />
+            <Route path="/track-order" element={<TrackOrderPage />} />
 
           </Route>
         </Routes>
