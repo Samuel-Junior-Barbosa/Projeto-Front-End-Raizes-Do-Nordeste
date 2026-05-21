@@ -11,44 +11,6 @@
 }
 
 
-
-.hiddenSideMenu {
-    animation: hiddingSideMenuAnimation 0.5s forwards !important;
-
-    & > ul {
-        animation: hiddingSideMenuAnimation 0.5s forwards !important;
-    }
-}
-
-
-.showingSideMenu {
-    animation: showingSideMenuAnimation 0.5s forwards !important;
-
-    & > ul {
-        animation: showingSideMenuAnimation 0.5s forwards !important;
-    }
+.LayoutDiv {
     
-}
-
-
-
-@keyframes hiddingSideMenuAnimation {
-    from {
-        left: 0%
-    }
-
-    to {
-        left: -100%
-    }
-}
-
-
-@keyframes showingSideMenuAnimation {
-    from {
-        left: -100%
-    }
-
-    to {
-        left: 0%
-    }
 }

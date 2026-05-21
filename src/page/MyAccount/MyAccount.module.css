@@ -1,0 +1,43 @@
+
+
+
+.accountDiv {
+    width: clamp(200px, 600px, 100dvw);
+    height: clamp(200px, 400px, 100dvh);
+
+    margin: auto;   
+    margin-top: clamp(10px, 20px, 30px);
+
+    border-radius: 10px;
+    padding: clamp(5px, 10px, 20px) 0px ;
+    background-color: var(--background-label);
+
+    & > label {
+        margin-left: clamp(5px, 10px, 20px);
+        color: var(--color-font);
+        font-size: clamp(1rem, 1.5rem, 2rem);
+    }
+
+
+}
+
+
+
+.buttonGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: clamp(100px, 300px, 100dvw);
+    height: clamp(20px, 80px, 100dvh);
+
+    margin-top: clamp(10px, 20px, 30px);
+
+}
+
+
+.accountButton {
+    padding: clamp(5px, 10px, 15px);
+    
+
+}

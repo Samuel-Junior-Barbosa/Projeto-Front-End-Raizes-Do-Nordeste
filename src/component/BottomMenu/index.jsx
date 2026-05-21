@@ -7,12 +7,12 @@ import settingsIcon from '/src/assets/menu.png';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const BottomMenu = ({controlSideMenu = undefined}) => {
+const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined}) => {
 
     const [ productQuantityOnList, setProductQuantityOnList ] = useState(0);
     const navigate = useNavigate()
 
-    const [ showSideMenu, setShowSideMenu ] = useState( false )
+    const [ showSideMenu, setShowSideMenu ] = useState( controlSideMenuState )
 
     const handleGoToMenuPage = () => {
         if( !controlSideMenu ) {
@@ -21,7 +21,7 @@ const BottomMenu = ({controlSideMenu = undefined}) => {
 
         if( showSideMenu ) {
             setShowSideMenu( false )
-            controlSideMenu(false)
+            controlSideMenu( false )
         }
 
         else {

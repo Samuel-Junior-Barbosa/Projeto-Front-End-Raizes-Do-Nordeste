@@ -3,25 +3,34 @@ import styles from './Layout.module.css';
 import BottomMenu from '/src/component/BottomMenu';
 import { Outlet } from 'react-router-dom';
 import SideMenu from '/src/component/SideMenu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 const Layout = () => {
-    const [ showSideMenu, setShowSideMenu ] = useState( false )
+    const [ showSideMenu, setShowSideMenu ] = useState( true )
+
+    useEffect(() => {
+        //console.log(" CHANGE SHOW MENU BUTTON: ", showSideMenu)
+    }, [ showSideMenu ])
 
     return (
         <div className={styles.LayoutDivMain}>
             <header>
 
             </header>
-            <main>
+            <main
+                className={ styles.LayoutDiv}
+            >
                 <SideMenu
-                    nameClass= { showSideMenu ? styles.showingSideMenu : styles.hiddenSideMenu}
+
+                    menuStatus={ showSideMenu }
+                    setHidden={ setShowSideMenu }
                 />
                 <Outlet />
             </main>
 
             <BottomMenu
+                controlSideMenuState = { showSideMenu }
                 controlSideMenu={ setShowSideMenu }
             />
 

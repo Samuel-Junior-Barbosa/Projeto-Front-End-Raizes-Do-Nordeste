@@ -11,12 +11,17 @@ import ChoosePaymentForm from './page/ChoosePaymentForm';
 import OrderReview from './page/OrderReview';
 import FinishOrderPage from './page/FinishOrder';
 import TrackOrderPage from './page/TrackOrder';
+import LoginPage from './page/login';
+import MyAccountPage from './page/MyAccount';
+import RouteGuard from './context/RouteGuard';
+import LogoutPage from './page/Logout';
+import OrdersPage from './page/Orders';
 
 function App() {
 
   useEffect(() => {
-    if( !localStorage.getItem('shoppingCart') ) {
-      localStorage.setItem('shoppingCart', JSON.stringify([]))
+    if( !sessionStorage.getItem('shoppingCart') ) {
+      sessionStorage.setItem('shoppingCart', JSON.stringify([]))
     }
   }, [])
   return (
@@ -24,19 +29,34 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
+
+            {/* Rotas protegidas (SIMULADO) */}
+            <Route path="/" element={<RouteGuard />}>
+              <Route path="/choose-place" element={<ChoosePlace />} />
+              <Route path="/finish-order" element={<FinishOrderPage />} />
+              <Route path="/track-order" element={<TrackOrderPage />} />
+              <Route path="/orders" element={<OrdersPage/>} />
+              
+
+
+            </Route>
+
+            {/* Rotas para autenticação (SIMULADO) */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/logout" element={<LogoutPage />} />
+            <Route path="/my-account" element={<MyAccountPage />} />
+
+            {/* Rotas comum  */}
             <Route index element={<Home />} /> 
             <Route path="/home" element={<Home />} />
             <Route path="/corn" element={<ListProductOfCategory />} />
             <Route path="/meat" element={<ListProductOfCategory />} />
             <Route path="/drink" element={ <ListProductOfCategory  /> } />
             <Route path="/choose-item" element={<ChooseItem />} />
-            <Route path="/choose-place" element={<ChoosePlace />} />
+
             <Route path="/choose-payment" element={<ChoosePaymentForm />} />
             <Route path="/order-review" element={<OrderReview />} />
             <Route path="/cart" element={<ReviewCart />} />
-            <Route path="/finish-order" element={<FinishOrderPage />} />
-            <Route path="/track-order" element={<TrackOrderPage />} />
-
           </Route>
         </Routes>
       </BrowserRouter>

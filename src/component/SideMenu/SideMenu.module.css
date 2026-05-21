@@ -21,12 +21,57 @@
     & > li {
         margin-top: clamp(1px, 2px, 5px);
         cursor: pointer;
-
+        padding: clamp(5px, 10px, 15px);
         background-color: var(--background-option);
     }
 
 
     & > li:hover {
         background-color: var(--background-option-hover);
+    }
+}
+
+
+
+
+.hiddenSideMenu {
+    animation: hiddingSideMenuAnimation 0.5s forwards !important;
+
+    & > ul {
+        animation: hiddingSideMenuAnimation 0.5s forwards !important;
+    }
+}
+
+
+.showingSideMenu {
+    animation: showingSideMenuAnimation 0.5s forwards !important;
+
+    & > ul {
+        animation: showingSideMenuAnimation 0.5s forwards !important;
+    }
+    
+}
+
+
+
+
+@keyframes hiddingSideMenuAnimation {
+    from {
+        left: 0%
+    }
+
+    to {
+        left: -100%
+    }
+}
+
+
+@keyframes showingSideMenuAnimation {
+    from {
+        left: -100%
+    }
+
+    to {
+        left: 0%
     }
 }

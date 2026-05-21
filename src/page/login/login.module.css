@@ -1,0 +1,55 @@
+
+
+
+
+.loginMainDiv {
+
+    display: flex;
+    flex-direction: column;
+
+    width: clamp(100px, 70%, 100%);
+
+    margin: auto;
+    margin-top: clamp(10px, 20px, 30px);
+    background-color: var(--background-label);
+    
+    padding: clamp(10px, 20px, 100px);
+    color: var(--color-font);
+
+    border-radius: 10px;
+    font-size: clamp(1rem, 1.8rem, 4rem);
+
+    box-shadow: 3px 4px 5px var(--shadow-color);
+}
+
+.loginDiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(10px, 20px, 30px);
+
+
+    & > label {
+        margin-top: clamp(10px, 20px, 30px);
+        font-size: clamp(1rem, 1.6rem, 3rem);
+    }
+
+    & > input {
+        font-size: clamp(1rem, 1.6rem, 3rem);
+        border-radius: 10px;
+        padding-left: clamp(4px, 6px, 8px);
+    }
+}
+
+
+.loginFunctionButtonDiv {
+    display: flex;
+    flex-direction: row;
+
+    margin: auto;
+    margin-top: clamp(10px, 15px, 20px);
+    & > button {
+        padding: clamp(4px, 8px, 10px);
+    }
+
+    
+}

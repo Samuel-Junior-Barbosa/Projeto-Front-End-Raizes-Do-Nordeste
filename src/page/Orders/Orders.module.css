@@ -1,0 +1,42 @@
+
+
+
+
+.orderList {
+    width: clamp( 100px, 300px, 100dvw);
+    height: clamp( 100px, 300px, 100dvh);
+    background-color: var(--background-label);
+
+
+    border-radius: 10px;
+    padding: clamp(10px, 15px, 20px);
+    margin: auto;
+}
+
+.orderList {
+
+    width: clamp( 50px, 100px, 200px);
+    height: clamp(100px, max-content, 100%);
+    list-style: none;
+    color: var(--color-font);
+
+    margin-top: clamp(10px, 20px, 30px);
+
+    & > li {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        background-color: var(--background-option);
+        border-radius: 10px;
+        padding: clamp(4px, 6px, 8px);
+    }
+
+    & > li:hover {
+        background-color: var(--background-option-hover);
+    }
+
+    & > li > label {
+        cursor: pointer;
+    }
+
+}
