@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './page/Home';
 import Layout from '/src/component/Layout';
-import Home from './page/home';
+import MenuUnity from './page/MenuUnity';
 import ListProductOfCategory from '/src/page/ListProductOfCategory';
 import ChooseItem from './page/ChooseItem';
 import ReviewCart from './page/ReviewCart';
@@ -18,6 +19,8 @@ import LogoutPage from './page/Logout';
 import OrdersPage from './page/Orders';
 import ConfirmAddressPage from './page/ConfirmAddress';
 import RegisteruserPage from './page/RegisterUser';
+import ChooseUnityMenu from './page/ChooseUnityMenu';
+
 
 function App() {
 
@@ -56,11 +59,14 @@ function App() {
             <Route path="/my-account" element={<MyAccountPage />} />
 
             {/* Rotas comum  */}
-            <Route index element={<Home />} /> 
-            <Route path="/home" element={<Home />} />
+            <Route index element={<MenuUnity />} /> 
+            <Route path="/home" element={<MenuUnity />} />
+
+            <Route path="/list-product-of-category" element={<ListProductOfCategory />} />
             <Route path="/corn" element={<ListProductOfCategory />} />
             <Route path="/meat" element={<ListProductOfCategory />} />
             <Route path="/drink" element={ <ListProductOfCategory  /> } />
+            <Route path="/choose-unity-menu" element={ <ChooseUnityMenu  /> } />
             <Route path="/choose-item" element={<ChooseItem />} />
 
             <Route path="/choose-payment" element={<ChoosePaymentForm />} />

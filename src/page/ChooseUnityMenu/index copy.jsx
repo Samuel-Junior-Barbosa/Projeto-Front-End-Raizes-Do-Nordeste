@@ -6,71 +6,35 @@ import ButtonComp from "../../component/ButtonComp";
 import LabelComp from '/src/component/LabelComp';
 import PromoWindowComp from '/src/component/PromoWindowComp';
 import { useNavigate } from 'react-router-dom';
+import getUnityListApi from '../../function/Data/Get/getUnityListApi';
 
 const Home = () => {
 
     const [ productList, setProductList ] = useState([])
-    const [ categoryList, setCategoryList ] = useState([])
+    const [ unityList, setUnityList ] = useState([])
     const [ showPromoWindow, setShowPromoWindow ] = useState(true)
 
     const navigate = useNavigate()
 
-    // API simulada para obter dados ficticios
-    const getProductListApi = async () => {
-        const data = {
-            'status': 0,
-            'content': [
-                {
-                    'produto' : 'Carne de sol',
-                    'precovenda' : '00.000',
-                    'ingredientes' : ['Carne bovina', 'salgada', 'seca'],
-                    'img' : '',
-                }, {
-                    'produto' : 'Buchada de bode',
-                    'precovenda' : '00.000',
-                    'ingredientes' : ['Vísceras e bucho de bode (ou carneiro)'],
-                    'img' : '',
-                }, {
-                    'produto' : 'Sarapatel:',
-                    'precovenda' : '00.000',
-                    'ingredientes' : ['Carne suína','vísceras'],
-                    'img' : '',
-                }
-                
-            ]
-        }
-        return data
-    }
-
-    // Função para obter dados do banco de dados
-    //    No momento, só simulação
-    const getProductList = async () => {
-        const response = await getProductListApi()
-        
-        if( response.status === 0 ) {
-            setProductList( response.content )
-        }
-
-    }
-
     // Função para simular uma api retornando dados
-    const getCategoryListApi = async () => {
-        const data = {
-            'status' : 0,
-            'content' : {
-                'CARNES' : 'meat',
-                'MILHOS' : 'corn',
-                'BEBIDAS' : 'drink',
-            }
+    const handleGetUnityListApi = async () => {
+        let data = {
+            'status' : 90,
+            'content' : {}
         }
 
+        data.content = await getUnityListApi()
+        if( data.content ) {
+            data.status = 0
+        }
+        
         return data
     }
 
 
     // Função para simular uma requisição de uma api
     const getCategoryList = async() => {
-        const response = await getCategoryListApi()
+        const response = await handleGetUnityListApi()
         if( response.status === 0 ) {
             //console.log(" SALVANDO RESPONSE: ", response.content)
             setCategoryList( response.content)

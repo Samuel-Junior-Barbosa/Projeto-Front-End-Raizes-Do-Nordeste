@@ -1,0 +1,29 @@
+
+.ChooseUnityMenuDiv {
+
+}
+
+
+
+.ChooseUnityMenuMainDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-top: min(80px, 10vh);
+
+
+    & > button {
+        background-color: var(--background-label);
+        color: var(--color-font);
+        width: clamp(100px, 90dvw, 800px);
+        height: clamp(100px, 100%, 700px);
+        margin: auto;
+        padding: clamp(10px, 10%, 100px);
+    }
+    & > button:hover {
+        background-color: var(--background-label-hover);
+        color: var(--color-font-hover);
+    }
+}
+

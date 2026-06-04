@@ -1,23 +1,24 @@
-import styles from './ListProductOfCategory.module.css';
+import styles from './Home.module.css';
 
 import { useEffect, useLayoutEffect, useState } from "react";
 import ListProduct from "../../component/ListProduct";
 import searchIcon from '/src/assets/search_icone2.svg'
 import { useLocation, useNavigate } from 'react-router-dom';
-import getProductListOfCategoryByUnity from '../../function/Data/Get/getProductListOfCategoryByUnity';
+import PromoWindowComp from '/src/component/PromoWindowComp';
 
-const ListProductOfCategory = () => {
+const Home = () => {
 
-    const [ productList, setProductList ] = useState([])
+    const [ unityList, setProductList ] = useState([])
     const [ inputFoodSearchValue, setInputFoodSearchValue ] = useState('')
     const [ productSelected, setProductSelected ] = useState([])
     const [ searchItemStatus, setSearchItemStatus ] = useState(false)
     const [ searchItem, setSearchItem ] = useState([])
+    const [ showPromoWindow, setShowPromoWindow ] = useState(true)
 
     const location = useLocation()
     const navigate = useNavigate()
 
-    const { unityIdRecived, categoryIdRecived } = location.state || { unityIdRecived : null, categoryIdRecived : null }
+    const { PlateType } = location.state || { PlateType : "" }
 
     // Função responsavel por simular a pesquisa do item no banco de dados
     const handleSearchFood = async () => {
@@ -50,7 +51,6 @@ const ListProductOfCategory = () => {
     }
 
     // Simulação de uma API retornando dados do banco
-    /*
     const getProductListApi = async( typeProduct ) => {
         let data = {
             'status' : 90,
@@ -124,16 +124,13 @@ const ListProductOfCategory = () => {
         return data
 
     }
-        */
 
     // Função responsavel por chamar a API de consulta
     const getProductList = async () => {
-        //const response = await getProductListApi( PlateType )
-        console.log(" categoryIdRecived: ", unityIdRecived, categoryIdRecived)
-        const response = await getProductListOfCategoryByUnity( unityIdRecived, categoryIdRecived )
-        if( response ) {
-            console.log(" RESPONSE: ", response)
-            setProductList( response )
+        const response = await getProductListApi( PlateType )
+        if( response.status === 0 ) {
+            //console.log(" RESPONSE: ", response)
+            setProductList( response.content )
         }
     }
 
@@ -152,6 +149,12 @@ const ListProductOfCategory = () => {
 
     // Sempre que carregar a pagina, será chamada a feito a consulta dos itens no banco de dados
     useLayoutEffect(() => {
+        let tmpShowPromoWindow = JSON.parse( sessionStorage.getItem('showPromoWindow'))
+
+        if( tmpShowPromoWindow === false || tmpShowPromoWindow === true ) {
+            setShowPromoWindow( tmpShowPromoWindow )
+        }
+        
         getProductList()
     }, [])
 
@@ -214,11 +217,15 @@ const ListProductOfCategory = () => {
             { (productList.length === 0 && searchItem.length === 0 ) && (
                 <label> Nenhum item encontrado nesse cardapio</label>
             )}
-
+            { showPromoWindow && (
+                <PromoWindowComp
+                    setControlFrame = { setShowPromoWindow }
+                />
+            )}
                                 
         </div>
     )
 }
 
 
-export default ListProductOfCategory;
+export default Home;

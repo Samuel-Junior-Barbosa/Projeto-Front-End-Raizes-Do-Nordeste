@@ -95,7 +95,8 @@
         "cidade": "Testilandia",
         "bairro": "Teste da silva",
         "rua": " AV. Test Road",
-        "numero": "00"
+        "numero": "00",
+        "uf" : "sp"
       },
       "lgpdConcentiment": {
         "systemAuthentication": false,
@@ -113,7 +114,8 @@
         "cidade": "Testilandia",
         "bairro": "Teste da silva",
         "rua": " AV. Test Road",
-        "numero": "00"
+        "numero": "00",
+        "uf" : "sp"
       },
       "lgpdConcentiment": {
         "systemAuthentication": false,
@@ -127,5 +129,115 @@
   ],
   "orders": [
     ],
+  "listOfUnits" : [
+    {
+      "id" : 1,
+      "name" : "RAIZES DO NORDESTE - ALAGOAS",
+      "address": {
+        "cidade": "Maceio",
+        "bairro": "Teste da silva",
+        "rua": " AV. Test Road",
+        "numero": "00",
+        "uf" : "al"
+      }
+    },{
+      "id" : 2,
+      "name" : "RAIZES DO NORDESTE - BAHIA",
+      "address": {
+        "cidade": "Salvador",
+        "bairro": "Teste da silva",
+        "rua": " AV. Test Road",
+        "numero": "00",
+        "uf" : "ba"
+      }
+    },{
+      "id" : 3,
+      "name" : "RAIZES DO NORDESTE - CEARA",
+      "address": {
+        "cidade": "Fortaleza",
+        "bairro": "Teste da silva",
+        "rua": " AV. Test Road",
+        "numero": "00",
+        "uf" : "ce"
+      }
+    }
+
+  ],
+  "menuForUnity" : [
+    
+    {
+      "unityId" : 1,
+      "category" : [
+        {
+          "name" : "carnes",
+          "categoryId" : 1
+        },{
+          "name" : "milho",
+          "categoryId" : 2
+        },{
+          "name" : "bebidas",
+          "categoryId" : 3
+        }
+      ],
+      "productList" : [
+        {
+            "produto" : "Carne de sol",
+            "ingredientes" : ["Carne bovina salgada e seca"],
+            "precovenda" : "01.00",
+            "id" : 1,
+            "categoryId" : "1"
+        }, {
+            "produto" : "Buchada de bode",
+            "ingredientes" : ["Vísceras", "bucho de bode (ou carneiro)"],
+            "precovenda" : "02.00",
+            "id" : 2,
+            "categoryId" : "1"
+        }, {
+            "produto" : "Sarapatel",
+            "ingredientes" : ["Carne suína", "vísceras"],
+            "precovenda" : "03.00",
+            "id" : 3,
+            "categoryId" : "1"
+        }, {
+            "produto" : "Cuscuz",
+            "ingredientes" : ["flocão ou farinha de milho"],
+            "precovenda" : "04.00",
+            "id" : 4,
+            "categoryId" : "2"
+          }, {
+            "produto" : "Pamonha",
+            "ingredientes" : ["Milho verde fresco"],
+            "precovenda" : "05.00",
+            "id" : 5,
+            "categoryId" : "2"
+          }, {
+            "produto" : "Bolo de milho",
+            "ingredientes" : ["milho-verde", "leite de coco", "ovos", "açúcar", "óleo e fubá"],
+            "precovenda" : "06.00",
+            "id" : 6,
+            "categoryId" : "2"
+          },{
+            "produto" : "Café Forte",
+            "ingredientes" : ["Café em pó"],
+            "precovenda" : "07.00",
+            "id" : 7,
+            "categoryId" : "3"
+            }, {
+            "produto" : "Caldo de cana",
+            "ingredientes" : ["Cana de açucar"],
+            "precovenda" : "08.00",
+            "id" : 8,
+            "categoryId" : "3"
+            }, {
+            "produto" : "Cajuína",
+            "ingredientes" : ["suco clarificado esterilizado do caju"],
+            "precovenda" : "09.00",
+            "id" : 9,
+            "categoryId" : "3"
+            }
+    
+      ]
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

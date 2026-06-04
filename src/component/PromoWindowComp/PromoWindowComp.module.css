@@ -38,7 +38,7 @@
     height: clamp(100px, 45dvh, 70dvh);
     border-radius: clamp(10px, 20px, 30px);
     background-color: var(--background-label-hover);
-
+    font-size: clamp(1rem, 1.2rem, 2rem);
     text-align: center;
 
     text-transform: uppercase;

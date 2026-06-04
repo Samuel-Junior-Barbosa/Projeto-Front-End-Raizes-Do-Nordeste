@@ -23,10 +23,17 @@ const ButtonComp = ({text='', onClickButton=null, icon = null, nameClass = '', u
             { icon && (
                 <img
                     src={icon}
+                    
                 />
             )}
             { text && (
-                <label> {text} </label>
+                
+                <label
+                >
+                    {text}
+                </label>
+            
+                
             )}
 
 
