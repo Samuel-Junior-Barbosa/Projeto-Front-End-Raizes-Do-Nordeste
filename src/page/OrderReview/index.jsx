@@ -4,23 +4,56 @@ import styles from './OrderReview.module.css';
 import LabelComp from '/src/component/LabelComp'
 import ButtonComp from '../../component/ButtonComp';
 import { useNavigate } from 'react-router-dom';
+import getDiscountCode from '../../function/Order/Get/getDiscountCode';
+import getBuyPoint from '../../function/Account/Get/getBuyPoints';
+import getIdUser from '../../function/Account/Get/getIdUser';
+import getFidelityPromo from '../../function/Buy/getFidelityPromo';
 
 const OrderReview = () => {
     const [ productList, setProductList ] = useState([])
     const navigate = useNavigate()
     const sumProduct = JSON.parse( sessionStorage.getItem("orderTotalCost"))
     const [ discountAmount, setDiscountAmount ] = useState(0)
+    const [ discountCodeData, setDiscountCodeData ] = useState({}) 
     const [ changeValue, setChangeValue ] = useState(0)
     const [ deliveryFee, setDeliveryFee ] = useState(0)
     const [ totalValue, setTotalValue ] = useState(0)
     const [ discountCode, setDiscountCode ] = useState('')
-
+    const [ idUser, setIdUser ] = useState('')
     const [ currentPaymentForm, setCurrentPaymentForm ] = useState({})
+    const username = JSON.parse(sessionStorage.getItem("currentAccount")).name
+    const [ useFidelityPromotion, setUseFidelityPromotion ] = useState( false )
+    const [ fidelityDescription, setFidelityDescription ] = useState('')
+    const [ fidelityDiscountValue, setFidelityDiscountValue ] = useState(0)
 
-    const discountCodes = {
-        'teste1' : 5,
-        'teste2' : 10,
-        'teste3' : 15,
+    const [ usePromotionCode, setUsePromotionCode ] = useState( false )
+    const [ fidelityCode, setFidelityCode ] = useState('today')
+
+
+
+    const handleGetDiscountCode = async ( code ) => {
+        const response = await getDiscountCode( code )
+        //console.log("handleGetDiscountCode response: ", response)
+        //console.log(" handleGetCode: ", code)
+        let tmpDiscountValue = null
+        if( !response ) {
+            return
+        }
+
+        setDiscountCodeData( response )
+        if( response.percentage ) {
+            tmpDiscountValue = sumProduct * ( response.percentage / 100)
+            alert(` parabens, você resgatou um codigo com ${response.percentage}% de desconto`)
+        }
+
+        else if( response.moneyDiscount ) {
+            tmpDiscountValue = response.moneyDiscount
+            alert(` parabens, você resgatou um codigo com R$${response.moneyDiscount.toFixed(2)} de desconto`)
+        }
+        
+        //console.log("handleGetDiscountCode tmpDiscountValue: ", tmpDiscountValue)
+
+        return tmpDiscountValue.toFixed(2)
     }
 
     const handleGoBack = () => {
@@ -31,23 +64,96 @@ const OrderReview = () => {
         setDiscountCode( code )
     }
 
-    const addDiscountCode = () => {
-        if( !discountCode ) {
-            setDiscountAmount(0)
+    const addDiscountCode = async () => {
+        if( !discountCode && usePromotionCode === true ) {
+            let tmpTotal = sumProduct + deliveryFee
+            tmpTotal -= fidelityDiscountValue
+            setTotalValue( tmpTotal )
+            setDiscountAmount( fidelityDiscountValue )
+            setUsePromotionCode( false )
             return
         }   
 
-        let discountAmountValue = discountCodes[discountCode]
-        if( discountAmountValue ) {
-            setDiscountAmount( discountAmountValue )
-            return discountCodes[ discountCode ]
+        /*
+        if( usePromotionCode === true ) {
+            return
         }
+        */
+
+
+        /*let discountAmountValue = discountCodes[discountCode]
+        */
+
+        setUsePromotionCode( true )
+        let discountAmountValue = await handleGetDiscountCode( discountCode )
+        discountAmountValue = Number( discountAmountValue )
+        if( discountAmountValue ) {
+
+            if( discountAmountValue >= totalValue ) {
+                alert(" O cupom não pode passar de 100% do pedido")
+                return
+            }
+            let newDiscountValue = fidelityDiscountValue + discountAmountValue
+
+            setDiscountAmount( newDiscountValue )
+            setTotalValue( totalValue - newDiscountValue)
+
+            return discountAmountValue
+        }
+        
 
         alert(" Nenhum cupom valido encontrado, tente outro codigo")
     }
 
+    const handleRecalculateValues = () => {
+        let tmpTotal = sumProduct + deliveryFee
+        tmpTotal -= discountAmount
+        tmpTotal = tmpTotal.toFixed(2)
+        setTotalValue( tmpTotal )
+        //console.log(" currentPaymentForm: ", currentPaymentForm)
+        if( currentPaymentForm ) {
+            if( currentPaymentForm.id === 1 ) {
+                let tmp = currentPaymentForm.paymentValue - tmpTotal
+                tmp = tmp.toFixed(2)
+                setChangeValue(tmp )
+            }
+
+        }
+    }
+
+    const handleVerifyFidelity = async () => {
+        let tmpIdUser = await getIdUser( username )
+        let tmpFidality = await getBuyPoint( tmpIdUser )
+
+        let promo = await getFidelityPromo("today")
+
+        if( tmpFidality < promo.buyPoint ) {
+            setUseFidelityPromotion( false )
+            return null
+        }
+        //console.log(" promo: ", promo)
+        setUseFidelityPromotion( true )
+        let tmpDiscount = totalValue * (promo.percentage / 100)
+        let tmpDiscountValue = totalValue - tmpDiscount
+        setFidelityDiscountValue( tmpDiscount )
+        tmpDiscountValue = tmpDiscountValue.toFixed(2)
+        
+        setTotalValue( tmpDiscountValue )
+
+        let newDiscountValue = Number(discountAmount) + Number(tmpDiscount)
+        setDiscountAmount( newDiscountValue  )
+        setFidelityDescription( promo.description )
+        //console.log(" PROMO VALUE: ", tmpDiscountValue)
+
+
+    }
+
     const handleConfirmPayment = () => {
-        navigate('/finish-order')
+        const data = {
+            fidelityCode : fidelityCode,
+            useFidelityPromotionRecived : useFidelityPromotion
+        }
+        navigate('/finish-order', { state : data })
     }
 
     useEffect(() => {
@@ -55,42 +161,40 @@ const OrderReview = () => {
         setProductList( tmp_cart_list )
         let tmpDeliveryFee = JSON.parse(sessionStorage.getItem("deliveryFeeValue"))
         if( tmpDeliveryFee ) {
+            tmpDeliveryFee = Number( tmpDeliveryFee ).toFixed(2)
             setDeliveryFee( tmpDeliveryFee )
         }
         
         let tmpChangeValue = JSON.parse(sessionStorage.getItem("changeValueValue"))
 
         if( tmpChangeValue ) {
+            tmpChangeValue = Number( tmpChangeValue ).toFixed(2)
             setChangeValue( tmpChangeValue )
         }
 
         let tmpPaymentForm = JSON.parse( sessionStorage.getItem('paymentForm'))
         //console.log(" tmpPaymentForm: ", tmpPaymentForm)
         if( tmpPaymentForm ) {
+            tmpPaymentForm = Number( tmpPaymentForm ).toFixed(2)
             setCurrentPaymentForm( tmpPaymentForm )
         }
-
         
-
-        
-
     }, [])
 
 
     useEffect(() => {
+        handleVerifyFidelity()
+        handleRecalculateValues()
+        
+    }, [deliveryFee, changeValue, currentPaymentForm])
 
-        let tmpTotal = sumProduct - discountAmount
-        tmpTotal += deliveryFee
-        setTotalValue( tmpTotal )
-        //console.log(" currentPaymentForm: ", currentPaymentForm)
-        if( currentPaymentForm ) {
-            if( currentPaymentForm.id === 1 ) {
-                setChangeValue( currentPaymentForm.paymentValue - tmpTotal)
-            }
 
-        }
+    useEffect(() => {
+        handleRecalculateValues()
+        
+    }, [discountAmount])
 
-    }, [deliveryFee, discountAmount, changeValue, currentPaymentForm])
+
 
     return (
         <div className={styles.OrderReviewMainDiv}>
@@ -135,6 +239,19 @@ const OrderReview = () => {
                         text={"adicionar"}
                         onClickButton={addDiscountCode}
                     />
+
+                    { discountCodeData.code && (
+
+                        
+                        <label>
+                            <br />
+                            desconto de: { discountCodeData.moneyDiscount  ? (
+                                <label> R${discountCodeData.moneyDiscount} </label>
+                            ) : (
+                                <label> {discountCodeData.percentage}% </label>
+                            )}
+                        </label>
+                    )}
                 </div>
 
                 <div className={ styles.paymentDiv}
@@ -142,12 +259,21 @@ const OrderReview = () => {
                     <label> Pagamento </label>
                     <label> {currentPaymentForm.quantity}x : {currentPaymentForm.description} = {currentPaymentForm.paymentValue}</label>
                     <hr />
-                    <label>  SubTotal: R${sumProduct}</label>
-                    <label>  Descontos: R${discountAmount}</label>
-                    <label>  Troco: R${changeValue} </label>
-                    <label>  Taxa de entrega: R${deliveryFee}</label>
+                    <label>  SubTotal: R${sumProduct.toFixed(2)}</label>
+                    <label>  Descontos: R${discountAmount.toFixed(2)}</label>
+                    <label>  Troco: R${changeValue.toFixed(2)} </label>
+                    <label>  Taxa de entrega: R${deliveryFee.toFixed(2)}</label>
                     <hr />
-                    <label>  Valor Total: R${totalValue}</label>
+                    <label>  Valor Total: R${Number(totalValue).toFixed(2)}</label>
+                    { useFidelityPromotion && (
+                        <label>
+                             
+                            Parabéns, você obteve uma promoção de fidelidade de:
+                            <br />
+                            {fidelityDescription}
+                        </label>
+                    )}
+
                 </div>
                 
                 

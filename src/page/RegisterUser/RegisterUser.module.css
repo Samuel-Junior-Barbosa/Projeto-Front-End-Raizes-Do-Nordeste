@@ -1,0 +1,17 @@
+
+.RegisterUserMainDiv {
+    
+}
+
+.RegisterUserDiv {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(20px, max-content);
+    background-color: var(--background-label);
+    width: clamp(100px, 500px, 100dvw);
+    height: clamp(100px, 400px, 100dvh);
+
+
+    color: var(--color-font);
+    margin: auto;
+}

@@ -3,12 +3,16 @@ import styles from './home.module.css';
 import { useEffect, useState } from "react";
 import ListProduct from "../../component/ListProduct";
 import ButtonComp from "../../component/ButtonComp";
+import LabelComp from '/src/component/LabelComp';
+import PromoWindowComp from '/src/component/PromoWindowComp';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
     const [ productList, setProductList ] = useState([])
     const [ categoryList, setCategoryList ] = useState([])
+    const [ showPromoWindow, setShowPromoWindow ] = useState(true)
+
     const navigate = useNavigate()
 
     // API simulada para obter dados ficticios
@@ -75,7 +79,16 @@ const Home = () => {
 
 
 
+
+
     useEffect(() => {
+        let tmpShowPromoWindow = JSON.parse( sessionStorage.getItem('showPromoWindow'))
+
+        if( tmpShowPromoWindow === false || tmpShowPromoWindow === true ) {
+            setShowPromoWindow( tmpShowPromoWindow )
+        }
+        
+
         getCategoryList()
         if( !JSON.parse(sessionStorage.getItem('shoppingCart')) ) {
             sessionStorage.setItem('shoppingCart', '[]')
@@ -104,6 +117,12 @@ const Home = () => {
                     urlImage={`/src/assets/categorias/${categoryList[item]}-256px.jpg`}
                 />
             ))}
+
+            { showPromoWindow && (
+                <PromoWindowComp
+                    setControlFrame = { setShowPromoWindow }
+                />
+            )}
         </div>
     );
 

@@ -38,6 +38,10 @@
 
 .accountButton {
     padding: clamp(5px, 10px, 15px);
-    
 
+}
+
+
+.MyAccountFooter {
+    color: var(--color-font);
 }

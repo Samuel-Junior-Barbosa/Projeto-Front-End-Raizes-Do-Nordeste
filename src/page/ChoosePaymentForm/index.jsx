@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 
 import styles from './ChoosePaymentForm.module.css'
 import LabelComp from '/src/component/LabelComp';
 import PaymentParcelList from "../../component/PaymentParcelList";
 import ButtonComp from '/src/component/ButtonComp'
+import getPaymentFormApi from "../../function/Buy/getPaymentFormApi";
 
 
 const ChoosePaymentForm = () => {
@@ -15,6 +16,8 @@ const ChoosePaymentForm = () => {
     const [ informMoneyValueShowWindow, setInformMoneyValueShowWindow ] = useState(false)
     //const [ paymentFormParcelList, setPaymentFormParcelList ] = useState( { id: 1, description : 'teste', 'parcel' : [[0, 'teste1'], [1, 'teste2']] })
     const [ paymentFormParcelList, setPaymentFormParcelList ] = useState()
+    const [ paymentForm, setPaymentForm ] = useState()
+
     const [ moneyValue, setMoneyValue ] = useState('0')
     const currentChangeValue = useRef()
 
@@ -23,54 +26,16 @@ const ChoosePaymentForm = () => {
     const [ changeValue, setChangeValue ] = useState(0)
 
     const navigate = useNavigate()
+    const location = useLocation()
 
-    const getPaymentApi = async () => {
-        let data = {
-            'status' : 90,
-            'content' : []
+    const { id_place_form } = location.state || { id_place_form : 1 }
 
-        }
-        
-        data.content = [
-            {
-                'id' : 1,
-                'description' : 'Dinheiro',
-                'parcel' : [],
-                'quantity' : 1,
-                'paymentValue' : 0
-            },{
-                'id' : 2,
-                'description' : 'Cartao debito',
-                'parcel' : [],
-                'quantity' : 1,
-                'paymentValue' : 0
-            },{
-                'id' : 3,
-                'description' : 'Cartao credito',
-                'parcel' : [
-                    [1, '1x credito'],
-                    [2, '2x credito']
-                ],
-                'quantity' : 1,
-                'paymentValue' : 0
-            },{
-                'id' : 4,
-                'description' : 'Pix',
-                'parcel' : [
-                    [1, '1x pix'],
-                    [2, '2x pix']
-
-                ],
-                'quantity' : 1,
-                'paymentValue' : 0
-            }
-        ]
-
-        return data
+    const handleGetPaymentForm = async () => {
+        const response = await getPaymentFormApi()
+        return response
     }
-
     const getPayment = async () => {
-        const response = await getPaymentApi()
+        const response = await handleGetPaymentForm()
         if( response.status ) {
             setPaymentFormList( response.content )
             return response.content
@@ -80,14 +45,15 @@ const ChoosePaymentForm = () => {
     const handleChoosePaymentForm = ( id ) => {
         let tmpPaymentForm;
         for( let i = 0; i < paymentFormList.length; i ++ ) {
-
+            paymentFormList[i].id = Number(paymentFormList[i].id)
             if( paymentFormList[i].id == id ) {
 
-                if( id === 1 ) {
+                if( id == 1 ) {
                     tmpPaymentForm = paymentFormList[i]
                     tmpPaymentForm.quantity = 1
                     tmpPaymentForm.paymentValue = moneyValue
                     sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ) )
+                    setPaymentForm( tmpPaymentForm )
                     setPaymentFormParcelList([])
                     setInformMoneyValueShowWindow( true )
 
@@ -99,7 +65,9 @@ const ChoosePaymentForm = () => {
                     tmpPaymentForm = paymentFormList[i]
                     tmpPaymentForm.quantity = 1
                     sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ))
-                    setPaymentFormParcelList( paymentFormList[i] )
+                    setPaymentForm( tmpPaymentForm )
+
+                    setPaymentFormParcelList( tmpPaymentForm )
                     setSelectQuantityParcel( true )
                     return
                 }
@@ -108,7 +76,8 @@ const ChoosePaymentForm = () => {
                     tmpPaymentForm.quantity = 1
                     tmpPaymentForm.paymentValue = orderTotalCost
                     sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ))
-                    setPaymentFormParcelList( paymentFormList[i] )
+                    setPaymentForm( tmpPaymentForm )
+                    setPaymentFormParcelList( tmpPaymentForm )
                     setSelectQuantityParcel( true )
                     //navigate('/order-review')
                 }
@@ -122,10 +91,12 @@ const ChoosePaymentForm = () => {
         let tmpCalc = Number(moneyValue) - orderTotalCost;
         if( tmpCalc < 0 ) {
             alert(" O valor do dinheiro não pode ser menor que o total dos produtos.")
-            return
+            return 1
         }
         setChangeValue( tmpCalc )
         currentChangeValue.current = tmpCalc
+
+        return 0
     }
 
     const handleKeydownChangeInput = (key) => {
@@ -136,7 +107,13 @@ const ChoosePaymentForm = () => {
     }
 
     const handleConfirmMoneyValue = () => {
-        handleCalculateChaveValue()
+        const data = {
+            id_place_form : id_place_form
+        }
+        const calculateResponse = handleCalculateChaveValue()
+        if( calculateResponse > 0 ) {
+            return calculateResponse
+        }
 
         let userDecision = confirm(`você informou R$${moneyValue}. Total do troco: R$${currentChangeValue.current}, deseja confirmar esse valor de pagamento?`)
         setInformMoneyValueShowWindow( false )
@@ -149,7 +126,7 @@ const ChoosePaymentForm = () => {
 
         sessionStorage.setItem("paymentForm", JSON.stringify(tmpPayment))
 
-        navigate('/order-review')
+        navigate('/order-review', { state : data})
 
 
 
@@ -190,7 +167,14 @@ const ChoosePaymentForm = () => {
                     ))}
                 </ul>
             </div>
+            
+            <div className={ styles.bottomDivButton }>
+                <ButtonComp
+                    text={"voltar"}
+                    onClickButton={ () => navigate(-1)}
+                />
 
+            </div>
             { informMoneyValueShowWindow && (
                 <div className={styles.moneyInputDiv}>
                     <LabelComp
@@ -237,6 +221,7 @@ const ChoosePaymentForm = () => {
                     parcelList = { paymentFormParcelList }
                     setQuantitySelected={ setQuantityParcel }
                     setControlFrame={ setSelectQuantityParcel }
+                    paymentForm={ paymentForm }
                 />
 
             )}

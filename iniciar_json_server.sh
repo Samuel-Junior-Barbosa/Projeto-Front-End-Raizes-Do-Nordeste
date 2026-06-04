@@ -1,0 +1,1 @@
+json-server --watch src/public/db.json --port 3000

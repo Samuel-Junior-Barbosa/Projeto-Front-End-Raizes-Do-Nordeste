@@ -1,0 +1,64 @@
+
+
+
+
+.confirmAddressMainDiv {
+
+
+    width: clamp(100px, 400px, 80dvw);
+    height: clamp(100px, 400px, 80dvh);
+
+    margin: clamp(10px, 20px, 30px) auto;
+
+}
+
+.confirmAddress {
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-label);
+
+    border-radius: 10px;
+}
+
+
+.addressDiv {
+    display: grid;
+    position: relative;
+    grid-auto-rows: minmax(10px, 100%);
+    grid-template-columns: auto auto;
+    gap: clamp(5px, 10px, 20px);
+    width: max-content;
+    height: max-content;
+    justify-content: center;
+    justify-items: center;
+    margin: clamp(10px, 20px, 30px) auto;
+    top: clamp(10px, 20px, 30px);
+
+    & > label {
+        color: var(--color-font);
+        margin-right: auto;
+        
+    }
+
+    & > input {
+        border-radius: clamp(2px, 5px, 10px);
+        padding-left: clamp(4px, 6px, 8px);
+
+    }
+
+}
+
+
+.bottomButton {
+    display: block;
+    position: relative;
+    width: max-content;
+    margin: auto;
+
+    top: clamp(10px, 20px, 30px);
+    & > button {
+        padding: clamp(5px, 10px, 20px);
+        margin: 0px clamp(10px, 15px, 20px);
+    }
+}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import LabelComp from '/src/component/LabelComp'
 import styles from './ChoosePlace.module.css'
 import { useNavigate } from "react-router-dom";
+import ButtonComp from "../../component/ButtonComp";
 
 const ChoosePlace = () => {
 
@@ -25,6 +26,11 @@ const ChoosePlace = () => {
         }
         //console.log( " data: ", data)
         if( !place_list.some( place => place.id === id )) {
+            return
+        }
+
+        if( id === 2 ) {
+            navigate('/confirm-address', { state: data })
             return
         }
         navigate('/choose-payment', { state: data })
@@ -57,6 +63,13 @@ const ChoosePlace = () => {
                     ))
                     }
                 </ul>
+            </div>
+
+            <div className={ styles.bottomButton}>
+                <ButtonComp 
+                    text={"voltar"}
+                    onClickButton={() => navigate(-1)}
+                />
             </div>
         </div>
     );

@@ -15,12 +15,14 @@
 
 .orderList {
 
-    width: clamp( 50px, 100px, 200px);
+    width: clamp( 50px, 400px, 100%);
     height: clamp(100px, max-content, 100%);
     list-style: none;
     color: var(--color-font);
 
     margin-top: clamp(10px, 20px, 30px);
+
+    overflow-y: scroll;
 
     & > li {
         display: flex;
@@ -29,6 +31,11 @@
         background-color: var(--background-option);
         border-radius: 10px;
         padding: clamp(4px, 6px, 8px);
+
+        margin: clamp(10px, 20px, 30px) auto;
+
+        box-shadow: 3px 4px 5px var(--shadow-color);
+        text-shadow: 1px 2px 1px var(--shadow-color);
     }
 
     & > li:hover {

@@ -1,0 +1,50 @@
+
+.promoWindow {
+    display: flex;
+    position: absolute;
+
+    flex-direction: column;
+
+    top: 50%;
+    left:  50%;
+
+    transform: translate(-50%, -50%);
+
+    width: clamp( 100px, 70dvw, 70dvw);
+    height: clamp(100px, 50dvh, 70dvh);
+    border-radius: clamp(10px, 20px, 30px);
+    gap: clamp(5px, 10px, 15px);
+    background-color: var(--background-label);
+    margin: auto;
+    padding: clamp(5px, 10px, 15px);
+
+
+    & > div > button {
+        padding: clamp(5px, 10px, 20px);
+    }
+}
+
+
+.promoWindowButtonDiv {
+    margin: auto;
+}
+
+.promoWindowLabelDiv {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    width: clamp( 100px, 70dvw, 70dvw);
+    height: clamp(100px, 45dvh, 70dvh);
+    border-radius: clamp(10px, 20px, 30px);
+    background-color: var(--background-label-hover);
+
+    text-align: center;
+
+    text-transform: uppercase;
+    color: var(--color-font);
+
+    & > label {
+        height: max-content;
+    }
+}

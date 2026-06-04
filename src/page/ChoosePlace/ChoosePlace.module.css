@@ -37,3 +37,15 @@
         background-color: var(--background-option-hover);
     }
 }
+
+.bottomButton {
+    display: flex;
+
+    justify-content: center;
+    gap: clamp(10px, 20px, 40px);
+
+    margin-top: clamp(10px, 20px, 30px);
+    & > button {
+        padding: clamp(5px, 10px, 20px);
+    }
+}

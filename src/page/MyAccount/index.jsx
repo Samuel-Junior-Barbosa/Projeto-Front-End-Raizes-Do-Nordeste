@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LabelComp from '/src/component/LabelComp'
 import ButtonComp from '/src/component/ButtonComp'
+import PromoWindowComp from '../../component/PromoWindowComp';
 
 
 
@@ -10,6 +11,7 @@ const MyAccountPage = () => {
     const navigate = useNavigate()
 
     const [ currentAccount, setCurrentAccount ] = useState('')
+    const [ showPromoWindow, setShowPromoWindow ] = useState(false)
 
     const handleLogout = () => {
         navigate('/logout')
@@ -19,6 +21,11 @@ const MyAccountPage = () => {
     const handleOrders = () => {
         navigate('/orders')
         return
+    }
+
+    const handleGoToPromocoes = () => {
+        setShowPromoWindow( true )
+        return 
     }
 
     useEffect(() => {
@@ -50,6 +57,11 @@ const MyAccountPage = () => {
                     />
                     <ButtonComp
                         nameClass={styles.accountButton}
+                        text={"Promoções"}
+                        onClickButton={ handleGoToPromocoes }
+                    />
+                    <ButtonComp
+                        nameClass={styles.accountButton}
                         text={"Sair"}
                         onClickButton={ handleLogout }
                     />
@@ -57,6 +69,17 @@ const MyAccountPage = () => {
                 </div>
 
             </div>
+
+            { showPromoWindow && (
+                <PromoWindowComp
+                    setControlFrame = { setShowPromoWindow }
+                />
+            )}
+
+
+            <label className={ styles.MyAccountFooter}>
+                Para ajuda duvidas sobre o pedidos, entre em contato com a loja no numero: (00) 0000000000 
+            </label>
         </div>
 
     );

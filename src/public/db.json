@@ -1,0 +1,131 @@
+{
+  "fidelity": [
+    {
+      "id": "1",
+      "code": "today",
+      "buyPoint": 10,
+      "moneyDiscount": 0,
+      "percentage": 10,
+      "description": "Ganhe 10% de desconto após 10 compras feitas"
+    }
+  ],
+  "discountCoupon": [
+    {
+      "code": "teste1",
+      "percentage": 0,
+      "moneyDiscount": 5,
+      "id": "PQL1eUN5Q4E"
+    },
+    {
+      "code": "teste2",
+      "percentage": 0,
+      "moneyDiscount": 10,
+      "id": "Y1rEhMKCuIg"
+    },
+    {
+      "code": "teste3",
+      "percentage": 0,
+      "moneyDiscount": 15,
+      "id": "OzjFyrVP3_o"
+    },
+    {
+      "code": "teste4",
+      "percentage": 5,
+      "moneyDiscount": 0,
+      "id": "TdiZsBpSl6w"
+    },
+    {
+      "code": "desconto",
+      "percentage": 0,
+      "moneyDiscount": 1,
+      "id": "TdiZsBpSl6w"
+    },
+    {
+      "code": "desconto1",
+      "percentage": 0,
+      "moneyDiscount": 10,
+      "id": "TdiZsBpSl6w"
+    },
+    {
+      "code": "desconto2",
+      "percentage": 0,
+      "moneyDiscount": 10,
+      "id": "TdiZsBpSl6w"
+    }
+  ],
+  "paymentForm" : [
+      {
+          "id" : 1,
+          "description" : "Dinheiro",
+          "parcel" : [],
+          "quantity" : 1,
+          "paymentValue" : 0
+      },{
+          "id" : 2,
+          "description" : "Cartao debito",
+          "parcel" : [],
+          "quantity" : 1,
+          "paymentValue" : 0
+      },{
+          "id" : 3,
+          "description" : "Cartao credito",
+          "parcel" : [
+              [1, "1x credito"],
+              [2, "2x credito"]
+          ],
+          "quantity" : 1,
+          "paymentValue" : 0
+      },{
+          "id" : 4,
+          "description" : "Pix",
+          "parcel" : [
+              [1, "1x pix"],
+              [2, "2x pix"]
+
+          ],
+          "quantity" : 1,
+          "paymentValue" : 0
+      }
+  ],
+  "accountData": [
+    {
+      "name": "admin",
+      "password": "admin",
+      "address": {
+        "cidade": "Testilandia",
+        "bairro": "Teste da silva",
+        "rua": " AV. Test Road",
+        "numero": "00"
+      },
+      "lgpdConcentiment": {
+        "systemAuthentication": false,
+        "placingOrders": false,
+        "participationInTheLoyaltyProgram": false
+      },
+      "buyPoint": 1,
+      "shoppingCart": [],
+      "id": "uP9rUfJqjcE"
+    },
+    {
+      "name": "clienteteste",
+      "password": "123",
+      "address": {
+        "cidade": "Testilandia",
+        "bairro": "Teste da silva",
+        "rua": " AV. Test Road",
+        "numero": "00"
+      },
+      "lgpdConcentiment": {
+        "systemAuthentication": false,
+        "placingOrders": false,
+        "participationInTheLoyaltyProgram": false
+      },
+      "buyPoint": 0,
+      "shoppingCart": [],
+      "id": "M7djp_WLXYo"
+    }
+  ],
+  "orders": [
+    ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

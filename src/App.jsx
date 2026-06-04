@@ -16,14 +16,21 @@ import MyAccountPage from './page/MyAccount';
 import RouteGuard from './context/RouteGuard';
 import LogoutPage from './page/Logout';
 import OrdersPage from './page/Orders';
+import ConfirmAddressPage from './page/ConfirmAddress';
+import RegisteruserPage from './page/RegisterUser';
 
 function App() {
+
+  
 
   useEffect(() => {
     if( !sessionStorage.getItem('shoppingCart') ) {
       sessionStorage.setItem('shoppingCart', JSON.stringify([]))
     }
   }, [])
+
+  
+
   return (
     <>
       <BrowserRouter>
@@ -35,6 +42,7 @@ function App() {
               <Route path="/choose-place" element={<ChoosePlace />} />
               <Route path="/finish-order" element={<FinishOrderPage />} />
               <Route path="/track-order" element={<TrackOrderPage />} />
+              <Route path="/confirm-address" element={<ConfirmAddressPage />} />
               <Route path="/orders" element={<OrdersPage/>} />
               
 
@@ -43,6 +51,7 @@ function App() {
 
             {/* Rotas para autenticação (SIMULADO) */}
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/create-account" element={<RegisteruserPage />} />
             <Route path="/logout" element={<LogoutPage />} />
             <Route path="/my-account" element={<MyAccountPage />} />
 

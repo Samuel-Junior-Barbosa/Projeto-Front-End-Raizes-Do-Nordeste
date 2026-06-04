@@ -12,7 +12,6 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
     const options = [
         {'name' : 'Cardapio', url : '/home'},
         {'name' : 'Pedidos', url : '/orders'},
-        {'name' : 'configuração', url : '/home'},
         {'name' : 'minha-conta', url : '/my-account'},
         {'name' : 'sair', url : '/logout'},
 

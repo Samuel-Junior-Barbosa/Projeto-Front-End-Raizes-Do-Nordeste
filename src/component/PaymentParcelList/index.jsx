@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import styles from './PaymentParcelList.module.css'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import ButtomComp from '/src/component/ButtonComp'
 import LabelComp from '/src/component/LabelComp'
 
-const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) => {
+const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame, paymentForm} ) => {
 
     const [ showParcelList, setShowParcelList ] = useState( true )
     const [ showCreditCardInfo, setShowCreditCardInfo ] = useState( false )
@@ -14,22 +14,27 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame} ) 
     const [ securityCardNumber, setSecurityCardNumber ] = useState('')
     const navigate = useNavigate();
 
+    //const location = useLocation();
+    //const { paymentForm } = location.state || { paymentForm : null}
+
 
     const handleChoosePayment = ( quantidade ) => {
         setQuantitySelected( quantidade )
         
 
-        let tmpPaymentForm = JSON.parse( sessionStorage.getItem("paymentForm"))
-        //console.log(" tmpPaymentForm: ", tmpPaymentForm)
+        //let tmpPaymentForm = JSON.parse( sessionStorage.getItem("paymentForm"))
+        let tmpPaymentForm = paymentForm
+        console.log(" tmpPaymentForm: ", tmpPaymentForm)
         tmpPaymentForm.quantity = quantidade
-        let tmpOrderTotalCost = JSON.parse( sessionStorage.getItem("orderTotalCost"))
+        //let tmpOrderTotalCost = JSON.parse( sessionStorage.getItem("orderTotalCost"))
+        let tmpOrderTotalCost = tmpPaymentForm.paymentValue
         
         setShowParcelList( false )
-        if( tmpPaymentForm.id === 2 || tmpPaymentForm.id === 3 )  {
+        if( tmpPaymentForm.id == 2 || tmpPaymentForm.id == 3 )  {
             tmpPaymentForm.paymentValue = tmpOrderTotalCost
             setShowCreditCardInfo( true )   
         }
-        else if (tmpPaymentForm.id === 4) {
+        else if (tmpPaymentForm.id == 4) {
             tmpPaymentForm.paymentValue = tmpOrderTotalCost
             setShowPixKey( true )
         }
