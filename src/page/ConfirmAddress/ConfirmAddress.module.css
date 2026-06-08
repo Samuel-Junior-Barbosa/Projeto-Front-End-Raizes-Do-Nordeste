@@ -13,12 +13,16 @@
 }
 
 .confirmAddress {
-
+    display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     background-color: var(--background-label);
 
     border-radius: 10px;
+
+    margin: auto;
+    margin-top:  clamp(5px, 20px, 80px);
 }
 
 
@@ -61,4 +65,20 @@
         padding: clamp(5px, 10px, 20px);
         margin: 0px clamp(10px, 15px, 20px);
     }
+}
+
+.chooseAddressDiv, .addNewAddressDiv {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 20px, 50px);
+
+
+    & > button {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+.addressList {
+    margin-top:  clamp(5px, 20px, 80px);
 }

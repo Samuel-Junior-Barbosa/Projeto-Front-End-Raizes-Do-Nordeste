@@ -11,13 +11,13 @@ const getAccountData = async ( idUser = '') => {
 
     if( idUser ) {
         response = await api.get(
-            `http://localhost:3000/accountData/${idUser}`
+            `/accountData/${idUser}`
         )
     }
 
     else {
         response = await api.get(
-            'http://localhost:3000/accountData'
+            '/accountData'
         )
     }
 

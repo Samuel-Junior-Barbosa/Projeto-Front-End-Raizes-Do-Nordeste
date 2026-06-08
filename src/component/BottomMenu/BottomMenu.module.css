@@ -48,9 +48,9 @@
 
 
 .countProductCart {
-    position: absolute;
-    top: 5%;
-    left: clamp(50%, 80%, 80%);
+    position: relative;
+    top: clamp(-60%, -41%, 10%);
+    left: clamp(-60%, 20%, 30%);
     color: var(--color-font);
 
     background-color: var(--background-button);

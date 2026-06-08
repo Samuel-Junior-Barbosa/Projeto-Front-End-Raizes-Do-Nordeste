@@ -129,10 +129,10 @@ const ListProductOfCategory = () => {
     // Função responsavel por chamar a API de consulta
     const getProductList = async () => {
         //const response = await getProductListApi( PlateType )
-        console.log(" categoryIdRecived: ", unityIdRecived, categoryIdRecived)
+        //console.log(" categoryIdRecived: ", unityIdRecived, categoryIdRecived)
         const response = await getProductListOfCategoryByUnity( unityIdRecived, categoryIdRecived )
         if( response ) {
-            console.log(" RESPONSE: ", response)
+            //console.log(" RESPONSE: ", response)
             setProductList( response )
         }
     }

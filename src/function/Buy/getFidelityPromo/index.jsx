@@ -5,7 +5,7 @@ const getFidelityPromo = async ( code ) => {
 
 
     const response = await api.get(
-        `http://localhost:3000/fidelity?code=${code}`
+        `/fidelity?code=${code}`
     )
 
     return response.data[0]

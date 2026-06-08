@@ -1,0 +1,48 @@
+.markList {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* width: clamp(140px, 50dvw, 100%); */
+    width: 100%;
+    height: max-content;
+    gap: clamp(5px, 10px, 20px);
+
+    color: var(--color-font);
+    list-style: none;
+
+    & > li {
+        display: flex;
+        flex-direction: row;
+
+        background-color: var(--background-option);
+        color: var(--color-font-option);
+        border-radius: clamp(5px, 8px, 20px);
+
+        width: clamp(80%, 90%, 100%);
+
+        margin: auto;
+        padding: clamp(2px, 8px, 10px);
+
+        gap: clamp(2px, 4px, 10px);
+        text-align: center;
+        
+        cursor: pointer;
+        
+    }
+
+    & > li:hover {
+        background-color: var(--background-option-hover);
+        color: var(--color-font-option-hover);
+    }
+
+
+    & > li > label {
+        font-size: clamp(0.5rem, 0.9rem, 1.5rem);
+    }
+}
+
+.lineSelected {
+    background-color: var(--background-option-hover) !important;
+    color: var(--color-font-option-hover) !important;
+}

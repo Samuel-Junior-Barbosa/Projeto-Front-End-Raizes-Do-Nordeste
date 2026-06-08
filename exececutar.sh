@@ -1,2 +1,2 @@
 ./iniciar_json_server.sh &
-npm run dev
+npm run dev -- --host

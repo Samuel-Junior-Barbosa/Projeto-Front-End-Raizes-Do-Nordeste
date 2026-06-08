@@ -69,7 +69,7 @@ const ChooseUnityMenu = () => {
 
     return (
         <div className={styles.ChooseUnityMenuMainDiv}>
-            { categoryList.map((item, i) => (
+            { categoryList.length ? categoryList.map((item, i) => (
                 <ButtonComp
                     key = {i}
                     text={item.name}
@@ -84,7 +84,13 @@ const ChooseUnityMenu = () => {
                     }}
                     urlImage={`/src/assets/categorias/${item.categoryId}-256px.jpg`}
                 />
-            ))}
+            )) : (
+                <div className={styles.categoryEmptyListDiv}>
+                    <LabelComp 
+                        text={"Nenhuma categoria encontrada"}
+                    />
+                </div>
+            )}
 
             { showPromoWindow && (
                 <PromoWindowComp

@@ -58,7 +58,7 @@ const FinishOrderPage = () => {
         //console.log(" FINISH VALIDATION: ", idUser)
         await setNewOrder( idUser, tmpShoppingCart, tmpTotal)
         await addNewBuyPoint( idUser )
-    
+        //console.log(" CLEAN SHOPPING CART...")
         sessionStorage.setItem('shoppingCart', JSON.stringify( []) )
 
     }

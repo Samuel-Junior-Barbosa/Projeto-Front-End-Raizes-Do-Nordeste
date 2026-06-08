@@ -9,7 +9,7 @@ const getPaymentFormApi = async () => {
     }
     
     const response = await api.get(
-        'http://localhost:3000/paymentForm'
+        '/paymentForm'
     )
 
     data.content = response.data

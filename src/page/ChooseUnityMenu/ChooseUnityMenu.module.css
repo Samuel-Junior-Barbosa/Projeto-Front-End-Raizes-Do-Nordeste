@@ -27,3 +27,10 @@
     }
 }
 
+.categoryEmptyListDiv {
+    margin: auto;
+    
+    & > label {
+        padding: clamp(2px, 4px, 6px);
+    }
+}

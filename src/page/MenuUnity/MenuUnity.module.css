@@ -28,7 +28,7 @@ label {
         top: clamp(10%, 30%, 40%);
         height: max-content;
         text-shadow: 1px 2px 0px var(--shadow-color);
-        backdrop-filter: blur(1px);
+        /*backdrop-filter: blur(1px);*/
         
         border-radius: 20px;
     }

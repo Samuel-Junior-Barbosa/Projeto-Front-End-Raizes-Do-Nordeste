@@ -1,0 +1,22 @@
+
+
+
+.notPermissionMainDiv {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding-top: clamp(20px, 30px, 40px);
+    gap: clamp(20px, 30px, 40px);
+    & > label {
+        margin: auto;
+    }
+
+    & > button {
+
+        margin: auto;
+
+        margin-top: clamp(4px, 8px, 12px);
+        
+        padding: clamp(4px, 6px, 8px);
+    }
+}

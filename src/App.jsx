@@ -20,11 +20,13 @@ import OrdersPage from './page/Orders';
 import ConfirmAddressPage from './page/ConfirmAddress';
 import RegisteruserPage from './page/RegisterUser';
 import ChooseUnityMenu from './page/ChooseUnityMenu';
-
+import CreateProductPage from './page/ManageProduct/CreateProductPage';
+import ManageProductPage from './page/ManageProduct/ManageProductPage';
+import ManagePromotionDiscount from './page/ManagePromotionDiscount/index.jsx';
+import ManageMenuPage from './page/ManageProduct/ManageMenuPage/index.jsx';
+import NotPermissionPage from './page/NotPermissionPage/index.jsx';
 
 function App() {
-
-  
 
   useEffect(() => {
     if( !sessionStorage.getItem('shoppingCart') ) {
@@ -38,41 +40,51 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-
-            {/* Rotas protegidas (SIMULADO) */}
-            <Route path="/" element={<RouteGuard />}>
-              <Route path="/choose-place" element={<ChoosePlace />} />
-              <Route path="/finish-order" element={<FinishOrderPage />} />
-              <Route path="/track-order" element={<TrackOrderPage />} />
-              <Route path="/confirm-address" element={<ConfirmAddressPage />} />
-              <Route path="/orders" element={<OrdersPage/>} />
+          <Route element={<Layout />}>
+            {/* Rotas para usuarios autenticados (SIMULADO) */}
+            <Route element={<RouteGuard />}>
               
-
-
+                <Route path="/choose-place" element={<ChoosePlace />} />
+                <Route path="/finish-order" element={<FinishOrderPage />} />
+                <Route path="/track-order" element={<TrackOrderPage />} />
+                <Route path="/confirm-address" element={<ConfirmAddressPage />} />
+                <Route path="/orders" element={<OrdersPage/>} />
+                <Route path="/my-account" element={<MyAccountPage />} />
+              
             </Route>
 
-            {/* Rotas para autenticação (SIMULADO) */}
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/create-account" element={<RegisteruserPage />} />
-            <Route path="/logout" element={<LogoutPage />} />
-            <Route path="/my-account" element={<MyAccountPage />} />
 
-            {/* Rotas comum  */}
-            <Route index element={<MenuUnity />} /> 
-            <Route path="/home" element={<MenuUnity />} />
+            {/* Rotas protegidas para ADMIN (SIMULADO) */}
+            <Route element={<RouteGuard administratorRoute={ true }/>}>
+              
+                <Route path="/register-product" element={<CreateProductPage />} />
+                <Route path="/manage-product" element={<ManageProductPage />} />
+                <Route path="/manage-promotion-discount" element={<ManagePromotionDiscount />} />
+                <Route path="/manage-menu" element={<ManageMenuPage />} />
+              
+            </Route>
 
-            <Route path="/list-product-of-category" element={<ListProductOfCategory />} />
-            <Route path="/corn" element={<ListProductOfCategory />} />
-            <Route path="/meat" element={<ListProductOfCategory />} />
-            <Route path="/drink" element={ <ListProductOfCategory  /> } />
-            <Route path="/choose-unity-menu" element={ <ChooseUnityMenu  /> } />
-            <Route path="/choose-item" element={<ChooseItem />} />
-
-            <Route path="/choose-payment" element={<ChoosePaymentForm />} />
-            <Route path="/order-review" element={<OrderReview />} />
-            <Route path="/cart" element={<ReviewCart />} />
-          </Route>
+            {/* <Route element={<Layout />}> */}
+              {/* Rotas para autenticação (SIMULADO) */}
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/not-permission" element={<NotPermissionPage />} />
+              <Route path="/create-account" element={<RegisteruserPage />} />
+              <Route path="/logout" element={<LogoutPage />} />
+              
+              {/* Rotas comum  */}
+              <Route index element={<MenuUnity />} />
+              <Route path="/home" element={<MenuUnity />} />
+              <Route path="/list-product-of-category" element={<ListProductOfCategory />} />
+              <Route path="/corn" element={<ListProductOfCategory />} />
+              <Route path="/meat" element={<ListProductOfCategory />} />
+              <Route path="/drink" element={ <ListProductOfCategory  /> } />
+              <Route path="/choose-unity-menu" element={ <ChooseUnityMenu  /> } />
+              <Route path="/choose-item" element={<ChooseItem />} />
+              <Route path="/choose-payment" element={<ChoosePaymentForm />} />
+              <Route path="/order-review" element={<OrderReview />} />
+              <Route path="/cart" element={<ReviewCart />} />
+            </Route>
+          {/* </Route> */}
         </Routes>
       </BrowserRouter>
       

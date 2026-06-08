@@ -8,7 +8,7 @@ const setAccountOrder = ( user, value ) => {
         'status' : 90,
         'content' : false
     }
-    let alterResponse = api.patch(`http://localhost:3000/accountData/${user}`, { 'buyPoint' : value} )
+    let alterResponse = api.patch(`/accountData/${user}`, { 'buyPoint' : value} )
     response.status = alterResponse.status
     if( response.status === 200 ) {
         response.status = 0

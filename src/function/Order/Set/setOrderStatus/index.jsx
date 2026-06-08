@@ -33,7 +33,7 @@ const setOrderStatus = async ( idOrder ) => {
     }
     
     await axios.patch(
-        `http://localhost:3000/orders/${order.id}`,
+        `/orders/${order.id}`,
         value
     );
 

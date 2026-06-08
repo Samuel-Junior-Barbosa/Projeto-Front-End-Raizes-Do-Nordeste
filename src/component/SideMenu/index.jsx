@@ -8,14 +8,24 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
     const navigate = useNavigate()
     const [ currentNameClass, setCurrentNameClass ] = useState()
     const [ menuStatusState, setMenuStatusState ] = useState( menuStatus )
+    const [ currentAccount, setCurrentAccount ] = useState([])
+
+    //let currentAccount = JSON.parse( sessionStorage.getItem('currentAccount' ))
 
     const options = [
         {'name' : 'Cardapio', url : '/home'},
         {'name' : 'Pedidos', url : '/orders'},
         {'name' : 'minha-conta', url : '/my-account'},
         {'name' : 'sair', url : '/logout'},
+    ]
 
-        
+    const adminOptions = [
+        {'name' : 'Cardapio', url : '/home'},
+        {'name' : 'Pedidos', url : '/orders'},
+        {'name' : 'Cadastro de produtos / Cardapio', url : '/manage-menu'},
+        {'name' : 'Gerenciar promoção / Descontos ', url : '/manage-promotion-discount'},
+        {'name' : 'minha-conta', url : '/my-account'},
+        {'name' : 'sair', url : '/logout'},
     ]
 
     const handleChooseOption = ( option ) => {
@@ -28,16 +38,24 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         }
         
         
-
-        for( let i = 0; i < options.length; i ++ ) {
-            if( options[i].name === option ) {
-                navigate(options[i].url)
+        if( currentAccount.administrator === true ) {
+            for( let i = 0; i < adminOptions.length; i ++ ) {
+                if( adminOptions[i].name === option ) {
+                    navigate(adminOptions[i].url)
+                }
+                
             }
-            
+        } else {
+            for( let i = 0; i < options.length; i ++ ) {
+                if( options[i].name === option ) {
+                    navigate(options[i].url)
+                }
+                
+            }
         }
         
-        
     }
+
     const handleHiddinSideMenu = () => {
         let tmpClass = styles.SideMenuDiv
         if( nameClass ) {
@@ -67,23 +85,55 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
 
         }
 
+        //currentAccount = JSON.parse( sessionStorage.getItem('currentAccount' ))
+        //console.log(" CURRENT ACCOUNT: ", currentAccount)
         //console.log(" currentNameClass: ", currentNameClass)
+    }
+
+
+    const handleGetAccountData = () => {
+        let tmpAccount = JSON.parse( sessionStorage.getItem('currentAccount') )
+        setCurrentAccount( tmpAccount )
+
     }
     useEffect(() => {
         handleHiddinSideMenu()
     }, [menuStatus])
 
+    
+    useEffect(() => {   
+        handleGetAccountData()
+    }, [])
+
+    
+
     return(
-        <div className={currentNameClass }>
+        <div className={ currentNameClass }>
             <ul className={ styles.SideMenuList }>
-                { options.map(( option, index) => (
-                    <li
-                        key={index}
-                        onClick={ (e) => handleChooseOption(option.name) }
-                    >
-                        {option.name}
-                    </li>
-                ))}
+                { 
+                    currentAccount.administrator  ?
+                    (
+                        adminOptions.map(( option, index) => (
+                                <li
+                                    key={index}
+                                    onClick={ (e) => handleChooseOption(option.name) }
+                                >
+                                    {option.name}
+                                </li>
+                            )
+                        )
+                    ) : (
+                        options.map(( option, index) => (
+                                <li
+                                    key={index}
+                                    onClick={ (e) => handleChooseOption(option.name) }
+                                >
+                                    {option.name}
+                                </li>
+                            )
+                        )
+                    )
+                }
             </ul>
         </div>
     );

@@ -1,0 +1,25 @@
+
+.manageMenuMainDiv {
+
+}
+
+.manageMenuDiv {
+    background-color: var(--background-label-hover);
+    border-radius: 20px;
+
+    padding: clamp(10px, 15px, 30px);
+    width: clamp(150px, 90dvw, 100dvw);
+    height: clamp(150px, 60dvh, 70dvh);
+    margin: auto;
+    margin-top: clamp(30px, 50px, 100px);
+}
+
+.informationLabel {
+    
+
+}
+
+.unityListDiv {
+    display: flex;
+    flex-direction: column;
+}

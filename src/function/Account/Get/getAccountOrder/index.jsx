@@ -1,12 +1,13 @@
 import axios from "axios";
+import api from "../../../Api";
 
 const getAccountOrder = async ( idUser ) => {
-    const response = await axios.get(
-        `http://localhost:3000/orders`
+    const response = await api.get(
+        `/orders`
     )
 
     const orderData = response.data
-    console.log(" ORDER DATA: ", orderData)
+    //console.log(" ORDER DATA: ", orderData)
     return orderData
 }
 

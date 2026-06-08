@@ -1,5 +1,6 @@
 
 .ButtonCompMainDiv {
+    display: inline-block;
     background-color: var(--background-button);
     border-radius: 20px;
     height: clamp(200px, max-content, 5vh);

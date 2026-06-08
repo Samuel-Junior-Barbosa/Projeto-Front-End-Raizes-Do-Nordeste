@@ -53,70 +53,71 @@
       "id": "TdiZsBpSl6w"
     }
   ],
-  "paymentForm" : [
-      {
-          "id" : 1,
-          "description" : "Dinheiro",
-          "parcel" : [],
-          "quantity" : 1,
-          "paymentValue" : 0
-      },{
-          "id" : 2,
-          "description" : "Cartao debito",
-          "parcel" : [],
-          "quantity" : 1,
-          "paymentValue" : 0
-      },{
-          "id" : 3,
-          "description" : "Cartao credito",
-          "parcel" : [
-              [1, "1x credito"],
-              [2, "2x credito"]
-          ],
-          "quantity" : 1,
-          "paymentValue" : 0
-      },{
-          "id" : 4,
-          "description" : "Pix",
-          "parcel" : [
-              [1, "1x pix"],
-              [2, "2x pix"]
-
-          ],
-          "quantity" : 1,
-          "paymentValue" : 0
-      }
+  "paymentForm": [
+    {
+      "id": "1",
+      "description": "Dinheiro",
+      "parcel": [],
+      "quantity": 1,
+      "paymentValue": 0
+    },
+    {
+      "id": "2",
+      "description": "Cartao debito",
+      "parcel": [],
+      "quantity": 1,
+      "paymentValue": 0
+    },
+    {
+      "id": "3",
+      "description": "Cartao credito",
+      "parcel": [
+        [
+          1,
+          "1x credito"
+        ],
+        [
+          2,
+          "2x credito"
+        ]
+      ],
+      "quantity": 1,
+      "paymentValue": 0
+    },
+    {
+      "id": "4",
+      "description": "Pix",
+      "parcel": [
+        [
+          1,
+          "1x pix"
+        ],
+        [
+          2,
+          "2x pix"
+        ]
+      ],
+      "quantity": 1,
+      "paymentValue": 0
+    }
   ],
   "accountData": [
     {
       "name": "admin",
       "password": "admin",
-      "address": {
-        "cidade": "Testilandia",
-        "bairro": "Teste da silva",
-        "rua": " AV. Test Road",
-        "numero": "00",
-        "uf" : "sp"
-      },
       "lgpdConcentiment": {
         "systemAuthentication": false,
         "placingOrders": false,
         "participationInTheLoyaltyProgram": false
       },
-      "buyPoint": 1,
+      "buyPoint": 7,
       "shoppingCart": [],
-      "id": "uP9rUfJqjcE"
+      "id": "uP9rUfJqjcE",
+      "administrator": true
     },
     {
       "name": "clienteteste",
       "password": "123",
-      "address": {
-        "cidade": "Testilandia",
-        "bairro": "Teste da silva",
-        "rua": " AV. Test Road",
-        "numero": "00",
-        "uf" : "sp"
-      },
       "lgpdConcentiment": {
         "systemAuthentication": false,
         "placingOrders": false,
@@ -124,119 +125,192 @@
       },
       "buyPoint": 0,
       "shoppingCart": [],
-      "id": "M7djp_WLXYo"
+      "id": "M7djp_WLXYo",
+      "administrator": false
+    }
+  ],
+  "addresses": [
+    {
+      "id": "1",
+      "accountId": "uP9rUfJqjcE",
+      "cidade": "Testilandia",
+      "bairro": "Teste da silva",
+      "rua": " AV. Test Road",
+      "numero": "00",
+      "uf": "sp"
+    },
+    {
+      "id": "2",
+      "accountId": "M7djp_WLXYo",
+      "cidade": "Testilandia",
+      "bairro": "Teste da silva",
+      "rua": " AV. Test Road",
+      "numero": "00",
+      "uf": "sp"
+    },
+    {
+      "accountId": "uP9rUfJqjcE",
+      "cidade": "TESTE",
+      "bairro": "TESTE",
+      "rua": "TESTE",
+      "numero": "TESTE",
+      "uf": "TE",
+      "id": "feFpYdSgpdA"
+    },
+    {
+      "accountId": "uP9rUfJqjcE",
+      "cidade": "TESTE2",
+      "bairro": "TESTE2",
+      "rua": "TESTE2",
+      "numero": "TESTE2",
+      "uf": "TESTE2",
+      "id": "GHpzrK7ulVE"
     }
   ],
   "orders": [
-    ],
-  "listOfUnits" : [
+  ],
+  "listOfUnits": [
     {
-      "id" : 1,
-      "name" : "RAIZES DO NORDESTE - ALAGOAS",
+      "id": "1",
+      "name": "RAIZES DO NORDESTE - ALAGOAS",
       "address": {
         "cidade": "Maceio",
         "bairro": "Teste da silva",
         "rua": " AV. Test Road",
         "numero": "00",
-        "uf" : "al"
+        "uf": "al"
       }
-    },{
-      "id" : 2,
-      "name" : "RAIZES DO NORDESTE - BAHIA",
+    },
+    {
+      "id": "2",
+      "name": "RAIZES DO NORDESTE - BAHIA",
       "address": {
         "cidade": "Salvador",
         "bairro": "Teste da silva",
         "rua": " AV. Test Road",
         "numero": "00",
-        "uf" : "ba"
+        "uf": "ba"
       }
-    },{
-      "id" : 3,
-      "name" : "RAIZES DO NORDESTE - CEARA",
+    },
+    {
+      "id": "3",
+      "name": "RAIZES DO NORDESTE - CEARA",
       "address": {
         "cidade": "Fortaleza",
         "bairro": "Teste da silva",
         "rua": " AV. Test Road",
         "numero": "00",
-        "uf" : "ce"
+        "uf": "ce"
       }
     }
-
   ],
-  "menuForUnity" : [
-    
+  "menuForUnity": [
     {
-      "unityId" : 1,
-      "category" : [
+      "unityId": 1,
+      "category": [
         {
-          "name" : "carnes",
-          "categoryId" : 1
-        },{
-          "name" : "milho",
-          "categoryId" : 2
-        },{
-          "name" : "bebidas",
-          "categoryId" : 3
+          "name": "carnes",
+          "categoryId": 1
+        },
+        {
+          "name": "milho",
+          "categoryId": 2
+        },
+        {
+          "name": "bebidas",
+          "categoryId": 3
         }
       ],
-      "productList" : [
+      "productList": [
         {
-            "produto" : "Carne de sol",
-            "ingredientes" : ["Carne bovina salgada e seca"],
-            "precovenda" : "01.00",
-            "id" : 1,
-            "categoryId" : "1"
-        }, {
-            "produto" : "Buchada de bode",
-            "ingredientes" : ["Vísceras", "bucho de bode (ou carneiro)"],
-            "precovenda" : "02.00",
-            "id" : 2,
-            "categoryId" : "1"
-        }, {
-            "produto" : "Sarapatel",
-            "ingredientes" : ["Carne suína", "vísceras"],
-            "precovenda" : "03.00",
-            "id" : 3,
-            "categoryId" : "1"
-        }, {
-            "produto" : "Cuscuz",
-            "ingredientes" : ["flocão ou farinha de milho"],
-            "precovenda" : "04.00",
-            "id" : 4,
-            "categoryId" : "2"
-          }, {
-            "produto" : "Pamonha",
-            "ingredientes" : ["Milho verde fresco"],
-            "precovenda" : "05.00",
-            "id" : 5,
-            "categoryId" : "2"
-          }, {
-            "produto" : "Bolo de milho",
-            "ingredientes" : ["milho-verde", "leite de coco", "ovos", "açúcar", "óleo e fubá"],
-            "precovenda" : "06.00",
-            "id" : 6,
-            "categoryId" : "2"
-          },{
-            "produto" : "Café Forte",
-            "ingredientes" : ["Café em pó"],
-            "precovenda" : "07.00",
-            "id" : 7,
-            "categoryId" : "3"
-            }, {
-            "produto" : "Caldo de cana",
-            "ingredientes" : ["Cana de açucar"],
-            "precovenda" : "08.00",
-            "id" : 8,
-            "categoryId" : "3"
-            }, {
-            "produto" : "Cajuína",
-            "ingredientes" : ["suco clarificado esterilizado do caju"],
-            "precovenda" : "09.00",
-            "id" : 9,
-            "categoryId" : "3"
-            }
-    
-      ]
+          "produto": "Carne de sol",
+          "ingredientes": [
+            "Carne bovina salgada e seca"
+          ],
+          "precovenda": "01.00",
+          "id": 1,
+          "categoryId": "1"
+        },
+        {
+          "produto": "Buchada de bode",
+          "ingredientes": [
+            "Vísceras",
+            "bucho de bode (ou carneiro)"
+          ],
+          "precovenda": "02.00",
+          "id": 2,
+          "categoryId": "1"
+        },
+        {
+          "produto": "Sarapatel",
+          "ingredientes": [
+            "Carne suína",
+            "vísceras"
+          ],
+          "precovenda": "03.00",
+          "id": 3,
+          "categoryId": "1"
+        },
+        {
+          "produto": "Cuscuz",
+          "ingredientes": [
+            "flocão ou farinha de milho"
+          ],
+          "precovenda": "04.00",
+          "id": 4,
+          "categoryId": "2"
+        },
+        {
+          "produto": "Pamonha",
+          "ingredientes": [
+            "Milho verde fresco"
+          ],
+          "precovenda": "05.00",
+          "id": 5,
+          "categoryId": "2"
+        },
+        {
+          "produto": "Bolo de milho",
+          "ingredientes": [
+            "milho-verde",
+            "leite de coco",
+            "ovos",
+            "açúcar",
+            "óleo e fubá"
+          ],
+          "precovenda": "06.00",
+          "id": 6,
+          "categoryId": "2"
+        },
+        {
+          "produto": "Café Forte",
+          "ingredientes": [
+            "Café em pó"
+          ],
+          "precovenda": "07.00",
+          "id": 7,
+          "categoryId": "3"
+        },
+        {
+          "produto": "Caldo de cana",
+          "ingredientes": [
+            "Cana de açucar"
+          ],
+          "precovenda": "08.00",
+          "id": 8,
+          "categoryId": "3"
+        },
+        {
+          "produto": "Cajuína",
+          "ingredientes": [
+            "suco clarificado esterilizado do caju"
+          ],
+          "precovenda": "09.00",
+          "id": 9,
+          "categoryId": "3"
+        }
+      ],
+      "id": "3ZsG-e-TzwI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -14,7 +14,7 @@ const removeBuyPoint = async ( idUser, value = 1 ) => {
     let point = response - value
     //console.log(" ADD BUYPOINT: ", response, point, value)
     await api.patch(
-        `http://localhost:3000/accountData/${idUser}`,
+        `/accountData/${idUser}`,
         { 'buyPoint' : point }
     )
     return

@@ -173,11 +173,14 @@ const OrderReview = () => {
         }
 
         let tmpPaymentForm = JSON.parse( sessionStorage.getItem('paymentForm'))
-        //console.log(" tmpPaymentForm: ", tmpPaymentForm)
+        console.log(" order review - tmpPaymentForm: ", tmpPaymentForm)
         if( tmpPaymentForm ) {
-            tmpPaymentForm = Number( tmpPaymentForm ).toFixed(2)
-            setCurrentPaymentForm( tmpPaymentForm )
+            tmpPaymentForm.paymentValue = Number( tmpPaymentForm.paymentValue ).toFixed(2)
+            
         }
+
+        setCurrentPaymentForm( tmpPaymentForm )
+        
         
     }, [])
 

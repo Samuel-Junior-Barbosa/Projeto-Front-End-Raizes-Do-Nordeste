@@ -6,10 +6,18 @@ import api from "../../../Api";
 const getCategoryListByUnityId = async( unityId ) => {
 
     const response = await api.get(
-        `http://localhost:3000/menuForUnity?unityId=${unityId}`
+        `/menuForUnity?unityId=${unityId}`
     )
+
+    let result = []
+
+    if( response.data && response.data[0]) {
+        result = response.data[0].category
+    }
+    
+
     //console.log(" get Category list: ", unityId, response.data[0].category)
-    return response.data[0].category
+    return result
 }
 
 export default getCategoryListByUnityId;

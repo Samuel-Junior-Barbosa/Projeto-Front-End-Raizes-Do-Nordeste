@@ -78,21 +78,22 @@ const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined})
                 icon={settingsIcon}
                 onClickButton={ handleGoToConfiguration }
             />
-
-            <ButtonComp 
-                nameClass={styles.bottomMenuButton}
-                idValue={styles.shoppingCarButton}
-                icon={shopping_car}
-                onClickButton={ handleGoToCar }
-            />
-
-            { (productQuantityOnList > 0) && (
-                <label
-                    className={styles.countProductCart}
-                >
-                    {productQuantityOnList}
-                </label>
-            )}
+            <div>
+                { (productQuantityOnList > 0) && (
+                    <label
+                        className={styles.countProductCart}
+                    >
+                        {productQuantityOnList}
+                    </label>
+                )}
+                <ButtonComp
+                    nameClass={styles.bottomMenuButton}
+                    idValue={styles.shoppingCarButton}
+                    icon={shopping_car}
+                    onClickButton={ handleGoToCar }
+                />
+                
+            </div>
         </div>
     )
 };
