@@ -167,18 +167,17 @@
       "id": "GHpzrK7ulVE"
     }
   ],
-  "orders": [
-  ],
+  "orders": [],
   "listOfUnits": [
     {
       "id": "1",
       "name": "RAIZES DO NORDESTE - ALAGOAS",
       "address": {
-        "cidade": "Maceio",
-        "bairro": "Teste da silva",
-        "rua": " AV. Test Road",
+        "cidade": "MACEIO",
+        "bairro": "TESTE DA SILVA",
+        "rua": " AV. TEST ROAD",
         "numero": "00",
-        "uf": "al"
+        "uf": "AL"
       }
     },
     {
@@ -209,15 +208,15 @@
       "unityId": 1,
       "category": [
         {
-          "name": "carnes",
+          "name": "CARNES",
           "categoryId": 1
         },
         {
-          "name": "milho",
+          "name": "MILHO",
           "categoryId": 2
         },
         {
-          "name": "bebidas",
+          "name": "BEBIDAS",
           "categoryId": 3
         }
       ],

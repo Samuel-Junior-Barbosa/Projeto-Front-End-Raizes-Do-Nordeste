@@ -9,7 +9,16 @@ const ManageProductPage = () => {
             <LabelComp
                 text={'Gerenciar produtos'}
             />
-
+            
+            <div className={ styles.categoryProductList }>
+                { productList && productList.map((item, i) => (
+                    <ButtonComp
+                        key={i}
+                        text={item.name}
+                        onClickButton={ () => handleSelectProduct()}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

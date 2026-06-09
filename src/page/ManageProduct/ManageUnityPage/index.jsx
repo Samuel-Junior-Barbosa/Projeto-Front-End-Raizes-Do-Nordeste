@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styles from './ManageMenuPage.module.css';
+import styles from './ManageUnityPage.module.css';
 import LabelComp from '/src/component/LabelComp';
 import getUnityListApi from '../../../function/Data/Get/getUnityListApi';
 import getUnityDataById from '../../../function/Data/Get/getUnityDataById';
@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import alterUnityInformation from '../../../function/Data/Set/alterUnityInformation';
 
 
-const ManageMenuPage = () => {
+const ManageUnityPage = () => {
 
     const [ unityList, setUnityList ] = useState([])
     const [ categoryList, setCategoryList ] = useState([])
@@ -41,16 +41,16 @@ const ManageMenuPage = () => {
 
 
     const handleSelectUnity = async ( unityId ) => {
-        //console.log(" UNITY SELECT: ", unityId)
+        console.log(" UNITY SELECT: ", unityId)
         setUnityIdSelect( unityId )
         const response = await getUnityDataById( unityId )
-        //console.log(" UNITY SELECT response: ", response)
+        console.log(" UNITY SELECT response: ", response)
         setUnitySelected( response )
 
         setShowUnityList( false )
         setShowEditUnity( true )
+        
     }
-    
 
     const handleSetNumber = ( number ) => {
         //console.log( " setting number: ", number, Number( number ))
@@ -90,14 +90,18 @@ const ManageMenuPage = () => {
         console.log(" ADDRESS: ", unitySelected)
         
         setUnityName( unitySelected.name)
-        
+        setCidade(unitySelected.address.cidade)
+        setBairro(unitySelected.address.bairro)
+        setRua(unitySelected.address.rua)
+        setNumero(unitySelected.address.numero)
+        setUf(unitySelected.address.uf)
         
     }, [unitySelected])
 
     return(
         <div className={styles.manageMenuMainDiv}>
             <LabelComp
-                text={'Gerenciar Cardapio'}
+                text={'Gerenciar Unidades'}
             />
 
             <div className={ styles.manageMenuDiv}>
@@ -202,4 +206,4 @@ const ManageMenuPage = () => {
 }
 
 
-export default ManageMenuPage;
+export default ManageUnityPage;

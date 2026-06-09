@@ -6,7 +6,7 @@
 .manageMenuDiv {
     background-color: var(--background-label-hover);
     border-radius: 20px;
-
+    box-shadow: 1px 2px 5px var(--shadow-color);
     padding: clamp(10px, 15px, 30px);
     width: clamp(150px, 90dvw, 100dvw);
     height: clamp(150px, 60dvh, 70dvh);
@@ -17,7 +17,7 @@
 }
 
 .informationLabel {
-    
+    font-size: clamp(0.5rem, 0.9rem, 2rem);
 
 }
 
@@ -35,6 +35,39 @@
 }
 
 .editUnityDiv {
+    display: flex;
+    flex-direction: column;
+
+
+    overflow-y: scroll;
+
+    width: 100%;
+    margin: auto;
+    height: 100%;
+    font-size: clmap(0.5rem, 0.9rem, 2rem);
+    color: var(--color-font);
+    padding-top: clamp(5px, 20px, 40px);
+
+    gap: clamp(5px, 10px, 30px);
+    & > div {
+        display: flex;
+        flex-direction: column;
+        width: clamp(50px, 60%, 100%);
+        margin: auto;
+        gap: clamp(5px, 10px, 30px);
+    }
+
+    & > div > label {
+        
+    }
+
+    & > div > input {
+        border-radius: clamp(5px, 10px, 20px);
+        padding-left: clamp(4px, 5px, 10px);
+    }
+
+
+    
 }
 
 .labelCompAddress {

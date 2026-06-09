@@ -25,6 +25,8 @@ import ManageProductPage from './page/ManageProduct/ManageProductPage';
 import ManagePromotionDiscount from './page/ManagePromotionDiscount/index.jsx';
 import ManageMenuPage from './page/ManageProduct/ManageMenuPage/index.jsx';
 import NotPermissionPage from './page/NotPermissionPage/index.jsx';
+import ManageUnityPage from './page/ManageProduct/ManageUnityPage/index.jsx';
+import ManageCategoryPage from './page/ManageProduct/ManageCategoryPage/index.jsx';
 
 function App() {
 
@@ -60,6 +62,8 @@ function App() {
                 <Route path="/register-product" element={<CreateProductPage />} />
                 <Route path="/manage-product" element={<ManageProductPage />} />
                 <Route path="/manage-promotion-discount" element={<ManagePromotionDiscount />} />
+                <Route path="/manage-unity" element={<ManageUnityPage />} />
+                <Route path="/manage-category" element={<ManageCategoryPage />} />
                 <Route path="/manage-menu" element={<ManageMenuPage />} />
               
             </Route>
