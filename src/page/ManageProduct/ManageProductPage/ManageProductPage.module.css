@@ -1,0 +1,117 @@
+.manageProductPageMainDiv{
+}
+
+.manageProductPageDiv {
+    background-color: var(--background-label-hover);
+    border-radius: 20px;
+
+    padding: clamp(10px, 15px, 30px);
+    width: clamp(150px, 90dvw, 100dvw);
+    height: clamp(150px, 60dvh, 70dvh);
+    margin: auto;
+    margin-top: clamp(30px, 50px, 100px);
+    box-shadow: 2px 3px 5px var(--shadow-color);
+    overflow-y: scroll;
+
+}
+
+.unityListDiv {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(5px, 10px, 20px);
+    margin-top: clamp(5px, 50px, 100px);
+
+    & > button {
+        width: 80%;
+        padding: clamp(2px, 5px, 20px);
+        margin: auto;
+    }
+}
+.categoryProductList {
+    display: flex;
+    flex-direction: column;
+    
+    overflow-y: scroll;
+    width: clamp(20%, 50%, 90%);
+    height: max-content;
+
+
+
+    margin: auto;
+    margin-top: clamp(2px, 4px, 10px);
+    & > button {
+        
+        padding: clamp(5px, 5px, 20px);
+        margin: clamp(4px, 5px, 10px);
+    }
+}
+
+
+.editProductDiv, .createProductDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-font);
+    font-size: clamp(0.5rem, 0.9rem, 2rem);
+
+    padding-top: clamp(2px, 20px, 80px);
+
+    overflow-y: scroll;
+
+    gap: clamp(5px, 10px, 30px);
+    & > div {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    & > div > label {
+        
+    }
+
+    & > div > input, & > div > textarea {
+        border-radius: clamp(5px, 5px, 20px);
+        padding-left: clamp(2px, 4px, 10px);
+    }
+}
+
+.imageDiv {
+    display: block;
+    background-color: var(--background-image);
+    color: var(--color-font);
+
+    width: clamp(100px, 256px, 300px);
+    height: clamp(100px, 171px, 300px);
+    border-radius: clamp(5px, 10px, 20px);
+    margin: auto;
+    margin-top: clamp(5px, 20px, 20px);
+    margin-bottom: clamp(5px, 20px, 20px);
+    padding: clamp(5px, 5px, 20px);
+
+    text-align: center;
+
+}
+
+
+.buttonDiv {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-top: clamp(4px, 15px, 30px);
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2px, 6px, 10px);
+
+    & > button {
+        padding: clamp(4px, 8px, 10px);
+    }
+}
+
+.createNewProductDivButton {
+
+    justify-content: space-between;
+    background-color: var( --background-label );
+    border-radius: clamp(4px, 5px, 10px);
+    padding: clamp(4px, 6px, 10px);
+
+}

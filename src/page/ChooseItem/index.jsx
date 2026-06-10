@@ -10,7 +10,7 @@ const ChooseItem = () => {
     const navigate = useNavigate()
 
     const [ productQuantity, setProductQuantity ] = useState(1)
-    const { id, produto, precovenda, ingredientes } = location.state || { id : 0, produto : '', precovenda : '', ingredientes : [] }
+    const { unityId, id, produto, precovenda, ingredientes } = location.state || { unityId : 0, id : 0, produto : '', precovenda : '', ingredientes : [] }
     
     const handleGoBack = () => {
         navigate( -1 )
@@ -60,7 +60,7 @@ const ChooseItem = () => {
     return (
         <div className={styles.ChooseItemDivMain}>
             <div className={styles.foodImageDiv}>
-                <img src={`/src/assets/pratos/${id}-512px.jpg`} />
+                <img src={`/src/assets/pratos/unidades/${unityId}/${id}-512px.jpg`} />
                 {/* <label> Imagem do prato</label> */}
             </div>
             <label className={styles.productName}> PRODUTO: {produto} </label>

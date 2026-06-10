@@ -3,7 +3,7 @@ import styles from './ListProduct.module.css'
 import { useNavigate } from 'react-router-dom';
 import ButtonComp from '../ButtonComp';
 
-const ListProduct = ({productListData, setProductListData=undefined, nameClass='', itemChoosedState = undefined, chooseQuantity=false}) => {
+const ListProduct = ({productListData, setProductListData=undefined, nameClass='', itemChoosedState = undefined, chooseQuantity=false, unityId}) => {
     
     const navigate = useNavigate()
 
@@ -74,7 +74,7 @@ const ListProduct = ({productListData, setProductListData=undefined, nameClass='
                     <div className={styles.foodImageDiv}>
                         <img
                             className={styles.foodImage}
-                            src={`/src/assets/pratos/${item.id}-512px.jpg`}
+                            src={`/src/assets/pratos/unidades/${unityId}/${item.id}-512px.jpg`}
                         />
                         
                         {/* <label> imagem do prato </label> */}

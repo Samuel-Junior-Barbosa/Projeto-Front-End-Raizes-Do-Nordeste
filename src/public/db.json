@@ -110,7 +110,7 @@
         "placingOrders": false,
         "participationInTheLoyaltyProgram": false
       },
-      "buyPoint": 7,
+      "buyPoint": 8,
       "shoppingCart": [],
       "id": "uP9rUfJqjcE",
       "administrator": true
@@ -167,7 +167,24 @@
       "id": "GHpzrK7ulVE"
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id_pedido": 1,
+      "id_cliente": "uP9rUfJqjcE",
+      "itens": [
+        {
+          "id": 1,
+          "produto": "Carne de sol",
+          "precovenda": "01.00",
+          "quantidade": 5
+        }
+      ],
+      "totalCusto": 5,
+      "status": "a confirmar",
+      "addressId": "1",
+      "id": "W4RDRCXo-D4"
+    }
+  ],
   "listOfUnits": [
     {
       "id": "1",
@@ -223,53 +240,64 @@
       "productList": [
         {
           "produto": "Carne de sol",
+          "description": "Carne saborosa ao ponto",
           "ingredientes": [
             "Carne bovina salgada e seca"
           ],
           "precovenda": "01.00",
           "id": 1,
-          "categoryId": "1"
+          "categoryId": "1",
+          "status": "true"
         },
         {
           "produto": "Buchada de bode",
+          "description": "",
           "ingredientes": [
             "Vísceras",
             "bucho de bode (ou carneiro)"
           ],
           "precovenda": "02.00",
           "id": 2,
-          "categoryId": "1"
+          "categoryId": "1",
+          "status": "true"
         },
         {
           "produto": "Sarapatel",
+          "description": "",
           "ingredientes": [
             "Carne suína",
             "vísceras"
           ],
           "precovenda": "03.00",
           "id": 3,
-          "categoryId": "1"
+          "categoryId": "1",
+          "status": "true"
         },
         {
           "produto": "Cuscuz",
+          "description": "",
           "ingredientes": [
             "flocão ou farinha de milho"
           ],
           "precovenda": "04.00",
           "id": 4,
-          "categoryId": "2"
+          "categoryId": "2",
+          "status": "true"
         },
         {
           "produto": "Pamonha",
+          "description": "",
           "ingredientes": [
             "Milho verde fresco"
           ],
           "precovenda": "05.00",
           "id": 5,
-          "categoryId": "2"
+          "categoryId": "2",
+          "status": "true"
         },
         {
           "produto": "Bolo de milho",
+          "description": "",
           "ingredientes": [
             "milho-verde",
             "leite de coco",
@@ -279,37 +307,67 @@
           ],
           "precovenda": "06.00",
           "id": 6,
-          "categoryId": "2"
+          "categoryId": "2",
+          "status": "true"
         },
         {
           "produto": "Café Forte",
+          "description": "",
           "ingredientes": [
             "Café em pó"
           ],
           "precovenda": "07.00",
           "id": 7,
-          "categoryId": "3"
+          "categoryId": "3",
+          "status": "true"
         },
         {
           "produto": "Caldo de cana",
+          "description": "",
           "ingredientes": [
             "Cana de açucar"
           ],
           "precovenda": "08.00",
           "id": 8,
-          "categoryId": "3"
+          "categoryId": "3",
+          "status": "true"
         },
         {
           "produto": "Cajuína",
+          "description": "",
           "ingredientes": [
             "suco clarificado esterilizado do caju"
           ],
           "precovenda": "09.00",
           "id": 9,
-          "categoryId": "3"
+          "categoryId": "3",
+          "status": "true"
         }
       ],
       "id": "3ZsG-e-TzwI"
+    },
+    {
+      "unityId": 2,
+      "category": [
+        {
+          "name": "BEBIDAS",
+          "categoryId": 2
+        }
+      ],
+      "productList": [
+        {
+          "produto": "TESTE1",
+          "description": "TESTE1",
+          "ingredientes": [
+            "TESTE1"
+          ],
+          "precovenda": "1",
+          "id": 2,
+          "categoryId": "2",
+          "status": "true"
+        }
+      ],
+      "id": "Yo2YDHxk5uI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

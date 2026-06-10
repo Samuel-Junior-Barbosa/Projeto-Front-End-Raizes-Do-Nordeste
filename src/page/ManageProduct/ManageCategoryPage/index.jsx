@@ -6,6 +6,8 @@ import getUnityListApi from '../../../function/Data/Get/getUnityListApi';
 import getUnityDataById from '../../../function/Data/Get/getUnityDataById';
 import getCategoryListByUnityId from '../../../function/Data/Get/getCategoryListByUnityId';
 import alterCategoryInformation from '../../../function/Data/Set/alterCategoryInformation';
+import removeCategoryOfUnity from '../../../function/Data/Set/removeCategoryOfUnity';
+import createNewCategory from '../../../function/Data/Set/createNewCategory';
 
 const ManageCategoryPage = () => {
     const [ categoryList, setCategoryList ] = useState([])
@@ -16,10 +18,11 @@ const ManageCategoryPage = () => {
 
     const [ showUnityList, setShowUnityList ] = useState( true )
     const [ showCategoryList, setShowCategoryList ] = useState( false )
+    const [ showCreateCategory, setShowCreateCategory ] = useState( false )
     const [ showEditCategory, setShowEditCategory ] = useState( false )
 
     const [ nome, setNome ] = useState('')
-
+    const [ newCategoryName, setNewCategoryName ] = useState('')
 
     const handleGetUnityList = async () => {
         const response = await getUnityListApi()
@@ -91,7 +94,38 @@ const ManageCategoryPage = () => {
     }
 
     const handleRemoveCategory = async () => {
-        alert(" AINDA NÃO IMPLEMENTADO")
+        const confirmWindow = confirm(" Deseja realmente deletar essa categoria?")
+        if( !confirmWindow ) {
+            return
+        }
+
+        await removeCategoryOfUnity( unitySelected.id, categorySelected.categoryId)
+
+        alert("Removido com sucesso!")
+
+        setShowEditCategory(false)
+        setShowCategoryList(true)
+        
+    }
+
+    const handleShowCreateCategory = async () => {
+        setShowCategoryList( false )
+        setShowEditCategory( false )
+        setShowUnityList( false )
+        setShowCreateCategory( true )
+    }
+
+    const handleCreateCategory = async () => {
+        const confirmWindow = confirm(" Deseja realmente criar essa categoria?")
+        if( !confirmWindow ) {
+            return
+        }
+
+        await createNewCategory(unitySelected.id, newCategoryName)
+        alert(" Categoria criada com sucesso!")
+        setNewCategoryName('')
+        setShowCreateCategory( false )
+        setShowCategoryList( true )
     }
 
     useEffect(() => {
@@ -142,6 +176,41 @@ const ManageCategoryPage = () => {
                         ))}
                     </div>
 
+                    <div className={ styles.buttonDiv }>
+                        <ButtonComp
+                            text={"Criar nova categoria"}
+                            onClickButton={ handleShowCreateCategory }
+                        />
+                    </div>
+
+                </>
+            )}
+
+            { showCreateCategory && (
+                <>
+                    <LabelComp
+                        text={'Criar nova categoria'}
+                    />
+                    <div className={ styles.createCategoryDiv}>
+                        <div>
+                            <label>
+                                NOME: 
+                            </label>
+                            <input 
+                                type={'text'}
+                                value={newCategoryName}
+                                onChange={(e) => setNewCategoryName(e.target.value.toUpperCase())}
+                            />
+                        </div>
+                    </div>
+
+                    <div className={ styles.buttonDiv }>
+                        <ButtonComp
+                            text={"Criar"}
+                            onClickButton={ handleCreateCategory }
+                        />
+                    </div>
+
                 </>
             )}
 
@@ -163,6 +232,8 @@ const ManageCategoryPage = () => {
                         </div>
 
                         <div className={ styles.bottomButtons}>
+
+
                             <ButtonComp 
                                 text={"Salvar"}
                                 onClickButton={ handleSaveCategoryAlteration }

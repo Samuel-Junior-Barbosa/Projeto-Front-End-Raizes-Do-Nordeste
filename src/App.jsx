@@ -60,10 +60,10 @@ function App() {
             <Route element={<RouteGuard administratorRoute={ true }/>}>
               
                 <Route path="/register-product" element={<CreateProductPage />} />
-                <Route path="/manage-product" element={<ManageProductPage />} />
                 <Route path="/manage-promotion-discount" element={<ManagePromotionDiscount />} />
                 <Route path="/manage-unity" element={<ManageUnityPage />} />
                 <Route path="/manage-category" element={<ManageCategoryPage />} />
+                <Route path="/manage-product" element={<ManageProductPage />} />
                 <Route path="/manage-menu" element={<ManageMenuPage />} />
               
             </Route>

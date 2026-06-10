@@ -140,7 +140,15 @@ const ListProductOfCategory = () => {
     // Responsavel por abrir a tela de escolha do item, mostrando os ingredientes e pedindo
     //     quantidade desejada
    const handleChooseFood = (productData) => {
-        navigate('/choose-item', {state : productData})
+
+        let data = {
+            unityId: unityIdRecived,
+            id : productData.id, 
+            produto : productData.produto,
+            precovenda : productData.precovenda,
+            ingredientes : productData.ingredientes
+        }
+        navigate('/choose-item', {state : data})
     }
 
     const handleKeydownSearchFood = ( key ) => {
@@ -195,6 +203,7 @@ const ListProductOfCategory = () => {
                         setProductListData={ setProductList }
                         nameClass={styles.ListProductComp}
                         itemChoosedState={setProductSelected}
+                        unityId={unityIdRecived}
                     />
 
                 ))
