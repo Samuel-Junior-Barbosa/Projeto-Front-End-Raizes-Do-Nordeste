@@ -22,8 +22,8 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
     const adminOptions = [
         {'name' : 'Cardapio', url : '/home'},
         {'name' : 'Pedidos', url : '/orders'},
-        {'name' : 'Cadastro de Unidades', url : '/manage-menu'},
-        {'name' : 'Cadastro de Cardapio', url : '/manage-category'},
+        {'name' : 'Cadastro de Unidades', url : '/manage-unity'},
+        {'name' : 'Cadastro de Categorias', url : '/manage-category'},
         {'name' : 'Cadastro de Produtos', url : '/manage-product'},
         {'name' : 'Gerenciar promoção / Descontos ', url : '/manage-promotion-discount'},
         {'name' : 'minha-conta', url : '/my-account'},

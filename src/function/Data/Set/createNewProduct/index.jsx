@@ -3,6 +3,14 @@ import createMenuForUnity from "../createMenuForUnity"
 
 
 const createNewProduct = async (unityId, name, value, description, categoryId, ing, status) => {
+    if ( status === 'false') {
+        status = false
+    }
+
+    else if( status === 'true' ) {
+        status = true
+    }
+        
     let result = 0
     unityId = String( unityId )
     let menuData = await api.get(

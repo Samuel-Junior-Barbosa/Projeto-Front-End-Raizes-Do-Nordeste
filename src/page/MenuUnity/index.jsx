@@ -54,10 +54,10 @@ const MenuUnity = () => {
                     text={item.name}
                     onClickButton={ () => {
                         navigate('/choose-unity-menu', {
-                            state : {'unityIdRecived' : item.id }
+                            state : {'unityIdRecived' : item.unityId }
                         })
                     }}
-                    urlImage={`/src/assets/unidades/${item.id}-256px.jpg`}
+                    urlImage={`/src/assets/unidades/${item.unityId}-256px.jpg`}
                 />
             
             ))}

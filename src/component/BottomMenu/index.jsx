@@ -78,7 +78,7 @@ const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined})
                 icon={settingsIcon}
                 onClickButton={ handleGoToConfiguration }
             />
-            <div>
+            <div className={ styles.cartButtonDiv }>
                 { (productQuantityOnList > 0) && (
                     <label
                         className={styles.countProductCart}

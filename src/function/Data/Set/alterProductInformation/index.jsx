@@ -4,7 +4,16 @@ import api from "../../../Api";
 
 
 const alterProductInformation = async( unityId, productId, nome, descricao, ingredientes, precovenda, categoryId, status ) => {
+    if ( status === 'false') {
+        status = false
+    }
 
+    else if( status === 'true' ) {
+        status = true
+    }
+
+    categoryId = Number( categoryId )
+        
     const alterData = {
         'produto' : nome,
         'description' : descricao,
@@ -13,7 +22,7 @@ const alterProductInformation = async( unityId, productId, nome, descricao, ingr
         'categoryId' : categoryId,
         'status' : status
     }
-
+    //console.log(" ALTER DATA: ", alterData)
     let menuData = await api.get(
         `/menuForUnity?unityId=${unityId}`
     )
@@ -21,19 +30,23 @@ const alterProductInformation = async( unityId, productId, nome, descricao, ingr
 
     let productList = menuData.productList
 
-    //console.log(" PRODUCT LIST DATA: ", productList)
+    //console.log(" PRODUCT LIST DATA: ", productList, productList.length)
+    //console.log(" PRODUCT LIST STATUS:", status)
     let idMenu = menuData.id
 
     for( let i = 0; i < productList.length; i ++ ) {
-        if( productList[i].id === productId ) {
+        //console.log(" LOOP ITEM: ", productList[i])
+        if( String(productList[i].id) == String(productId) ) {
+            
             productList[i].produto     = nome
             productList[i].description = descricao
             productList[i].ingredientes= ingredientes
             productList[i].precovenda  = precovenda
             productList[i].categoryId  = categoryId
             productList[i].status      = status
+            break
         }
-        break
+        
     }
     
 

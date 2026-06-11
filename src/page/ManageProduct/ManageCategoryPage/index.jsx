@@ -21,8 +21,13 @@ const ManageCategoryPage = () => {
     const [ showCreateCategory, setShowCreateCategory ] = useState( false )
     const [ showEditCategory, setShowEditCategory ] = useState( false )
 
-    const [ nome, setNome ] = useState('')
-    const [ newCategoryName, setNewCategoryName ] = useState('')
+    const [ categoryName, setCategotyName ] = useState('')
+    const [ categoryStatus, setCategoryStatus ] = useState( true )
+
+    const handleResetValues = () => {
+        setCategotyName('')
+        setCategoryStatus( true )
+    }
 
     const handleGetUnityList = async () => {
         const response = await getUnityListApi()
@@ -30,10 +35,10 @@ const ManageCategoryPage = () => {
     }
 
     const handleGetCategoryList = async () => {
-        if( !unitySelected.id ) {
+        if( !unitySelected.unityId ) {
             return
         }
-        const response = await getCategoryListByUnityId( unitySelected.id )
+        const response = await getCategoryListByUnityId( unitySelected.unityId, true )
         console.log(" GET CATEGORY LIST: ", unitySelected,  response)
         setCategoryList( response )
     }
@@ -66,7 +71,8 @@ const ManageCategoryPage = () => {
         //console.log(" CATEGORY SELECT response: ", response, response.name)
         setCategorySelected( response )
 
-        setNome( response.name )
+        setCategotyName( response.name )
+        setCategoryStatus( response.status)
 
         setShowCategoryList( false )
         setShowEditCategory( true )
@@ -80,14 +86,15 @@ const ManageCategoryPage = () => {
         }
 
         //console.log(" CATEGORY SELECTED: ", categorySelected)
-        //console.log(" NOME: ", nome)
-        const response = await alterCategoryInformation( unitySelected.id, categorySelected.categoryId, nome)
+        //console.log(" categoryName: ", categoryName)
+        const response = await alterCategoryInformation( unitySelected.unityId, categorySelected.categoryId, categoryName, categoryStatus)
         alert("Alteração realizada com sucesso")
         return
 
     }
 
     const handleCancelEditCategory = () => {
+        handleResetValues()
         setShowCategoryList( true )
         setShowEditCategory(false)
         
@@ -99,7 +106,7 @@ const ManageCategoryPage = () => {
             return
         }
 
-        await removeCategoryOfUnity( unitySelected.id, categorySelected.categoryId)
+        await removeCategoryOfUnity( unitySelected.unityId, categorySelected.categoryId)
 
         alert("Removido com sucesso!")
 
@@ -115,15 +122,26 @@ const ManageCategoryPage = () => {
         setShowCreateCategory( true )
     }
 
+    const handleCancelShowCategory = () => {
+        setShowCategoryList( false )
+        setShowUnityList( true )
+    }
+
     const handleCreateCategory = async () => {
         const confirmWindow = confirm(" Deseja realmente criar essa categoria?")
         if( !confirmWindow ) {
             return
         }
 
-        await createNewCategory(unitySelected.id, newCategoryName)
+        await createNewCategory(unitySelected.unityId, categoryName, categoryStatus)
         alert(" Categoria criada com sucesso!")
-        setNewCategoryName('')
+        setCategotyName('')
+        setShowCreateCategory( false )
+        setShowCategoryList( true )
+    }
+
+    const handleCancelCreateCategory = () => {
+        handleResetValues()
         setShowCreateCategory( false )
         setShowCategoryList( true )
     }
@@ -142,116 +160,153 @@ const ManageCategoryPage = () => {
 
     return( 
         <div className={styles.manageCategoryMainDiv}>
+            <LabelComp
+                text={'Gerenciar Categorias'}
+            />
 
-            { showUnityList && (
-                <>
-                    <LabelComp
-                        text={'Escolha a unidade'}
-                    />
-                    <div className={ styles.unityCategoryList }>
-                        { unityList && unityList.map((item, i) => (
-                            <ButtonComp
-                                key={i}
-                                text={item.name}
-                                onClickButton={ () => handleSelectUnity(item.id)}
-                            />
-                        ))}
-                    </div>
-
-                </>
-            )}
-
-            { showCategoryList && (
-                <>
-                    <LabelComp
-                        text={'Escolha a categoria'}
-                    />
-                    <div className={ styles.unityCategoryList }>
-                        { categoryList && categoryList.map((item, i) => (
-                            <ButtonComp
-                                key={i}
-                                text={item.name}
-                                onClickButton={ () => handleSelectCategory(item.categoryId)}
-                            />
-                        ))}
-                    </div>
-
-                    <div className={ styles.buttonDiv }>
-                        <ButtonComp
-                            text={"Criar nova categoria"}
-                            onClickButton={ handleShowCreateCategory }
+            <div className={ styles.manageCategoryDiv}>
+                
+                { showUnityList && (
+                    <>
+                        <LabelComp
+                            text={'Escolha a unidade'}
                         />
-                    </div>
-
-                </>
-            )}
-
-            { showCreateCategory && (
-                <>
-                    <LabelComp
-                        text={'Criar nova categoria'}
-                    />
-                    <div className={ styles.createCategoryDiv}>
-                        <div>
-                            <label>
-                                NOME: 
-                            </label>
-                            <input 
-                                type={'text'}
-                                value={newCategoryName}
-                                onChange={(e) => setNewCategoryName(e.target.value.toUpperCase())}
-                            />
+                        <div className={ styles.unityCategoryList }>
+                            { unityList && unityList.map((item, i) => (
+                                <ButtonComp
+                                    key={i}
+                                    text={item.name}
+                                    onClickButton={ () => handleSelectUnity(item.unityId)}
+                                />
+                            ))}
                         </div>
-                    </div>
-
-                    <div className={ styles.buttonDiv }>
-                        <ButtonComp
-                            text={"Criar"}
-                            onClickButton={ handleCreateCategory }
+                    </>
+                )}
+                { showCategoryList && (
+                    <>
+                        <LabelComp
+                            text={'Escolha a categoria'}
                         />
-                    </div>
-
-                </>
-            )}
-
-            { showEditCategory && (
-                <>
-                    <LabelComp
-                            text={'Edite a categoria'}
-                    />
-
-                    <div className={ styles.editCategoryDiv}>
-                        <div>
-                            <label>
-                                Nome:
-                            </label>
-                            <input
-                                value={ nome }
-                                onChange={(e) => setNome(e.target.value.toUpperCase())}
-                            />
+                        <div className={ styles.unityCategoryList }>
+                            { categoryList && categoryList.map((item, i) => (
+                                <ButtonComp
+                                    key={i}
+                                    text={item.name}
+                                    nameClass={ item.status ? "" : styles.inativeStatus }
+                                    onClickButton={ () => handleSelectCategory(item.categoryId)}
+                                />
+                            ))}
                         </div>
-
-                        <div className={ styles.bottomButtons}>
-
-
-                            <ButtonComp 
-                                text={"Salvar"}
-                                onClickButton={ handleSaveCategoryAlteration }
+                        <div className={ styles.buttonDiv }>
+                            <ButtonComp
+                                text={"Criar"}
+                                onClickButton={ handleShowCreateCategory }
                             />
-                            <ButtonComp 
-                                text={"Remover"}
-                                onClickButton={ handleRemoveCategory }
-                            />
-
-                            <ButtonComp 
-                                text={"Cancelar"}
-                                onClickButton={ handleCancelEditCategory }
+                            <ButtonComp
+                                text={"Voltar"}
+                                onClickButton={ handleCancelShowCategory }
                             />
 
                         </div>
-                    </div>
-                </>
-            )}
+                    </>
+                )}
+                { showCreateCategory && (
+                    <>
+                        <LabelComp
+                            text={'Criar nova categoria'}
+                        />
+                        <div className={ styles.createCategoryDiv}>
+                            <div>
+                                <label>
+                                    NOME:
+                                </label>
+                                <input
+                                    type={'text'}
+                                    value={categoryName}
+                                    onChange={(e) => setCategotyName(e.target.value.toUpperCase())}
+                                />
+                            </div>
+                            <div>
+                                <label>
+                                    STATUS:
+                                </label>
+                                <select
+                                    defaultValue={ categoryStatus }
+                                    onChange={ (e) => setCategoryStatus( e.target.value )}
+                                >
+                                    <option value={true}>
+                                        ATIVO
+                                    </option>
+                                    <option value={false}>
+                                        INATIVO
+                                    </option>
+
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div className={ styles.buttonDiv }>
+                            <ButtonComp
+                                text={"Criar"}
+                                onClickButton={ handleCreateCategory }
+                            />
+                            <ButtonComp
+                                text={"Voltar"}
+                                onClickButton={ handleCancelCreateCategory }
+                            />
+                        </div>
+                    </>
+                )}
+                { showEditCategory && (
+                    <>
+                        <LabelComp
+                                text={'Edite a categoria'}
+                        />
+                        <div className={ styles.editCategoryDiv}>
+                            <div>
+                                <label>
+                                    NOME:
+                                </label>
+                                <input
+                                    value={ categoryName }
+                                    onChange={(e) => setCategotyName(e.target.value.toUpperCase())}
+                                />
+                            </div>
+                            <div>
+                                <label>
+                                    STATUS:
+                                </label>
+                                <select
+                                    defaultValue={ categoryStatus }
+                                    onChange={ (e) => setCategoryStatus( e.target.value )}
+                                >
+                                    <option value={true}>
+                                        ATIVO
+                                    </option>
+                                    <option value={false}>
+                                        INATIVO
+                                    </option>
+
+                                </select>
+                            </div>
+                            <div className={ styles.bottomButtons}>
+                                <ButtonComp
+                                    text={"Salvar"}
+                                    onClickButton={ handleSaveCategoryAlteration }
+                                />
+                                <ButtonComp
+                                    text={"Remover"}
+                                    onClickButton={ handleRemoveCategory }
+                                />
+                                <ButtonComp
+                                    text={"Cancelar"}
+                                    onClickButton={ handleCancelEditCategory }
+                                />
+                            </div>
+                        </div>
+                    </>
+                )}
+            </div>
 
 
         </div>

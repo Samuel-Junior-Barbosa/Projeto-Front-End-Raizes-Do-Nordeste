@@ -30,7 +30,7 @@ const ManageProductPage = () => {
     const [ editProductImageUrl, setEditProductImageUrl ] = useState('')
     const [ editProductIngredients, setEditProductIngredients ] = useState('')
     const [ editProductCategory, setEditProductCategory ] = useState('0')
-    const [ editProductStatus, setEditProductStatus ] = useState( 'true' )
+    const [ editProductStatus, setEditProductStatus ] = useState( true )
 
     
     const handleResetEditValues = () => {
@@ -40,7 +40,7 @@ const ManageProductPage = () => {
         setEditProductIngredients('')
         setEditProductSellValue( '0' )
         setEditProductCategory( '0' )
-        setEditProductStatus( 'true'  )
+        setEditProductStatus( true )
     }
 
     const handleGetCategoryList = async ( id ) => {
@@ -72,13 +72,13 @@ const ManageProductPage = () => {
 
         setShowUnityList( false )
         setShowProductList( true )
-        await handleGetProductList( response.id )
-        await handleGetCategoryList( response.id )
+        await handleGetProductList( response.unityId )
+        await handleGetCategoryList( response.unityId )
 
     }
 
     const handleSelectProduct = async ( id ) => {
-        const response = await getProductByUnityId( unitySelected.id, id)
+        const response = await getProductByUnityId( unitySelected.unityId, id)
         //console.log(" product Selected: ", response)
         setProductSelected( response )
 
@@ -99,6 +99,7 @@ const ManageProductPage = () => {
     }
 
     const handleCancelSelectProduct = () => {
+        setProductList([])
         setShowProductList( false ) 
         setShowUnityList( true )
     }
@@ -129,16 +130,18 @@ const ManageProductPage = () => {
         }
 
 
-        await alterProductInformation( unitySelected.id, productSelected.id, editProductName, editProductDescription, tmpIng, editProductSellValue, editProductCategory, editProductStatus )
-        handleResetEditValues()
+        await alterProductInformation( unitySelected.unityId, productSelected.id, editProductName, editProductDescription, tmpIng, editProductSellValue, editProductCategory, editProductStatus )
+
         setShowEditProduct( false )
         setShowProductList( true )
+        handleResetEditValues()
         alert("Alterado com sucesso!")
         
 
     }
 
     const handleCancelAlteration = () => {
+        handleResetEditValues()
         setShowEditProduct( false )
         setShowProductList( true )
     }
@@ -161,11 +164,11 @@ const ManageProductPage = () => {
             return
         }
         let tmpIng = handleSepareIngredients( editProductIngredients )
-        await createNewProduct( String(unitySelected.id), editProductName, editProductSellValue, editProductDescription, editProductCategory, tmpIng, editProductStatus)
+        await createNewProduct( String(unitySelected.unityId), editProductName, editProductSellValue, editProductDescription, editProductCategory, tmpIng, editProductStatus)
         
-        //handleResetEditValues()
-        //setShowCreateProduct( false )
-        //setShowProductList( true )
+        handleResetEditValues()
+        setShowCreateProduct( false )
+        setShowProductList( true )
 
         alert("Produto criado com sucesso!")
 
@@ -178,6 +181,7 @@ const ManageProductPage = () => {
     }
 
     const handleCancelCreation = () => {
+        handleResetEditValues()
         setShowCreateProduct( false )
         setShowProductList( true )
     }
@@ -191,7 +195,7 @@ const ManageProductPage = () => {
             return
         }
 
-        handleGetProductList( unitySelected.id )
+        handleGetProductList( unitySelected.unityId )
 
     }, [showProductList])
 
@@ -212,7 +216,7 @@ const ManageProductPage = () => {
                                 <ButtonComp
                                     key={i}
                                     text={item.name}
-                                    onClickButton={ () => handleSelectUnity( item.id )}
+                                    onClickButton={ () => handleSelectUnity( item.unityId )}
                                 />
                             ))}
                         </div>
@@ -239,6 +243,7 @@ const ManageProductPage = () => {
                                 <ButtonComp
                                     key={i}
                                     text={item.produto}
+                                    nameClass={ item.status ? "" : styles.inativeStatus}
                                     onClickButton={ () => handleSelectProduct(item.id)}
                                 />
                             ))}
@@ -254,12 +259,19 @@ const ManageProductPage = () => {
                         <div className={ styles.editProductDiv}>
                             <div>
                                 <img
-                                    src={`/src/assets/categorias/${productSelected.id}-256px.jpg`}
+                                    src={`/src/assets/pratos/unidades/${unitySelected.unityId}/${productSelected.id}-512px.jpg`}
                                     className={ styles.imageDiv }
                                 >
-
-                                
                                 </img>
+                            </div>
+                            <div className={ styles.labelId }>
+                                <label>
+                                    ID:
+                                </label>
+                                <input 
+                                    value={ productSelected.id }
+                                    readOnly={true}
+                                />
                             </div>
                             <div>
                                 <label>
@@ -326,10 +338,12 @@ const ManageProductPage = () => {
                                 >
                                     <option   
                                         value={ true }
+                                        key={0}
                                     >
                                         ATIVO
                                     </option>
                                     <option   
+                                        key={1}
                                         value={ false }
                                     >
                                         INATIVO

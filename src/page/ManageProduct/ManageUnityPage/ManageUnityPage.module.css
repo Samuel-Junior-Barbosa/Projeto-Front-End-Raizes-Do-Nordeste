@@ -17,7 +17,8 @@
 }
 
 .informationLabel {
-    font-size: clamp(0.5rem, 0.9rem, 2rem);
+    
+    font-size: clamp(0.4rem, 0.9rem, 2rem);
 
 }
 
@@ -34,7 +35,21 @@
     }
 }
 
-.editUnityDiv {
+
+.labelId {
+    display: flex !important;
+    flex-direction: row !important;
+    width: clamp(10px, 90px, 400px) !important;
+
+    & > input {
+        width: 100% !important;
+        text-align: center;
+        padding: 0px !important;
+    }
+}
+
+
+.editUnityDiv, .createUnityDiv {
     display: flex;
     flex-direction: column;
 
@@ -44,7 +59,8 @@
     width: 100%;
     margin: auto;
     height: 100%;
-    font-size: clmap(0.5rem, 0.9rem, 2rem);
+    font-size: clamp(0.5rem, 0.9rem, 2rem);
+    text-align: center;
     color: var(--color-font);
     padding-top: clamp(5px, 20px, 40px);
 
@@ -61,14 +77,12 @@
         
     }
 
-    & > div > input {
+    & > div > input, & > div > select {
         border-radius: clamp(5px, 10px, 20px);
         padding-left: clamp(4px, 5px, 10px);
-    }
-
-
-    
+    }    
 }
+
 
 .labelCompAddress {
     font-size: clamp(0.5rem, 1rem, 2rem);
@@ -81,8 +95,8 @@
 
 .unityCategoryList {
     display: flex;
-
     flex-direction: column;
+
     margin-top: clamp(10px, 20px, 30px);
     gap: clamp(5px, 10px, 20px);
     
@@ -104,4 +118,22 @@
     & > button {
         padding: clamp(5px, 10px, 20px);
     }
+}
+
+
+
+.buttonDiv {
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(10px, 20px, 100px);
+    & > button {
+        margin: auto;
+        padding: clamp(4px, 6px, 10px);
+
+    }
+}
+
+
+.inativeStatus {
+    background-color: gray !important;
 }

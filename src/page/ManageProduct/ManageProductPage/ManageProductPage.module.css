@@ -47,6 +47,17 @@
 }
 
 
+.labelId {
+    display: flex !important;
+    flex-direction: row !important;
+    width: clamp(10px, 90px, 400px) !important;
+
+    & > input {
+        width: 100% !important;
+        text-align: center;
+        padding: 0px !important;
+    }
+}
 .editProductDiv, .createProductDiv {
     display: flex;
     flex-direction: column;
@@ -114,4 +125,8 @@
     border-radius: clamp(4px, 5px, 10px);
     padding: clamp(4px, 6px, 10px);
 
+}
+
+.inativeStatus {
+    background-color: gray;
 }

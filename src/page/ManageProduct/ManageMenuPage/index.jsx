@@ -103,20 +103,21 @@ const ManageMenuPage = () => {
             <div className={ styles.manageMenuDiv}>
                 
                 { showUnityList && (
-                    <div className={ styles.unityListDiv }>
+                    <>
                         <LabelComp
                             nameClass={ styles.informationLabel}
                             text={'Escolha a unidade para editar as informações'}
                         />
-
-                        { unityList && unityList.map((item, i) => (
-                            <ButtonComp
-                                key={i}
-                                text={item.name}
-                                onClickButton={ () => handleSelectUnity( item.id )}
-                            />
-                        ))}
-                    </div>
+                        <div className={ styles.unityListDiv }>
+                            { unityList && unityList.map((item, i) => (
+                                <ButtonComp
+                                    key={i}
+                                    text={item.name}
+                                    onClickButton={ () => handleSelectUnity( item.id )}
+                                />
+                            ))}
+                        </div>  
+                    </>
                 )}
 
                 { showEditUnity && (

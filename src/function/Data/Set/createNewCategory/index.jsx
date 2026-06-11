@@ -4,9 +4,15 @@ import createMenuForUnity from "../createMenuForUnity";
 
 
 
-const createNewCategory = async( unityId, categoryName ) => {
+const createNewCategory = async( unityId, categoryName, status ) => {
+    if ( status === 'false') {
+        status = false
+    }
 
-
+    else if( status === 'true' ) {
+        status = true
+    }
+        
     let categories = await api.get(
         `/menuForUnity?unityId=${unityId}`
     )
@@ -29,7 +35,8 @@ const createNewCategory = async( unityId, categoryName ) => {
 
     categories.push({
         'name' : categoryName,
-        'categoryId' : newId+1
+        'categoryId' : newId+1,
+        'status' : status
     })
 
     //console.log(" CATEGORIES2: ", categories)

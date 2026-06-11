@@ -3,7 +3,20 @@ import api from "../../../Api";
 
 
 
-const alterUnityInformation = async( unityId, nome, cidade, bairro, rua, numero, uf ) => {
+const alterUnityInformation = async( unityId, nome, cidade, bairro, rua, numero, uf, status ) => {
+    if ( status === 'false') {
+        status = false
+    }
+
+    else if( status === 'true' ) {
+        status = true
+    }
+        
+    let unityData = await api.get(
+        `/listOfUnits?unityId=${unityId}`
+    )
+
+    unityData = unityData.data[0]
 
     const addresAlter = {
         cidade,
@@ -14,9 +27,10 @@ const alterUnityInformation = async( unityId, nome, cidade, bairro, rua, numero,
     }
 
     const response = await api.patch(
-        `/listOfUnits/${unityId}`, {
+        `/listOfUnits/${unityData.id}`, {
             'name' : nome,
-            address : addresAlter
+            'address' : addresAlter,
+            'status' : status
         }
     )
 

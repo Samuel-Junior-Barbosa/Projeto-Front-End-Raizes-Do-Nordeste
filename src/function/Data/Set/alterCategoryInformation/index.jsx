@@ -3,9 +3,15 @@ import api from "../../../Api";
 
 
 
-const alterCategoryInformation = async( unityId, categoryId, categoryName ) => {
+const alterCategoryInformation = async( unityId, categoryId, categoryName, status ) => {
+    if ( status === 'false') {
+        status = false
+    }
 
-
+    else if( status === 'true' ) {
+        status = true
+    }
+        
     let categories = await api.get(
         `/menuForUnity?unityId=${unityId}`
     )
@@ -19,6 +25,7 @@ const alterCategoryInformation = async( unityId, categoryId, categoryName ) => {
     for( let i = 0; i < categories.length; i ++ ) {
         if( String(categories[i].categoryId) === String(categoryId) ) {
             categories[i].name = categoryName
+            categories[i].status =  status
             console.log(" 2C: ", categories[i])
         }
     }
@@ -26,7 +33,7 @@ const alterCategoryInformation = async( unityId, categoryId, categoryName ) => {
     //console.log(" CATEGORIES2: ", categories)
     const response = await api.patch(
         `/menuForUnity/${idCategory}`, {
-            'category' : categories
+            'category' : categories,
         }
     )
 

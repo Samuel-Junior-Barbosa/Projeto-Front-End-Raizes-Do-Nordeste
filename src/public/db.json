@@ -187,7 +187,7 @@
   ],
   "listOfUnits": [
     {
-      "id": "1",
+      "unityId": 1,
       "name": "RAIZES DO NORDESTE - ALAGOAS",
       "address": {
         "cidade": "MACEIO",
@@ -195,10 +195,12 @@
         "rua": " AV. TEST ROAD",
         "numero": "00",
         "uf": "AL"
-      }
+      },
+      "status": true,
+      "id": "snWTzIp0TRo"
     },
     {
-      "id": "2",
+      "unityId": 2,
       "name": "RAIZES DO NORDESTE - BAHIA",
       "address": {
         "cidade": "Salvador",
@@ -206,10 +208,12 @@
         "rua": " AV. Test Road",
         "numero": "00",
         "uf": "ba"
-      }
+      },
+      "status": true,
+      "id": "1nEAAckLFr0"
     },
     {
-      "id": "3",
+      "unityId": 3,
       "name": "RAIZES DO NORDESTE - CEARA",
       "address": {
         "cidade": "Fortaleza",
@@ -217,7 +221,22 @@
         "rua": " AV. Test Road",
         "numero": "00",
         "uf": "ce"
-      }
+      },
+      "status": true,
+      "id": "IR57MFQUh7M"
+    },
+    {
+      "unityId": 4,
+      "name": "TESTE",
+      "address": {
+        "cidade": "TESTE",
+        "bairro": "TESTE",
+        "rua": "TESTE",
+        "numero": "12",
+        "uf": "TE"
+      },
+      "status": false,
+      "id": "Lh7ewPpSHo0"
     }
   ],
   "menuForUnity": [
@@ -226,15 +245,23 @@
       "category": [
         {
           "name": "CARNES",
-          "categoryId": 1
+          "categoryId": 1,
+          "status": true
         },
         {
           "name": "MILHO",
-          "categoryId": 2
+          "categoryId": 2,
+          "status": true
         },
         {
           "name": "BEBIDAS",
-          "categoryId": 3
+          "categoryId": 3,
+          "status": true
+        },
+        {
+          "name": "TESTE",
+          "categoryId": 4,
+          "status": false
         }
       ],
       "productList": [
@@ -246,8 +273,8 @@
           ],
           "precovenda": "01.00",
           "id": 1,
-          "categoryId": "1",
-          "status": "true"
+          "categoryId": 1,
+          "status": true
         },
         {
           "produto": "Buchada de bode",
@@ -258,8 +285,8 @@
           ],
           "precovenda": "02.00",
           "id": 2,
-          "categoryId": "1",
-          "status": "true"
+          "categoryId": 1,
+          "status": true
         },
         {
           "produto": "Sarapatel",
@@ -270,8 +297,8 @@
           ],
           "precovenda": "03.00",
           "id": 3,
-          "categoryId": "1",
-          "status": "true"
+          "categoryId": 1,
+          "status": true
         },
         {
           "produto": "Cuscuz",
@@ -281,8 +308,8 @@
           ],
           "precovenda": "04.00",
           "id": 4,
-          "categoryId": "2",
-          "status": "true"
+          "categoryId": 2,
+          "status": true
         },
         {
           "produto": "Pamonha",
@@ -292,8 +319,8 @@
           ],
           "precovenda": "05.00",
           "id": 5,
-          "categoryId": "2",
-          "status": "true"
+          "categoryId": 2,
+          "status": true
         },
         {
           "produto": "Bolo de milho",
@@ -307,8 +334,8 @@
           ],
           "precovenda": "06.00",
           "id": 6,
-          "categoryId": "2",
-          "status": "true"
+          "categoryId": 2,
+          "status": true
         },
         {
           "produto": "Café Forte",
@@ -318,8 +345,8 @@
           ],
           "precovenda": "07.00",
           "id": 7,
-          "categoryId": "3",
-          "status": "true"
+          "categoryId": 3,
+          "status": true
         },
         {
           "produto": "Caldo de cana",
@@ -329,8 +356,8 @@
           ],
           "precovenda": "08.00",
           "id": 8,
-          "categoryId": "3",
-          "status": "true"
+          "categoryId": 3,
+          "status": true
         },
         {
           "produto": "Cajuína",
@@ -340,8 +367,19 @@
           ],
           "precovenda": "09.00",
           "id": 9,
-          "categoryId": "3",
-          "status": "true"
+          "categoryId": 3,
+          "status": true
+        },
+        {
+          "produto": "TESTE",
+          "description": "TESTE",
+          "ingredientes": [
+            "TESTE"
+          ],
+          "precovenda": "3",
+          "id": 10,
+          "categoryId": 1,
+          "status": false
         }
       ],
       "id": "3ZsG-e-TzwI"
@@ -351,7 +389,8 @@
       "category": [
         {
           "name": "BEBIDAS",
-          "categoryId": 2
+          "categoryId": 2,
+          "status": true
         }
       ],
       "productList": [
@@ -364,7 +403,7 @@
           "precovenda": "1",
           "id": 2,
           "categoryId": "2",
-          "status": "true"
+          "status": true
         }
       ],
       "id": "Yo2YDHxk5uI"
