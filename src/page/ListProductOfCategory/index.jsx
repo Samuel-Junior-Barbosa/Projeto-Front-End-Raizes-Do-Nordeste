@@ -194,37 +194,39 @@ const ListProductOfCategory = () => {
                     onKeyDown={ (e) => handleKeydownSearchFood( e.key ) }
                 />
             </div>
+            
 
-            { productList.length > 0 && (
+            <div>
+                { productList.length > 0 && (
 
-                ( searchItemStatus === false && (
-                    <ListProduct
-                        productListData = {  productList }
-                        setProductListData={ setProductList }
-                        nameClass={styles.ListProductComp}
-                        itemChoosedState={setProductSelected}
-                        unityId={unityIdRecived}
-                    />
+                    ( searchItemStatus === false && (
+                        <ListProduct
+                            productListData = {  productList }
+                            setProductListData={ setProductList }
+                            nameClass={styles.ListProductComp}
+                            itemChoosedState={setProductSelected}
+                            unityId={unityIdRecived}
+                        />
 
-                ))
-            )}
-            { searchItem.length > 0 && (
-                ( searchItemStatus === true && (
-                    <ListProduct
-                        productListData = {  searchItem }
-                        setProductListData={ setSearchItemStatus }
-                        nameClass={styles.ListProductComp}
-                        itemChoosedState={setProductSelected}
-                    />
+                    ))
+                )}
+                { searchItem.length > 0 && (
+                    ( searchItemStatus === true && (
+                        <ListProduct
+                            productListData = {  searchItem }
+                            setProductListData={ setSearchItemStatus }
+                            nameClass={styles.ListProductComp}
+                            itemChoosedState={setProductSelected}
+                        />
 
-                )))
-            }
+                    )))
+                }
 
-            { (productList.length === 0 && searchItem.length === 0 ) && (
-                <label> Nenhum item encontrado nesse cardapio</label>
-            )}
-
-                                
+                { (productList.length === 0 && searchItem.length === 0 ) && (
+                    <label> Nenhum item encontrado nesse cardapio</label>
+                )}
+            </div>
+                                            
         </div>
     )
 }

@@ -3,7 +3,7 @@
 
 
 .productListDiv {
-    height: clamp(100px, 52dvh, 60dvh);
+    /*height: clamp(100px, 52dvh, 60dvh);*/
     margin-bottom: clamp(10px, 20px, 100px);
 }
 
@@ -40,4 +40,20 @@
     margin-top: clamp(10px, 10px, 50px);
     margin-bottom: clamp(10px, 10px, 50px);
     padding: clamp(1px, 5px, 10px);
+}
+
+
+
+@media screen and (max-width : 1400px)  {
+    .productListDiv {
+        margin: 0px auto;
+        height: clamp(300px, 55dvh, 2000px);
+    }
+}
+
+
+@media screen and (max-width : 400px)  {
+    .bottomButton {
+        
+    }
 }

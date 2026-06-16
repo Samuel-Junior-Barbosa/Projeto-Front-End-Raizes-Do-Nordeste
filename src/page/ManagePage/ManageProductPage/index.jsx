@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import styles from './ManageProductPage.module.css';
 import LabelComp from '/src/component/LabelComp';
 import ButtonComp from '/src/component/ButtonComp';
-import getProductListOfUnity from '../../../function/Data/Get/getProductListOfUnity';
-import getUnityListApi from '../../../function/Data/Get/getUnityListApi';
-import getUnityDataById from '../../../function/Data/Get/getUnityDataById';
-import getProductByUnityId from '../../../function/Data/Get/getProductByUnityId';
-import getCategoryListByUnityId from '../../../function/Data/Get/getCategoryListByUnityId';
-import alterProductInformation from '../../../function/Data/Set/alterProductInformation';
-import createNewProduct from '../../../function/Data/Set/createNewProduct';
+import getProductListOfUnity from '/src/function/Data/Get/getProductListOfUnity';
+import getUnityListApi from '/src/function/Data/Get/getUnityListApi';
+import getUnityDataById from '/src/function/Data/Get/getUnityDataById';
+import getProductByUnityId from '/src/function/Data/Get/getProductByUnityId';
+import getCategoryListByUnityId from '/src/function/Data/Get/getCategoryListByUnityId';
+import alterProductInformation from '/src/function/Data/Set/alterProductInformation';
+import createNewProduct from '/src/function/Data/Set/createNewProduct';
 
 const ManageProductPage = () => {
 

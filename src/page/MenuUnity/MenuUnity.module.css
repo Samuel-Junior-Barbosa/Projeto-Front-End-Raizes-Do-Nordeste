@@ -2,14 +2,20 @@ label {
     font-size: 4.5rem;
 }
 
-
 .menuUnityDivMain {
+    display: flex;
+    flex-direction: column;
+}
+
+.menuUnityDiv {
     display: flex;
     flex-direction: column;
     gap: clamp(20px, 40px, 60px);
 
-    margin-top: min(80px, 10vh);
-    
+    margin-top: min(20px, 10vh);
+    height: max-content;
+    padding-bottom: 10%;
+
     & > button {
 
         display: flex;
@@ -27,6 +33,7 @@ label {
         position: relative;
         top: clamp(10%, 30%, 40%);
         height: max-content;
+        font-size: clamp(0.5rem, 1.2rem, 2rem);
         text-shadow: 1px 2px 0px var(--shadow-color);
         /*backdrop-filter: blur(1px);*/
         
@@ -48,4 +55,96 @@ label {
     filter: blur(100px);
 
     z-index: 1;
+}
+
+
+
+@media screen and (max-width: 2000px ) {
+    .menuUnityDiv {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0px;
+        margin: 0px;
+        gap: clamp(1px, 50%, 60px);
+        
+
+        & > button {
+            width: clamp(100px, 25dvw, 1200px);
+            height: clamp(100px, 25dvh, 1200px);
+            margin-top: clamp(5px, 10px, 30px);
+        }
+
+
+        & > button > label {
+            font-size: clamp(0.8rem, 1.2rem, 2rem);
+            top: clamp(20%, 50%, 80%);
+            text-shadow: 1px 2px 0px var(--shadow-color);
+
+        }
+    }
+
+    
+}
+
+
+
+
+
+@media screen and (max-width : 750px)  {
+    .menuUnityDiv {
+        display: flex;
+        flex-direction: row;
+        width: clamp(400px, 60dvw, 100dvw);
+        /* height: clamp(500px, 70dvh, 100dvh); */
+        height: max-content;
+
+        padding: clamp(40px, 80px, 200px);
+        padding-top: clamp(5px, 10px, 20px);
+        
+        margin: auto;
+        
+        & > button {
+            width: clamp(100px, 90dvw, 1200px);
+            height: clamp(100px, 15dvh, 1200px);
+        }
+
+        & > button > label {
+            top: clamp(40%, 40%, 80%);
+            text-shadow: 1px 2px 0px var(--shadow-color);
+
+        }
+    }
+}
+
+
+@media screen and (max-width : 500px)  {
+    .menuUnityDiv {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: clamp(400px, 95dvw, 100dvw);
+        
+        height: clamp(60px, 60dvh, 100dvh);
+        
+
+        padding: clamp(1px, 4px, 10px);
+        margin: auto;
+        
+            
+        & > button {
+            width: clamp(100px, 25dvw, 1200px);
+            height: clamp(100px, 15dvh, 1200px);
+            margin-top: clamp(5px, 10px, 30px);
+        }
+
+
+        & > button > label {
+            font-size: clamp(0.4rem, 0.8rem, 1.5rem);
+            top: clamp(20%, 50%, 80%);
+            text-shadow: 1px 2px 0px var(--shadow-color);
+
+        }
+
+    }
 }

@@ -23,20 +23,40 @@ const ChooseItem = () => {
         //console.log(" ADICIONANDO ITEM AO CARRINHO productQuantity: ", productQuantity)
         let added = false        
         let tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
-        for( let i = 0; i < tmp_cart_list.length; i ++ ) {
-            if( tmp_cart_list[i].id === id ) {
-                tmp_cart_list[i].quantidade += productQuantity
+        //console.log(" TMP CART LIST ADD ITEM: ", tmp_cart_list)
+
+        if( tmp_cart_list.unityId !== 0 && tmp_cart_list.unityId != unityId ) {
+            alert(" Não é possivel fazer pedidos de unidades diferentes. Faça 1 pedido em 1 unidade depois faça outro na proxima unidade que deseja.")
+            return
+        }
+
+        if( !tmp_cart_list.products ) {
+            tmp_cart_list.unityId= unityId
+            tmp_cart_list.products = [{
+                'id': id,
+                'produto' : produto,
+                'precovenda' : precovenda,
+                'quantidade' : productQuantity
+            }]
+            added = true
+
+        }
+
+        for( let i = 0; i < tmp_cart_list.products.length; i ++ ) {
+            if( tmp_cart_list.products[i].id === id ) {
+                tmp_cart_list.products[i].quantidade += productQuantity
                 added = true
             }
         }
 
         if( !added ) {
-            tmp_cart_list.push({
+            tmp_cart_list.unityId = unityId
+            tmp_cart_list.products.push({
                 'id': id,
                 'produto' : produto,
                 'precovenda' : precovenda,
                 'quantidade' : productQuantity
-            })            
+            })
             added = true
         }
 

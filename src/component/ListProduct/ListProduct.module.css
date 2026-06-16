@@ -12,7 +12,7 @@
 
 .ListProductUl {
     display: flex;
-    overflow-y: scroll;
+    
     flex-direction: column;
     
     background-color: var(--background-label);
@@ -29,6 +29,8 @@
 
     border-radius: 20px;
 
+    overflow-y: scroll;
+
     box-shadow: 3px 4px 5px var(--shadow-color);
 
     & > li {
@@ -40,6 +42,8 @@
         width: 100%;
         height: 140px;
         background-color: var( --background-window );
+
+        border-radius: clamp(5px, 10px, 20px);
         
         padding: 0px;
         margin-top: clamp(5px, 10px, 20px);
@@ -77,10 +81,15 @@
         height: 100%;
         left: 0px;
         top: 0px;
+        border-radius: clamp(5px, 10px, 30px);
+
+        box-shadow: 2px 3px 4px var(--shadow-color);
     }
 }
 
 .foodImageDiv {
+    display: flex;
+    align-items: center;
     width: clamp(40px, 100px, 250px);
     height: clamp(40px, 100px, 250px);
     margin: 20px;
@@ -134,4 +143,137 @@
 
     padding: clamp(2px, 5px, 10px);
 
+}
+
+
+
+
+@media screen and (max-width : 2000px)  {
+
+    .ListProductUl {
+        width: clamp(300px, 60dvw, 2000px);
+        height: clamp(300px, 60dvh, 2000px);
+
+        & > li {
+            width: 100%;
+            height: clamp(30px, 200px, 200px);
+        }
+
+        & > li > div > img.foodImage {
+            width: clamp(10%, 100%, 100%);
+            height: clamp(10%, 100%, 100%);
+            margin: clamp(2px, 5px, 10px);
+            
+        }
+    }
+
+    .foodImageDiv {
+        width: clamp(40px, 90%, 200px);
+        height: clamp(40px, 90%, 200px);
+    }
+}
+
+@media screen and (max-width : 1900px)  {
+
+    .ListProductUl {
+        width: clamp(300px, 70dvw, 2000px);
+        height: clamp(300px, 60dvh, 2000px);
+
+        margin: auto;
+
+        & > li {
+            width: 100%;
+            height: clamp(30px, 200px, 200px);
+        }
+
+        & > li > div > img.foodImage {
+            width: clamp(10%, 100%, 100%);
+            height: clamp(10%, 100%, 100%);
+            margin: clamp(2px, 5px, 10px);
+            
+        }
+    }
+
+    .foodImageDiv {
+        width: clamp(40px, 90%, 200px);
+        height: clamp(40px, 90%, 200px);
+    }
+}
+
+
+
+@media screen and (max-width : 1400px)  {
+
+    .ListProductUl {
+        width: clamp(300px, 80dvw, 2000px);
+        height: clamp(300px, 60dvh, 2000px);
+
+        & > li {
+            width: 100%;
+            height: clamp(30px, 200px, 200px);
+        }
+
+        & > li > div > img.foodImage {
+            width: clamp(10%, 100%, 100%);
+            height: clamp(10%, 100%, 100%);
+            margin: clamp(2px, 5px, 10px);
+            
+        }
+    }
+
+    .foodImageDiv {
+        width: clamp(40px, 90%, 200px);
+        height: clamp(40px, 90%, 200px);
+    }
+}
+
+@media screen and (max-width : 500px)  {
+
+    .ListProductUl {
+        width: clamp(300px, 100dvw, 2000px);
+        height: clamp(300px, 60dvh, 2000px);
+
+        & > li {
+            width: 100%;
+            height: clamp(30px, 200px, 200px);
+        }
+
+        & > li > div > img.foodImage {
+            width: clamp(10%, 100%, 100%);
+            height: clamp(10%, 100%, 100%);
+            margin: clamp(2px, 5px, 10px);
+            
+        }
+    }
+
+    .foodImageDiv {
+        width: clamp(40px, 90%, 200px);
+        height: clamp(40px, 90%, 200px);
+    }
+}
+
+
+@media screen and (max-height : 300px)  {
+
+    .ListProductUl {
+        width: clamp(300px, 100dvw, 2000px);
+        height: clamp(300px, 70dvh, 2000px);
+
+        & > li {
+            width: 100%;
+            height: clamp(30px, 100%, 200px);
+        }
+
+        & > li > div > img.foodImage {
+            width: clamp(10%, 100%, 100%);
+            height: clamp(10%, 100%, 100%);
+            margin: clamp(2px, 5px, 10px);
+            
+        }
+    }
+
+    .foodImageDiv {
+        width: clamp(20px, 20%, 200px);
+        height: clamp(20px, 60%, 200px);
+    }
 }

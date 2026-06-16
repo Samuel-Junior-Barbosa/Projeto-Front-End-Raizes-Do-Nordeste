@@ -1,5 +1,5 @@
 import axios from "axios";
-import getAccountData from "../../../Data/Get/getData";
+import getAccountData from "../../../Data/Get/getAccountData";
 
 
 
@@ -9,7 +9,7 @@ const getIdUser = async ( username ) => {
     let idUser = null
     for( let i = 0; i < response.length; i ++ ) {
         if( response[i].name == username ) {
-            idUser = response[i].id
+            idUser = response[i].accountId
         }
     }
 

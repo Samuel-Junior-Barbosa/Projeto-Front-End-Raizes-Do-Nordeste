@@ -4,13 +4,13 @@ import CircularProgress from '/src/component/CircularProgress';
 import LabelComp from '/src/component/LabelComp'
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import ButtonComp from '../../component/ButtonComp';
-import setAccountOrder from '../../function/Account/Set/setAccountOrder';
-import setNewOrder from '../../function/Order/Set/setNewOrder';
-import getIdUser from '../../function/Account/Get/getIdUser';
-import addNewBuyPoint from '../../function/Account/addNewBuyPoint';
-import removeBuyPoint from '../../function/Account/removeBuyPoint';
-import useFidelityPromotion from '../../function/Account/useFidelityPromotion';
+import ButtonComp from '/src/component/ButtonComp';
+import setAccountOrder from '/src/function/Account/Set/setAccountOrder';
+import setNewOrder from '/src/function/Order/Set/setNewOrder';
+import getIdUser from '/src/function/Account/Get/getIdUser';
+import addNewBuyPoint from '/src/function/Account/Set/addNewBuyPoint';
+import removeBuyPoint from '/src/function/Account/Set/removeBuyPoint';
+import useFidelityPromotion from '../../function/Account/Set/useFidelityPromotion';
 
 
 
@@ -48,16 +48,22 @@ const FinishOrderPage = () => {
         }, 1000)
     }
 
-    const finishValdiation = async () => {
+    // Função chamada ao finalizar a validação
+    const finishValidation = async () => {
         let tmpShoppingCart = JSON.parse( sessionStorage.getItem("shoppingCart"))
+        let tmpProducts = tmpShoppingCart.products
         let tmpTotal = JSON.parse( sessionStorage.getItem('orderTotalCost'))
         let tmpOrders = JSON.parse( localStorage.getItem("orders") )
         let maxIdOrder = 0
         let idUser = await getIdUser( username )
 
         //console.log(" FINISH VALIDATION: ", idUser)
-        await setNewOrder( idUser, tmpShoppingCart, tmpTotal)
-        await addNewBuyPoint( idUser )
+
+        if( currentAccount.lgpdConcentiment.participationInTheLoyaltyProgram ) {
+            await addNewBuyPoint( idUser )    
+        }
+        await setNewOrder( idUser, tmpProducts, tmpTotal)
+        
         //console.log(" CLEAN SHOPPING CART...")
         sessionStorage.setItem('shoppingCart', JSON.stringify( []) )
 
@@ -78,7 +84,7 @@ const FinishOrderPage = () => {
 
     useEffect(() => {
         if( validationPayment ) {
-            finishValdiation()
+            finishValidation()
         }
     }, [validationPayment])
 

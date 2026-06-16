@@ -16,7 +16,7 @@ const getCategoryListByUnityId = async( unityId, listInative = false ) => {
     let result = []
 
     //console.log(" getCategoryListByUnityId: ", response)
-    if( !listInative ) {
+    if( !listInative && response.data[0] ) {
         for( let i = 0; i < response.data[0].category.length; i ++ ) {
             if( response.data[0].category[i].status === true ) {
                 result.push( response.data[0].category[i] )

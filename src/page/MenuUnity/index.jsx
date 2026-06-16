@@ -11,7 +11,7 @@ import getUnityListApi from '../../function/Data/Get/getUnityListApi';
 const MenuUnity = () => {
 
     const [ unityList, setUnityList ] = useState([])
-    
+
 
     const navigate = useNavigate()
 
@@ -33,36 +33,55 @@ const MenuUnity = () => {
 
 
         handleGetUnityList()
+        /*
         if( !JSON.parse(sessionStorage.getItem('shoppingCart')) ) {
             sessionStorage.setItem('shoppingCart', '[]')
         }
+            */
         
-        if( !JSON.parse(sessionStorage.getItem('currentAccount')) ) {
-            let tmpData = {
-                name : '',
+
+        let tmpData = JSON.parse(sessionStorage.getItem('currentAccount'))
+        
+        if( !tmpData ) {
+            tmpData = {
+                "name" : '',
+                "askedToUserLgpdTerm" : false,
+                "askedToUserCookies" : false
             }
             sessionStorage.setItem('currentAccount', JSON.stringify( tmpData ))
         }
+        
+
+
+
 
     }, [])  
 
+
+
     return (
         <div className={styles.menuUnityDivMain}>
-            { unityList.map((item, i) => (
-                <ButtonComp
-                    key = {i}
-                    text={item.name}
-                    onClickButton={ () => {
-                        navigate('/choose-unity-menu', {
-                            state : {'unityIdRecived' : item.unityId }
-                        })
-                    }}
-                    urlImage={`/src/assets/unidades/${item.unityId}-256px.jpg`}
-                />
+            <LabelComp 
+                text={" Escolha uma unidade"}
+            />
             
-            ))}
+            <div className={ styles.menuUnityDiv }>
+                { unityList.map((item, i) => (
+                    <ButtonComp
+                        key = {i}
+                        text={item.name}
+                        onClickButton={ () => {
+                            navigate('/choose-unity-menu', {
+                                state : {'unityIdRecived' : item.unityId }
+                            })
+                        }}
+                        urlImage={`/src/assets/unidades/${item.unityId}-256px.jpg`}
+                    />
+                
+                ))}
+            </div>
 
-            
+
         </div>
     );
 

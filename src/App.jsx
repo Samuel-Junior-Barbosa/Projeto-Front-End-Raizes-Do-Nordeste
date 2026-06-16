@@ -20,19 +20,23 @@ import OrdersPage from './page/Orders';
 import ConfirmAddressPage from './page/ConfirmAddress';
 import RegisteruserPage from './page/RegisterUser';
 import ChooseUnityMenu from './page/ChooseUnityMenu';
-import CreateProductPage from './page/ManageProduct/CreateProductPage';
-import ManageProductPage from './page/ManageProduct/ManageProductPage';
-import ManagePromotionDiscount from './page/ManagePromotionDiscount/index.jsx';
-import ManageMenuPage from './page/ManageProduct/ManageMenuPage/index.jsx';
+import CreateProductPage from './page/ManagePage/CreateProductPage';
+import ManageProductPage from './page/ManagePage/ManageProductPage';
+import ManagePromotionDiscount from './page/ManagePage/ManagePromotionDiscount/index.jsx';
+import ManageMenuPage from './page/ManagePage/ManageMenuPage/index.jsx';
+import ManageUnityPage from './page/ManagePage/ManageUnityPage/index.jsx';
+import ManageCategoryPage from './page/ManagePage/ManageCategoryPage/index.jsx';
 import NotPermissionPage from './page/NotPermissionPage/index.jsx';
-import ManageUnityPage from './page/ManageProduct/ManageUnityPage/index.jsx';
-import ManageCategoryPage from './page/ManageProduct/ManageCategoryPage/index.jsx';
 
 function App() {
 
   useEffect(() => {
     if( !sessionStorage.getItem('shoppingCart') ) {
-      sessionStorage.setItem('shoppingCart', JSON.stringify([]))
+      let tmp_template_cart = { 
+        "unityId" : 0,
+        "products" : []
+      }
+      sessionStorage.setItem('shoppingCart', JSON.stringify( tmp_template_cart))
     }
   }, [])
 

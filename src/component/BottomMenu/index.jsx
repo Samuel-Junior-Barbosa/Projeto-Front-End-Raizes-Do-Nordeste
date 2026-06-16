@@ -7,12 +7,13 @@ import settingsIcon from '/src/assets/menu.png';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined}) => {
+const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined, controlHiddenScroll=document.documentElement}) => {
 
     const [ productQuantityOnList, setProductQuantityOnList ] = useState(0);
     const navigate = useNavigate()
 
     const [ showSideMenu, setShowSideMenu ] = useState( controlSideMenuState )
+    const [ hidden, setHidden ] = useState(false)
 
     const handleGoToMenuPage = () => {
         if( !controlSideMenu ) {
@@ -42,15 +43,25 @@ const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined})
 
     }
     let tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
+    if( !tmp_cart_list ) {
+        let tmp_template_cart = { 
+            "unityId" : 0,
+            "products" : []
+        }
+        sessionStorage.setItem('shoppingCart', JSON.stringify( tmp_template_cart))
+        tmp_cart_list = tmp_template_cart
+    }
     let tmp_count = 0
     let tmp_total = 0
     
-    if( tmp_cart_list ) {
-        for( let i = 0; i < tmp_cart_list.length; i ++ ) {
-            tmp_count += tmp_cart_list[i].quantidade
+    
+    if( tmp_cart_list.products ) {
+        //console.log(" tmp_cart_list: ", tmp_cart_list.products)
+        for( let i = 0; i < tmp_cart_list.products.length; i ++ ) {
+            tmp_count += tmp_cart_list.products[i].quantidade
         }
-
     }
+    
     
     tmp_total = tmp_count
 
@@ -63,15 +74,45 @@ const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined})
     }, [tmp_total])
 
 
+
+    useEffect(() => {
+        let lastScroll = 0;
+        const handleScroll = () => {
+            const windowWidth = window.innerWidth;
+            const windowHeight= window.innerHeight
+            
+            if( windowWidth >= 660 && windowHeight >= 400) {
+                setHidden( false )
+                return
+            }
+
+
+            const currentScroll =  controlHiddenScroll.scrollTop;
+            //console.log(" CURRENT SCROLL: ", currentScroll)
+            if( currentScroll > lastScroll && currentScroll > 30 ) {
+                setHidden( true );
+            } else {
+                setHidden( false )
+            }
+            lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+        }
+
+        controlHiddenScroll.addEventListener( 'scroll', handleScroll)
+        return () => controlHiddenScroll.removeEventListener('scroll', handleScroll)
+    }, [])
+
     return (
-        <div className={styles.BottomMenuDivMain}>
-            <ButtonComp 
+        <div className={styles.BottomMenuDivMain}
+            style={{
+                bottom: hidden ? '-50%' : '0'
+            }}
+        >
+            <ButtonComp
                 nameClass={styles.bottomMenuButton}
                 icon={menuIcone}
                 onClickButton={ handleGoToMenuPage }
             />
 
-            
 
             <ButtonComp 
                 nameClass={styles.bottomMenuButton}
@@ -87,7 +128,7 @@ const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined})
                     </label>
                 )}
                 <ButtonComp
-                    nameClass={styles.bottomMenuButton}
+                    nameClass={styles.bottomMenuButtonCartButton}
                     idValue={styles.shoppingCarButton}
                     icon={shopping_car}
                     onClickButton={ handleGoToCar }

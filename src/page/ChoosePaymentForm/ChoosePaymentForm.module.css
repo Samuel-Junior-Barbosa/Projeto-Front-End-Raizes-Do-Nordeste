@@ -102,3 +102,15 @@
         padding: clamp(5px, 10px, 15px);
     }
 }
+
+
+
+@media screen and (max-width: 1400px) {
+    
+
+    .paymentList {
+        & > li {
+            font-size: clamp(0.9rem, 2rem, 4rem);
+        }
+    }
+}

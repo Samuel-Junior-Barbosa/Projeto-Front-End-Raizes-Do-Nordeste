@@ -121,7 +121,17 @@ const ManageUnityPage = () => {
             return
         }
 
-        await createNewUnity( unityName, cidade, bairro, rua, numero, uf, unityStatus )
+        let openingHours = {
+            "0" : ["domingo-feira", "fechado", "fechado"],
+            "1" : ["segunda-feira", "09:00", "18h"],
+            "2" : ["terca-feira", "09:00", "18h"],
+            "3" : ["quarta-feira", "09:00", "18h"],
+            "4" : ["quinta-feira", "09:00", "18h"],
+            "5" : ["sexta-feira", "09:00", "18h"],
+            "6" : ["sabado-feira", "09:00", "18h"]
+        };
+
+        await createNewUnity( unityName, cidade, bairro, rua, numero, uf, unityStatus, openingHours )
         handleResetValues()
         
         setShowCreateUnity( false )

@@ -11,6 +11,8 @@ import getFidelityPromo from '../../function/Buy/getFidelityPromo';
 
 const OrderReview = () => {
     const [ productList, setProductList ] = useState([])
+    const [ shoppingCartData, setShoppingCartData ] = useState([])
+
     const navigate = useNavigate()
     const sumProduct = JSON.parse( sessionStorage.getItem("orderTotalCost"))
     const [ discountAmount, setDiscountAmount ] = useState(0)
@@ -21,7 +23,9 @@ const OrderReview = () => {
     const [ discountCode, setDiscountCode ] = useState('')
     const [ idUser, setIdUser ] = useState('')
     const [ currentPaymentForm, setCurrentPaymentForm ] = useState({})
-    const username = JSON.parse(sessionStorage.getItem("currentAccount")).name
+    const currentAccount = JSON.parse(sessionStorage.getItem("currentAccount"))
+    const username = currentAccount.name
+
     const [ useFidelityPromotion, setUseFidelityPromotion ] = useState( false )
     const [ fidelityDescription, setFidelityDescription ] = useState('')
     const [ fidelityDiscountValue, setFidelityDiscountValue ] = useState(0)
@@ -123,6 +127,10 @@ const OrderReview = () => {
 
     const handleVerifyFidelity = async () => {
         let tmpIdUser = await getIdUser( username )
+
+        if( currentAccount.lgpdConcentiment.participationInTheLoyaltyProgram ) {
+            return
+        }
         let tmpFidality = await getBuyPoint( tmpIdUser )
 
         let promo = await getFidelityPromo("today")
@@ -158,7 +166,8 @@ const OrderReview = () => {
 
     useEffect(() => {
         let tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
-        setProductList( tmp_cart_list )
+        setShoppingCartData( tmp_cart_list )
+        setProductList( tmp_cart_list.products )
         let tmpDeliveryFee = JSON.parse(sessionStorage.getItem("deliveryFeeValue"))
         if( tmpDeliveryFee ) {
             tmpDeliveryFee = Number( tmpDeliveryFee ).toFixed(2)
@@ -168,6 +177,7 @@ const OrderReview = () => {
         let tmpChangeValue = JSON.parse(sessionStorage.getItem("changeValueValue"))
 
         if( tmpChangeValue ) {
+
             tmpChangeValue = Number( tmpChangeValue ).toFixed(2)
             setChangeValue( tmpChangeValue )
         }
@@ -264,7 +274,7 @@ const OrderReview = () => {
                     <hr />
                     <label>  SubTotal: R${sumProduct.toFixed(2)}</label>
                     <label>  Descontos: R${discountAmount.toFixed(2)}</label>
-                    <label>  Troco: R${changeValue.toFixed(2)} </label>
+                    <label>  Troco: R${changeValue} </label>
                     <label>  Taxa de entrega: R${deliveryFee.toFixed(2)}</label>
                     <hr />
                     <label>  Valor Total: R${Number(totalValue).toFixed(2)}</label>

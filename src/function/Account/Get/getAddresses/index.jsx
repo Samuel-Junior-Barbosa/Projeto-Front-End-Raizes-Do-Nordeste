@@ -1,5 +1,5 @@
-import api from '../../../Api';
-import getAccountData from '../../../Data/Get/getData';
+import api from '/src/function/Api';
+import getAccountData from '/src/function/Data/Get/getAccountData';
 
 
 

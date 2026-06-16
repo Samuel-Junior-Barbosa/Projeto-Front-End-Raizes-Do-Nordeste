@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import styles from './ManageCategoryPage.module.css';
 import LabelComp from '/src/component/LabelComp';
 import ButtonComp from '/src/component/ButtonComp';
-import getUnityListApi from '../../../function/Data/Get/getUnityListApi';
-import getUnityDataById from '../../../function/Data/Get/getUnityDataById';
-import getCategoryListByUnityId from '../../../function/Data/Get/getCategoryListByUnityId';
-import alterCategoryInformation from '../../../function/Data/Set/alterCategoryInformation';
-import removeCategoryOfUnity from '../../../function/Data/Set/removeCategoryOfUnity';
-import createNewCategory from '../../../function/Data/Set/createNewCategory';
+import getUnityListApi from '/src/function/Data/Get/getUnityListApi';
+import getUnityDataById from '/src/function/Data/Get/getUnityDataById';
+import getCategoryListByUnityId from '/src/function/Data/Get/getCategoryListByUnityId';
+import alterCategoryInformation from '/src/function/Data/Set/alterCategoryInformation';
+import removeCategoryOfUnity from '/src/function/Data/Set/removeCategoryOfUnity';
+import createNewCategory from '/src/function/Data/Set/createNewCategory';
 
 const ManageCategoryPage = () => {
     const [ categoryList, setCategoryList ] = useState([])

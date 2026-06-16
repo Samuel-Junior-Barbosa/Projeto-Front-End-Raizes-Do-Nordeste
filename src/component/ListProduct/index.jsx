@@ -3,7 +3,7 @@ import styles from './ListProduct.module.css'
 import { useNavigate } from 'react-router-dom';
 import ButtonComp from '../ButtonComp';
 
-const ListProduct = ({productListData, setProductListData=undefined, nameClass='', itemChoosedState = undefined, chooseQuantity=false, unityId}) => {
+const ListProduct = ({productListData, setProductListData=undefined, nameClass='', itemChoosedState = undefined, chooseQuantity=false, unityId=''}) => {
     
     const navigate = useNavigate()
 

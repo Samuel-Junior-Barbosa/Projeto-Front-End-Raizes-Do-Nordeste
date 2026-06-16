@@ -4,14 +4,87 @@
 }
 
 .RegisterUserDiv {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(20px, max-content);
+    display: inline-block;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
     background-color: var(--background-label);
     width: clamp(100px, 500px, 100dvw);
     height: clamp(100px, 400px, 100dvh);
-
+    border-radius: clamp(5px, 10px, 40px);
+    box-shadow: 3px 4px 5px var(--shadow-color);
 
     color: var(--color-font);
     margin: auto;
+    margin-top: clamp(10px, 20px, 100px);
+
+    padding-bottom: clamp(10px, 30px, 100px);
+    gap: clamp(5px, 20px, 40px);
+
+    overflow-y: scroll;
+
+
+    & > div > input {
+        border-radius: clamp(4px, 5px, 20px);
+        padding-left: clamp(2px, 5px, 10px);
+    }
+
+}
+
+.labelInformation {
+    text-align: center;
+}
+
+.inputInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 50%;
+
+    margin: auto;
+}
+
+.lgpdDiv {
+    display: flex;
+    flex-direction: column;
+    
+    width: 70%;
+    align-items: center;
+    margin: auto;
+    margin-top: clamp(10px, 20px, 40px);
+    gap: clamp(10px, 20px, 40px);
+
+    font-size: clamp(0.6rem, 1.2rem, 3rem);
+    color: var(--color-font2);
+    & > div {
+        border-radius: clamp(4px, 5px, 20px);
+        padding: clamp(4px, 5px, 10px);
+        background-color: var(--background-option);
+    }
+
+    & > div > label >  input {
+        display: block;
+        position: relative;
+
+        width: clamp(10px, 20px, 200px);
+        height: clamp(10px, 20px, 200px);
+        text-align: center;
+        margin: auto;
+    }
+}
+
+.bottomButton {
+    display: flex;
+    flex-direction: row;
+
+    margin: auto;
+    margin-top: clamp(5px, 10px, 20px);
+
+    & > button {
+        margin: auto;
+        padding: clamp(4px, 10px, 20px);
+    }
 }

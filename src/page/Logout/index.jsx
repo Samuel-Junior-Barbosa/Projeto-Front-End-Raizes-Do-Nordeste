@@ -16,7 +16,6 @@ const LogoutPage = () => {
 
     return (
         <div>
-
             <LabelComp
                 text={"Desconectado com sucesso."}
             />

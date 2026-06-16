@@ -8,16 +8,34 @@ import { useNavigate } from "react-router-dom";
 const ReviewCart = () => {
 
     const [ productList, setProductList ] = useState([])
+    const [ shoppingCartData, setShoppingCartData ] = useState({})
 
     const navigate = useNavigate()
 
     let tmp_cart_list = []
     tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
-    if( !tmp_cart_list ) {
-        sessionStorage.setItem('shoppingCart', '[]')
-        tmp_cart_list = []
+    if( !tmp_cart_list.products ) {
+        let tmp_template_cart = { 
+            "unityId" : 0,
+            "products" : []
+        }
+        sessionStorage.setItem('shoppingCart', JSON.stringify( tmp_template_cart))
+        tmp_cart_list = tmpCartData
     }
 
+
+    let sumProduct = 0
+    let tmpProducts;
+
+
+    if( tmp_cart_list.products ) {
+        tmpProducts = JSON.parse(sessionStorage.getItem("shoppingCart"))
+        sumProduct = tmpProducts.products.reduce((acumulador, produto) => {
+            return acumulador + (
+                produto.precovenda * produto.quantidade
+            )
+        }, 0)
+    }
 
     const handleFinishShop = () => {
         sessionStorage.setItem("orderTotalCost", sumProduct)
@@ -41,23 +59,15 @@ const ReviewCart = () => {
     useEffect(() => {
 
         let tmp_sum = 0
-        for(let i = 0; i < tmp_cart_list.length; i ++ ) {
-            tmp_sum += tmp_cart_list[i].precovenda * tmp_cart_list[i].quantidade
+        for(let i = 0; i < tmp_cart_list.products.length; i ++ ) {
+            tmp_sum += tmp_cart_list.products[i].precovenda * tmp_cart_list.products[i].quantidade
         }
-        setProductList( tmp_cart_list )
+        setShoppingCartData( tmp_cart_list )
+        setProductList( tmp_cart_list.products )
 
     }, [])
     
 
-
-    let sumProduct = 0
-    if( tmp_cart_list.length ) {
-        sumProduct = JSON.parse(sessionStorage.getItem("shoppingCart")).reduce((acumulador, produto) => {
-            return acumulador + (
-                produto.precovenda * produto.quantidade
-            )
-        }, 0)
-    }
     
     return (
         <div>
@@ -70,6 +80,7 @@ const ReviewCart = () => {
                 setProductListData={ setProductList }
                 nameClass={styles.productListDiv}
                 chooseQuantity={ true }
+                unityId={ shoppingCartData.unityId }
             />
 
             <div

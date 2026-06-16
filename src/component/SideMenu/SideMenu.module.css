@@ -35,19 +35,19 @@
 
 
 .hiddenSideMenu {
-    animation: hiddingSideMenuAnimation 0.5s forwards !important;
+    animation: hiddingSideMenuAnimation 0.5s forwards;
 
     & > ul {
-        animation: hiddingSideMenuAnimation 0.5s forwards !important;
+        animation: hiddingSideMenuAnimation 0.5s forwards;
     }
 }
 
 
 .showingSideMenu {
-    animation: showingSideMenuAnimation 0.5s forwards !important;
+    animation: showingSideMenuAnimation 0.5s forwards;
 
     & > ul {
-        animation: showingSideMenuAnimation 0.5s forwards !important;
+        animation: showingSideMenuAnimation 0.5s forwards;
     }
     
 }
@@ -73,5 +73,30 @@
 
     to {
         left: 0%
+    }
+}
+
+
+
+
+@media screen and (max-width : 2000px)  {
+    .SideMenuDiv {    
+        width: clamp(20px, 15%, 35dvw);
+        height: clamp(100px, 100dvh, 100dvh);
+    }
+}
+
+
+@media screen and (max-width : 1000px)  {
+    .SideMenuDiv {    
+        width: clamp(20px, 20%, 35dvw);
+        height: clamp(100px, 100dvh, 100dvh);
+    }
+}
+
+@media screen and (max-width : 500px)  {
+    .SideMenuDiv {    
+        width: clamp(20px, 20%, 50dvw);
+        height: clamp(100px, 100dvh, 100dvh);
     }
 }

@@ -8,12 +8,28 @@ import PromoWindowComp from '/src/component/PromoWindowComp';
 import { useLocation, useNavigate } from 'react-router-dom';
 import getUnityListApi from '../../function/Data/Get/getUnityListApi';
 import getCategoryListByUnityId from '../../function/Data/Get/getCategoryListByUnityId';
+import getAccountData from '../../function/Data/Get/getAccountData';
+import getIdUser from '../../function/Account/Get/getIdUser';
+import getUnityDataById from '../../function/Data/Get/getUnityDataById';
+import dayjs from 'dayjs';
 
 const ChooseUnityMenu = () => {
 
     const [ productList, setProductList ] = useState([])
     const [ categoryList, setCategoryList ] = useState([])
+    const [ unityData, setUnityData ] = useState({})
     const [ showPromoWindow, setShowPromoWindow ] = useState(true)
+    const [ initDay, setInitDay ] = useState('')
+    const [ endDay, setEndDay  ] = useState('')
+
+
+    const todayDate = new Date();
+    const day = String(todayDate.getDate()).padStart(2, '0')
+    const month = String(todayDate.getDate() + 1).padStart(2, '0')
+    const year = todayDate.getFullYear()
+    const week = todayDate.toLocaleDateString('pt-BR', {weekday : 'long'});
+
+    const indexWeek = dayjs().day()
 
     const [ unityId, setUnityId ] = useState(0)
 
@@ -22,6 +38,13 @@ const ChooseUnityMenu = () => {
 
     const { unityIdRecived } = location.state || { unityIdRecived : null }
 
+    const handleGetUnityData = async ( unityId ) => {
+        const response = await getUnityDataById( unityId )
+        setUnityData( response )
+        console.log(" handleGetUnityData: ", response.openingHours[indexWeek])
+        setInitDay( response.openingHours[indexWeek][1] )
+        setEndDay( response.openingHours[indexWeek][2] )
+    }
 
     // Função para simular uma requisição de uma api
     const getCategoryList = async() => {
@@ -36,6 +59,28 @@ const ChooseUnityMenu = () => {
     }
 
 
+    const handleVerifyPromo = async () => {
+
+        let tmpAccountData = JSON.parse( sessionStorage.getItem('currentAccount') )
+        if( !tmpAccountData ) {
+            return
+        }
+        //console.log(" tmpAccountData1: ", tmpAccountData.lgpdConcentiment.participationInTheLoyaltyProgram)
+        if( !tmpAccountData.lgpdConcentiment.participationInTheLoyaltyProgram ) {
+            setShowPromoWindow( false )
+            return
+        }
+
+        //console.log(" tmpAccountData2: ", tmpAccountData)
+
+        let tmpShowPromoWindow = JSON.parse( sessionStorage.getItem('showPromoWindow'))
+        if( tmpShowPromoWindow === false || tmpShowPromoWindow === true ) {
+            setShowPromoWindow( tmpShowPromoWindow )
+        }
+
+
+
+    }
 
 
 
@@ -45,12 +90,9 @@ const ChooseUnityMenu = () => {
         if( unityIdRecived ) {
             setUnityId( Number(unityIdRecived) )
         }
-        
-        let tmpShowPromoWindow = JSON.parse( sessionStorage.getItem('showPromoWindow'))
+        handleGetUnityData( unityIdRecived )
 
-        if( tmpShowPromoWindow === false || tmpShowPromoWindow === true ) {
-            setShowPromoWindow( tmpShowPromoWindow )
-        }
+        handleVerifyPromo()
         
 
         getCategoryList()
@@ -69,29 +111,41 @@ const ChooseUnityMenu = () => {
 
     return (
         <div className={styles.ChooseUnityMenuMainDiv}>
-            { categoryList.length ? categoryList.map((item, i) => (
-                <ButtonComp
-                    key = {i}
-                    text={item.name}
-                    onClickButton={ () => {
-                        navigate(`/list-product-of-category`, {
-                            state : {
-                                'unityIdRecived' : unityIdRecived,
-                                'categoryIdRecived' : item.categoryId
-                                
-                            }
-                        })
-                    }}
-                    urlImage={`/src/assets/categorias/unidades/${unityIdRecived}/${item.categoryId}-256px.jpg`}
-                />
-            )) : (
-                <div className={styles.categoryEmptyListDiv}>
-                    <LabelComp 
-                        text={"Nenhuma categoria encontrada"}
-                    />
-                </div>
+            <LabelComp
+                nameClass={ styles.ChooseUnityMenuTitle }
+                text={"Escolha uma categoria do cardapio"}
+            />
+            { unityData && (
+                <label
+                    className={styles.hourTitle}
+                > Aberto hoje das: {initDay} até ás: {endDay}</label>
             )}
+            
 
+            <div className={ styles.ChooseUnityMenuDiv}>            
+                { categoryList.length ? categoryList.map((item, i) => (
+                    <ButtonComp
+                        key = {i}
+                        text={item.name}
+                        onClickButton={ () => {
+                            navigate(`/list-product-of-category`, {
+                                state : {
+                                    'unityIdRecived' : unityIdRecived,
+                                    'categoryIdRecived' : item.categoryId
+                                    
+                                }
+                            })
+                        }}
+                        urlImage={`/src/assets/categorias/unidades/${unityIdRecived}/${item.categoryId}-256px.jpg`}
+                    />
+                )) : (
+                    <div className={styles.categoryEmptyListDiv}>
+                        <LabelComp 
+                            text={"Nenhuma categoria encontrada"}
+                        />
+                    </div>
+                )}
+            </div>
             { showPromoWindow && (
                 <PromoWindowComp
                     setControlFrame = { setShowPromoWindow }

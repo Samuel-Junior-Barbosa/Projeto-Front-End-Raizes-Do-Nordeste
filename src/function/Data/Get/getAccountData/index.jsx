@@ -11,17 +11,19 @@ const getAccountData = async ( idUser = '') => {
 
     if( idUser ) {
         response = await api.get(
-            `/accountData/${idUser}`
+            `/accountData?accountId=${idUser}`
         )
+        data = response.data[0]
     }
 
     else {
         response = await api.get(
             '/accountData'
         )
+        data = response.data
     }
 
-    data = response.data
+    
 
     //console.log(" response: ", response)
     //console.log(" idUser: ", idUser)

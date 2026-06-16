@@ -3,11 +3,14 @@ import ButtonComp from "../../component/ButtonComp";
 import styles from "./login.module.css";
 
 import LabelComp from '/src/component/LabelComp'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-import simulationLoginApi from "/src/function/Account/loginApi";
+import simulationLoginApi from "/src/function/Account/Get/loginApi";
 
 const loginPage = () => {
+
+    const firstInputFocus = useRef(null)
+    const secondInputFocus = useRef(null)
 
     const [ username, setUsername ] = useState('')
     const [ password, setPassword ] = useState('')
@@ -22,15 +25,16 @@ const loginPage = () => {
         const response = await simulationLoginApi( username, password )
         console.log(" HANDLE LOGIN: ", response)
         if( response.status === 0 && response.content.logged === true ) {
-            console.log(" LOGIN FOUND: ", response)
+            //console.log(" LOGIN FOUND: ", response)
             sessionStorage.setItem('currentAccount', JSON.stringify( response.content.data ) )
             
             if( beforePage ) {
                 //console.log(" RETURN PAGE", location, navigate)
                 setTimeout(() => {
                     //console.log(" RETURNING....")
+                    //console.log(" ROUTES: ", location)
                     navigate( -2 )
-                }, 500)
+                }, 100)
                 
             }
 
@@ -40,13 +44,22 @@ const loginPage = () => {
             //console.log(" GO TO HOME PAGE")
             
         }
+        else {
+            alert("Informações incorretas, tente novamente")
+        }
 
         //console.log(" DATA LOGIN: ", response)
     }
 
+    const handleChangeInput = ( key ) => {
+        console.log(" KEY PRESSED: ", key)
+        if( key === 'Enter' || key === 'NumpadEnter' ) {
+            secondInputFocus.current?.focus()
+        }
+    }
 
     const handlePasswordKeydown = ( key ) => {
-        if( key === 'Enter' || key === 'EnterNumpad' ) {
+        if( key === 'Enter' || key === 'NumpadEnter' ) {
             handleLogin()
         }
     }
@@ -57,6 +70,7 @@ const loginPage = () => {
             className={ styles.loginMainDiv }
         >
             <LabelComp
+                nameClass={ styles.loginTitle }
                 text={'LOGIN'}
             />
 
@@ -65,14 +79,17 @@ const loginPage = () => {
                 
                 <label> Usuario: </label>
                 <input
+                    ref={ firstInputFocus }
                     type={"text"}
                     value={username}
                     onChange={ (e) => setUsername(
                             e.target.value.trim().toLowerCase()
                     )}
+                    onKeyDown={ (e) => handleChangeInput( e.key )}
                 />
                 <label> Senha: </label>
                 <input
+                    ref={ secondInputFocus }
                     type={"password"}
                     value={password}
                     onChange={ (e) => setPassword(

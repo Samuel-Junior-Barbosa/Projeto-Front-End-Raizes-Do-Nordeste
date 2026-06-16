@@ -1,4 +1,4 @@
-import getAccountData from "../../Data/Get/getData";
+import getAccountData from "/src/function/Data/Get/getAccountData";
 import getIdUser from '/src/function/Account/Get/getIdUser';
 
 const simulationLoginApi = async ( user, pass ) => {

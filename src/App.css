@@ -8,11 +8,13 @@
 html {
     overflow-x: hidden;
     overflow-y: hidden;
+
+    background-color: var(--background-window);
 }
 body {
     width: 100dvw;
     height: 100dvh;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
 
 }

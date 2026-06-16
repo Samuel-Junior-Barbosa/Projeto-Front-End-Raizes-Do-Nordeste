@@ -59,3 +59,54 @@
 
     margin-top: clamp(4px, 6px, 9px);
 }
+
+
+
+@media screen and (max-width : 400px) {
+    .loginMainDiv {
+        position: relative;
+
+        width: clamp(100px, 90%, 100%);
+        padding: clamp(4px, 10px, 20px);
+
+
+        top: 25%;
+        
+        
+
+    }
+    .loginDiv {
+
+    }
+}
+
+
+
+
+
+
+@media screen and (max-height : 300px)  {
+    .loginMainDiv {
+        padding: clamp(5px, 10px, 100px);
+    }
+    .loginTitle {
+        font-size: clamp(0.5rem, 1rem, 2rem);
+        margin: 0px auto;
+    }
+    .loginDiv {
+        margin-top: clamp(2px, 5px, 20px);
+
+        & > label {
+            font-size: clamp(0.5rem, 0.8rem, 2rem);
+        }
+
+        & > input {
+            width: clamp(10px, 90%, 90%);
+            height: clamp(10px, 1.2rem, 200px);
+        }
+    }
+
+    .loginFunctionButtonDiv {
+        
+    }
+}

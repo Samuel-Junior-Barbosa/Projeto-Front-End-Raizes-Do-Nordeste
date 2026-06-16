@@ -3,7 +3,7 @@ import styles from './ConfirmAddress.module.css';
 import LabelComp from '/src/component/LabelComp';
 import ButtonComp from '../../component/ButtonComp';
 import { useNavigate } from 'react-router-dom';
-import getAccountData from '../../function/Data/Get/getData';
+import getAccountData from '../../function/Data/Get/getAccountData';
 
 import getIdUser from '../../function/Account/Get/getIdUser';
 import getAddresses from '../../function/Account/Get/getAddresses';

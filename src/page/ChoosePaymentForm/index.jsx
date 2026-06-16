@@ -64,6 +64,7 @@ const ChoosePaymentForm = () => {
                     //console.log(" paymentFormList: ", paymentFormList[i].parcel.length)
                     tmpPaymentForm = paymentFormList[i]
                     tmpPaymentForm.quantity = 1
+                    tmpPaymentForm.paymentValue = orderTotalCost    
                     sessionStorage.setItem("paymentForm", JSON.stringify( tmpPaymentForm ))
                     setPaymentForm( tmpPaymentForm )
 

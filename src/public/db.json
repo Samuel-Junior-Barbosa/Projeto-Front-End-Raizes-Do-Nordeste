@@ -103,53 +103,81 @@
   ],
   "accountData": [
     {
+      "accountId": 1,
       "name": "admin",
       "password": "admin",
+      "email": "admin@admin.com",
       "lgpdConcentiment": {
         "systemAuthentication": false,
         "placingOrders": false,
-        "participationInTheLoyaltyProgram": false
+        "participationInTheLoyaltyProgram": false,
+        "askedToUserLgpdTerm": false,
+        "askedToUserCookies": true
       },
-      "buyPoint": 8,
+      "buyPoint": 9,
       "shoppingCart": [],
-      "id": "uP9rUfJqjcE",
-      "administrator": true
+      "administrator": true,
+      "status": true,
+      "id": "uP9rUfJqjcE"
     },
     {
+      "accountId": 2,
       "name": "clienteteste",
       "password": "123",
+      "email": "teste2@teste.com",
       "lgpdConcentiment": {
         "systemAuthentication": false,
         "placingOrders": false,
-        "participationInTheLoyaltyProgram": false
+        "participationInTheLoyaltyProgram": false,
+        "askedToUserLgpdTerm": false,
+        "askedToUserCookies": false
+      },
+      "buyPoint": 3,
+      "shoppingCart": [],
+      "administrator": false,
+      "status": true,
+      "id": "M7djp_WLXYo"
+    },
+    {
+      "accountId": 3,
+      "name": "teste",
+      "password": "teste123",
+      "lgpdConcentiment": {
+        "systemAuthentication": true,
+        "placingOrders": true,
+        "participationInTheLoyaltyProgram": true
       },
       "buyPoint": 0,
       "shoppingCart": [],
-      "id": "M7djp_WLXYo",
-      "administrator": false
+      "administrator": false,
+      "status": true,
+      "id": "Gk6GTJPKeyI"
     }
   ],
   "addresses": [
     {
-      "id": "1",
-      "accountId": "uP9rUfJqjcE",
+      "accountId": "1",
+      "addressId": 1,
       "cidade": "Testilandia",
       "bairro": "Teste da silva",
       "rua": " AV. Test Road",
       "numero": "00",
-      "uf": "sp"
+      "uf": "sp",
+      "id": "1"
     },
     {
-      "id": "2",
-      "accountId": "M7djp_WLXYo",
+      "accountId": 2,
+      "addressId": 2,
       "cidade": "Testilandia",
       "bairro": "Teste da silva",
       "rua": " AV. Test Road",
       "numero": "00",
-      "uf": "sp"
+      "uf": "sp",
+      "id": "2"
     },
     {
-      "accountId": "uP9rUfJqjcE",
+      "accountId": 3,
+      "addressId": 3,
       "cidade": "TESTE",
       "bairro": "TESTE",
       "rua": "TESTE",
@@ -158,37 +186,221 @@
       "id": "feFpYdSgpdA"
     },
     {
-      "accountId": "uP9rUfJqjcE",
+      "accountId": 4,
+      "addressId": 4,
       "cidade": "TESTE2",
       "bairro": "TESTE2",
       "rua": "TESTE2",
       "numero": "TESTE2",
       "uf": "TESTE2",
       "id": "GHpzrK7ulVE"
+    },
+    {
+      "accountId": 1,
+      "addressId": 5,
+      "cidade": "TESTE",
+      "bairro": "TESTE",
+      "rua": "TESTE",
+      "numero": "TESTE",
+      "uf": "TESTE",
+      "id": "gR3PU38oFvI"
     }
   ],
   "orders": [
     {
       "id_pedido": 1,
-      "id_cliente": "uP9rUfJqjcE",
+      "id_cliente": 2,
       "itens": [
         {
           "id": 1,
           "produto": "Carne de sol",
           "precovenda": "01.00",
-          "quantidade": 5
+          "quantidade": 1
         }
       ],
-      "totalCusto": 5,
-      "status": "a confirmar",
-      "addressId": "1",
-      "id": "W4RDRCXo-D4"
+      "totalCusto": 1,
+      "status": "entregue",
+      "address": 0,
+      "id": "jhob_K9y3uY"
+    },
+    {
+      "id_pedido": 2,
+      "id_cliente": 2,
+      "itens": [
+        {
+          "id": 1,
+          "produto": "Carne de sol",
+          "precovenda": "01.00",
+          "quantidade": 1
+        }
+      ],
+      "totalCusto": 1,
+      "status": "entregue",
+      "address": 0,
+      "id": "pY3ZB1X1c6g"
+    },
+    {
+      "id_pedido": 3,
+      "id_cliente": 1,
+      "itens": [
+        {
+          "id": 1,
+          "produto": "Carne de sol",
+          "precovenda": "01.00",
+          "quantidade": 2
+        },
+        {
+          "id": 2,
+          "produto": "Buchada de bode",
+          "precovenda": "02.00",
+          "quantidade": 3
+        },
+        {
+          "id": 5,
+          "produto": "Pamonha",
+          "precovenda": "05.00",
+          "quantidade": 2
+        },
+        {
+          "id": 4,
+          "produto": "Cuscuz",
+          "precovenda": "04.00",
+          "quantidade": 1
+        },
+        {
+          "id": 6,
+          "produto": "Bolo de milho",
+          "precovenda": "06.00",
+          "quantidade": 1
+        },
+        {
+          "id": 7,
+          "produto": "Café Forte",
+          "precovenda": "07.00",
+          "quantidade": 1
+        },
+        {
+          "id": 8,
+          "produto": "Caldo de cana",
+          "precovenda": "08.00",
+          "quantidade": 1
+        },
+        {
+          "id": 9,
+          "produto": "Cajuína",
+          "precovenda": "09.00",
+          "quantidade": 1
+        }
+      ],
+      "totalCusto": 52,
+      "status": "entregue",
+      "address": 0,
+      "id": "e8-CGqpabzA"
+    },
+    {
+      "id_pedido": 4,
+      "id_cliente": 1,
+      "itens": [
+        {
+          "id": 4,
+          "produto": "Cuscuz",
+          "precovenda": "04.00",
+          "quantidade": 2
+        },
+        {
+          "id": 2,
+          "produto": "Buchada de bode",
+          "precovenda": "02.00",
+          "quantidade": 1
+        },
+        {
+          "id": 3,
+          "produto": "Sarapatel",
+          "precovenda": "03.00",
+          "quantidade": 1
+        },
+        {
+          "id": 5,
+          "produto": "Pamonha",
+          "precovenda": "05.00",
+          "quantidade": 1
+        },
+        {
+          "id": 6,
+          "produto": "Bolo de milho",
+          "precovenda": "06.00",
+          "quantidade": 1
+        },
+        {
+          "id": 7,
+          "produto": "Café Forte",
+          "precovenda": "07.00",
+          "quantidade": 1
+        }
+      ],
+      "totalCusto": 31,
+      "status": "entregue",
+      "address": 0,
+      "id": "YrKaEQUDqaY"
+    },
+    {
+      "id_pedido": 5,
+      "id_cliente": 1,
+      "itens": [
+        {
+          "id": 1,
+          "produto": "Carne de sol",
+          "precovenda": "01.00",
+          "quantidade": 1
+        }
+      ],
+      "totalCusto": 1,
+      "status": "preparando",
+      "address": 0,
+      "id": "SGjy_eh7Plw"
     }
   ],
   "listOfUnits": [
     {
       "unityId": 1,
       "name": "RAIZES DO NORDESTE - ALAGOAS",
+      "openingHours": {
+        "0": [
+          "domingo-feira",
+          "fechado",
+          "fechado"
+        ],
+        "1": [
+          "segunda-feira",
+          "09:00",
+          "18h"
+        ],
+        "2": [
+          "terca-feira",
+          "09:00",
+          "18h"
+        ],
+        "3": [
+          "quarta-feira",
+          "09:00",
+          "18h"
+        ],
+        "4": [
+          "quinta-feira",
+          "09:00",
+          "18h"
+        ],
+        "5": [
+          "sexta-feira",
+          "09:00",
+          "18h"
+        ],
+        "6": [
+          "sabado-feira",
+          "09:00",
+          "18h"
+        ]
+      },
       "address": {
         "cidade": "MACEIO",
         "bairro": "TESTE DA SILVA",
@@ -202,6 +414,43 @@
     {
       "unityId": 2,
       "name": "RAIZES DO NORDESTE - BAHIA",
+      "openingHours": {
+        "0": [
+          "domingo-feira",
+          "fechado",
+          "fechado"
+        ],
+        "1": [
+          "segunda-feira",
+          "09:00",
+          "18h"
+        ],
+        "2": [
+          "terca-feira",
+          "09:00",
+          "18h"
+        ],
+        "3": [
+          "quarta-feira",
+          "09:00",
+          "18h"
+        ],
+        "4": [
+          "quinta-feira",
+          "09:00",
+          "18h"
+        ],
+        "5": [
+          "sexta-feira",
+          "09:00",
+          "18h"
+        ],
+        "6": [
+          "sabado-feira",
+          "09:00",
+          "18h"
+        ]
+      },
       "address": {
         "cidade": "Salvador",
         "bairro": "Teste da silva",
@@ -215,6 +464,43 @@
     {
       "unityId": 3,
       "name": "RAIZES DO NORDESTE - CEARA",
+      "openingHours": {
+        "0": [
+          "domingo-feira",
+          "fechado",
+          "fechado"
+        ],
+        "1": [
+          "segunda-feira",
+          "09:00",
+          "18h"
+        ],
+        "2": [
+          "terca-feira",
+          "09:00",
+          "18h"
+        ],
+        "3": [
+          "quarta-feira",
+          "09:00",
+          "18h"
+        ],
+        "4": [
+          "quinta-feira",
+          "09:00",
+          "18h"
+        ],
+        "5": [
+          "sexta-feira",
+          "09:00",
+          "18h"
+        ],
+        "6": [
+          "sabado-feira",
+          "09:00",
+          "18h"
+        ]
+      },
       "address": {
         "cidade": "Fortaleza",
         "bairro": "Teste da silva",
@@ -228,6 +514,43 @@
     {
       "unityId": 4,
       "name": "TESTE",
+      "openingHours": {
+        "0": [
+          "domingo-feira",
+          "fechado",
+          "fechado"
+        ],
+        "1": [
+          "segunda-feira",
+          "09:00",
+          "18h"
+        ],
+        "2": [
+          "terca-feira",
+          "09:00",
+          "18h"
+        ],
+        "3": [
+          "quarta-feira",
+          "09:00",
+          "18h"
+        ],
+        "4": [
+          "quinta-feira",
+          "09:00",
+          "18h"
+        ],
+        "5": [
+          "sexta-feira",
+          "09:00",
+          "18h"
+        ],
+        "6": [
+          "sabado-feira",
+          "09:00",
+          "18h"
+        ]
+      },
       "address": {
         "cidade": "TESTE",
         "bairro": "TESTE",

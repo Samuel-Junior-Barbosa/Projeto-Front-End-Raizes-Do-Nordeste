@@ -79,6 +79,7 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
 
         else {
             tmpClass += ' ' + styles.showingSideMenu
+            handleGetAccountData()
             setCurrentNameClass( tmpClass )
             setMenuStatusState( true )
             if( setShowSideMenu ) {

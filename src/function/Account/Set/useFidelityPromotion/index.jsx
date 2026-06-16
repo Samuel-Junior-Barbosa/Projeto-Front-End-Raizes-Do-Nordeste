@@ -1,9 +1,9 @@
 import axios from "axios";
-import getAccountData from "../../Data/Get/getData";
-import getBuyPoint from "../Get/getBuyPoints";
-import api from "../../Api";
-import getFidelityPromo from "../../Buy/getFidelityPromo";
-import removeBuyPoint from "../removeBuyPoint";
+import getAccountData from "/src/function/Data/Get/getAccountData";
+import getBuyPoint from "/src/function/Account/Get/getBuyPoints";
+import api from "/src/function/Api";
+import getFidelityPromo from "/src/function/Buy/getFidelityPromo";
+import removeBuyPoint from "/src/function/Account/Set/removeBuyPoint";
 
 
 

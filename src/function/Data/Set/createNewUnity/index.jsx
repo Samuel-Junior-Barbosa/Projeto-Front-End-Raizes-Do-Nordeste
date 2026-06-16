@@ -4,7 +4,7 @@ import createMenuForUnity from "../createMenuForUnity";
 
 
 
-const createNewUnity = async( unityName, city, neiborhood, street, number, uf, status  ) => {
+const createNewUnity = async( unityName, city, neiborhood, street, number, uf, status, openingHours  ) => {
 
     if ( status === 'false') {
         status = false
@@ -32,6 +32,7 @@ const createNewUnity = async( unityName, city, neiborhood, street, number, uf, s
     let newUnityData = {
         'unityId' : lastId,
         'name' : unityName,
+        'openingHours' : openingHours,
         'address' : {
             'cidade' : city,
             'bairro' : neiborhood,

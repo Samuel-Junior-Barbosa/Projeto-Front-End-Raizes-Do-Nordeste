@@ -9,6 +9,7 @@ import setOrderStatus from '../../function/Order/Set/setOrderStatus';
 const OrdersPage = () => {
 
     const [ orders, setOrders ] = useState([]);
+    const [ deliveredOrders, setDeliveredOrders ] = useState(0)
 
     const handleGetOrderApi = async () => {
         const username = JSON.parse(sessionStorage.getItem("currentAccount")).name
@@ -19,6 +20,41 @@ const OrdersPage = () => {
 
     }
 
+
+    const handleRefreshOrders = async () => {
+        let tmpEntregues = 0
+        let tmpOrders = [...orders]
+        setTimeout( async () => {
+            //console.log(" verify orders: ", orders)
+            if( tmpOrders.length > 0 && tmpEntregues < tmpOrders.length) {
+                for( let i = 0; i < tmpOrders.length; i ++ ) {
+                    //console.log(" TMP ENTREGUES: ", tmpEntregues)
+                    let tmpResponse = await setOrderStatus( tmpOrders[i].id_pedido)
+                    //console.log(" TMP RESPONSE: ", tmpResponse)
+                    tmpOrders[i].status = tmpResponse.status
+                    if( tmpResponse.status == 'entregue' ) {
+                        //console.log(" ENTREGUE")
+                        tmpEntregues += 1
+                        continue
+                    }
+                    
+                }
+
+                
+                if( tmpEntregues === tmpOrders.length ) {
+                    setDeliveredOrders( tmpEntregues )
+                }
+                
+
+                setOrders( tmpOrders )
+                sessionStorage.setItem("orders", JSON.stringify(tmpOrders) )
+
+            }
+
+        }, 2000)
+    }
+
+
     useEffect(() => {
         handleGetOrderApi()
     }, [])
@@ -26,45 +62,10 @@ const OrdersPage = () => {
     
     /* Simula uma rotina de verificação de status de pedido */
     useEffect(() => {
-
-        let tmpEntregues = 0
-        let tmpOrders = [...orders]
-
-        setTimeout(() => {
-            //console.log(" verify orders: ", orders)
-            if( tmpOrders.length > 0 ) {
-                for( let i = 0; i < tmpOrders.length; i ++ ) {
-                    
-                    if( tmpOrders[i].status === 'a confirmar' ) {
-                        tmpOrders[i].status = 'preparando'
-                    }
-                    else if( tmpOrders[i].status === 'preparando' ) {
-                        tmpOrders[i].status = 'a caminho'
-                    }
-
-                    else if( tmpOrders[i].status === 'a caminho' ) {
-                        tmpOrders[i].status = 'entregue'
-
-                    }
-                    else if( tmpOrders[i].status === 'entregue' ) {
-                        tmpEntregues += 1
-                        continue
-                    }
-                    else {
-                        tmpOrders[i].status = 'a confirmar'
-                    }
-                    
-                   setOrderStatus( tmpOrders[i].id)
-                    
-                }
-
-                if( tmpEntregues === tmpOrders.length ) {
-                    return
-                }
-                setOrders( tmpOrders )
-                sessionStorage.setItem("orders", JSON.stringify(tmpOrders) )
-            }
-        }, 2000)
+        if( orders && deliveredOrders < orders.length ) {
+            handleRefreshOrders()
+        }
+        
     }, [orders])
 
     return (

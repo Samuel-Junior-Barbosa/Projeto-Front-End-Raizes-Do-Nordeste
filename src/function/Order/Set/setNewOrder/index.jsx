@@ -1,16 +1,16 @@
 import axios from "axios";
-import getLastOrder from "../../../Account/Get/getLastOrder";
+import getLastOrder from "/src/function/Account/Get/getLastOrder";
 import api from "../../../Api";
 
 
 const setNewOrder = async ( idUser, productList, total ) => {
 
-    let lastOrder = getLastOrder()
-    let lastIdOrder = 0
-    if( lastOrder.length > 0 ) {
+    let lastIdOrder = 1
+    let lastOrder = await getLastOrder()
+    if( lastOrder ) {
         lastIdOrder = lastOrder.id_pedido
     }
-    
+    console.log(" LAST ORDER: ", lastOrder)
     let newIdOrder = Number(lastIdOrder) + 1
     let address = JSON.parse(sessionStorage.getItem('addressSelected'))
     
@@ -20,8 +20,12 @@ const setNewOrder = async ( idUser, productList, total ) => {
         'itens' : [...productList],
         'totalCusto' : total,
         'status' : 'a confirmar',
-        'addressId' : address.id
+        'address' : 0
+    }
 
+    if( address ) {
+        tmpOrder['addressId'] = address.addressId
+        
     }
 
     console.log(" tmpOrder: ", tmpOrder)
