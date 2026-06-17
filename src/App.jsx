@@ -38,6 +38,20 @@ function App() {
       }
       sessionStorage.setItem('shoppingCart', JSON.stringify( tmp_template_cart))
     }
+
+    if( !JSON.parse(sessionStorage.getItem('currentAccount')) ) {
+      let tmpAccountTemplate = {
+              'name' : '',
+              'lgpdConcentiment' : {
+                  'systemAuthentication' : false,
+                  'placingOrders' : false,
+                  'participationInTheLoyaltyProgram' : false,
+                  'askedToUserLgpdTerm' : false,
+                  'askedToUserCookies' : false,
+              }
+          }
+          sessionStorage.setItem('currentAccount', JSON.stringify( tmpAccountTemplate ))
+        }
   }, [])
 
   

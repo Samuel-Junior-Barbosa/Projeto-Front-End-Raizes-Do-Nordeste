@@ -8,7 +8,17 @@ const LogoutPage = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        sessionStorage.setItem('currentAccount', '{}')
+        let tmpAccountTemplate = {
+            'name' : '',
+            'lgpdConcentiment' : {
+                'systemAuthentication' : false,
+                'placingOrders' : false,
+                'participationInTheLoyaltyProgram' : false,
+                'askedToUserLgpdTerm' : false,
+                'askedToUserCookies' : false,
+            }
+        }
+        sessionStorage.setItem('currentAccount', JSON.stringify( tmpAccountTemplate ))
         setTimeout(() => {
             navigate('/home')
         }, 800)

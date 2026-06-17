@@ -63,20 +63,26 @@ const ChooseUnityMenu = () => {
 
         let tmpAccountData = JSON.parse( sessionStorage.getItem('currentAccount') )
         if( !tmpAccountData ) {
-            return
+            
         }
         //console.log(" tmpAccountData1: ", tmpAccountData.lgpdConcentiment.participationInTheLoyaltyProgram)
         if( !tmpAccountData.lgpdConcentiment.participationInTheLoyaltyProgram ) {
+            setShowPromoWindow( true )
+            
+        } else {
             setShowPromoWindow( false )
-            return
         }
+            
 
         //console.log(" tmpAccountData2: ", tmpAccountData)
-
+        /*
         let tmpShowPromoWindow = JSON.parse( sessionStorage.getItem('showPromoWindow'))
         if( tmpShowPromoWindow === false || tmpShowPromoWindow === true ) {
             setShowPromoWindow( tmpShowPromoWindow )
         }
+        */
+        
+        
 
 
 
@@ -92,13 +98,14 @@ const ChooseUnityMenu = () => {
         }
         handleGetUnityData( unityIdRecived )
 
-        handleVerifyPromo()
         
 
         getCategoryList()
+        /*
         if( !JSON.parse(sessionStorage.getItem('shoppingCart')) ) {
             sessionStorage.setItem('shoppingCart', '[]')
         }
+            */
         
         if( !JSON.parse(sessionStorage.getItem('currentAccount')) ) {
             let tmpData = {
@@ -106,6 +113,8 @@ const ChooseUnityMenu = () => {
             }
             sessionStorage.setItem('currentAccount', JSON.stringify( tmpData ))
         }
+
+        handleVerifyPromo()
 
     }, [])  
 

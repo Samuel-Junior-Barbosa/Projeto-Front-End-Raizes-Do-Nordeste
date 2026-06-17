@@ -39,7 +39,10 @@
     margin: auto;
     text-align: center;
 }
-
+.ChooseUnityMenuTitle {
+    font-size: clamp(0.5rem, 0.8rem, 1rem);
+    margin-top: clamp(2px, 10px, 10px);
+}
 
 
 @media screen and (min-width : 500px)  {

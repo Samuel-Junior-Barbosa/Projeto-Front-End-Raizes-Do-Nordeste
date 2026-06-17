@@ -267,18 +267,20 @@
         display: flex;
         flex-direction: row;
         width: clamp(300px, 50dvw, 100vw);
-        height: clamp(50px, 30dvh, 30dvh);
+        height: clamp(50px, 15dvh, 30dvh);
 
         border-radius: clamp(10px, 20px, 30px);
         margin: auto;
 
         bottom: clamp(0px, 0px, 20px);
+        top: 80dvh;
         left: 45%;
         transform: translate(-50%, 0%);
 
     }
 
     .bottomMenuButton, #shoppingCarButton {
+        display: flex;
         border-radius: clamp(10px, 20px, 30px);
 
         /* width: clamp(10px, 50%, 100%); */
@@ -290,6 +292,11 @@
         }
     }
 
+    .bottomMenuButton:nth-child(1) {
+        display: flex;
+    
+    }
+
 
     #shoppingCarButton > img {
         width: clamp(20px, 25px, 50px);
@@ -297,8 +304,8 @@
     }
     
     .countProductCart {
-        top: clamp(-90%, -90%, 30%);
-        left: clamp(-60%, 15%, 30%);
+        top: clamp(-90%, -20%, 30%);
+        left: clamp(-60%, 8%, 30%);
         padding: clamp(2px, 2px, 8px);
     }
 

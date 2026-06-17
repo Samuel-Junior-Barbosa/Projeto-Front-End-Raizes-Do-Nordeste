@@ -12,7 +12,7 @@ const CookieWindow = ( {setControlFrame = undefined}) => {
         let tmpData = JSON.parse( sessionStorage.getItem("currentAccount"))
 
         if( response === true || response === false ) {
-            tmpData.lgpdConcentiment = response
+            tmpData.lgpdConcentiment.askedToUserCookies = response
         }
 
         else  {

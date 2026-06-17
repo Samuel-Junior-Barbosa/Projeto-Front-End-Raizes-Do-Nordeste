@@ -31,14 +31,14 @@ const RegisteruserPage = () => {
 
     const handleCreateAccount = async () => {
         if( !lgpdTerm ) {
-            alert(" Antes de criar a conta, aceite nossos termos de privacidade")
+            alert("Antes de criar a conta, é necessario aceitar os termos de privacidade")
             return
         }
 
         
         if( (!accountPassword || !accountPasswordConfirm) || ( accountPassword.length < 8) ) {
             console.log(" CURRENT PASSWORD: ", accountPassword, accountPassword.length)
-            alert(" Digite uma senha valida! no minimo 8 caracter")
+            alert("Digite uma senha valida! no minimo 8 caracter")
             return 
         }
 
@@ -50,7 +50,7 @@ const RegisteruserPage = () => {
 
         let response = await validEmailUsed( accountEmail )
         if( response ) {
-            alert("O email inserido já existe, tente usar outro email")
+            alert("O email vinculado a outra conta, tente outro email")
             return
         }
 

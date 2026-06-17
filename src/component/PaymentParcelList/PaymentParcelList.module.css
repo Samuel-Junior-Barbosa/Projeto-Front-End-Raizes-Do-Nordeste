@@ -59,6 +59,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: clamp(100px, 100%, 100%);
     height: clamp(100px, max-content, 100%);
 
@@ -71,6 +72,8 @@
 
 
 .paymentInfoDiv > div {
+    display: flex;
+    flex-direction: column;
     width: clamp( 100px, 50%, 100%);
     margin: auto;
     color: var(--color-font);
@@ -100,5 +103,25 @@
         margin: clamp(5px, 10px, 20px) auto;
         padding: clamp(5px, 10px, 15px);
 
+    }
+}
+
+
+
+
+@media screen and (max-width : 400px ) {
+    .PaymentParcelListDiv {
+        width: 90dvw;
+        top: 40dvh;
+
+        box-shadow: 1px 2px 5px var(--shadow-color);
+    }
+
+    .paymentInfoDiv {
+        
+    }
+
+    .paymentInfoDiv > div {
+        width: clamp( 100px, 85%, 100%);
     }
 }

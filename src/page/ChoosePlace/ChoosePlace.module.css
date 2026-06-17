@@ -64,3 +64,15 @@
         
     }
 }
+
+
+@media screen and (max-width: 400px) {
+    .ListPlace {
+        width: 100%;
+        & > li {
+            width: 70%;
+            font-size: clamp(1rem, 2rem, 5rem);
+        }
+        
+    }
+}

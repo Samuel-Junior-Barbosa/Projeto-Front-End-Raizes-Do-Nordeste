@@ -148,3 +148,40 @@ label {
 
     }
 }
+
+
+
+
+@media screen and (max-width : 400px)  {
+    .menuUnityDiv {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+
+        width: clamp(300px, 95dvw, 100dvw);
+        
+        height: clamp(60px, 60dvh, 100dvh);
+        
+
+        padding: clamp(1px, 4px, 10px);
+        margin: auto;
+        
+            
+        & > button {
+            width: clamp(100px, 80dvw, 1200px);
+            height: clamp(100px, 15dvh, 1200px);
+            margin: auto;
+            margin-top: clamp(5px, 10px, 30px);
+        }
+
+
+        & > button > label {
+            font-size: clamp(0.4rem, 0.8rem, 1.5rem);
+            top: clamp(20%, 50%, 80%);
+            text-shadow: 1px 2px 0px var(--shadow-color);
+
+        }
+
+    }
+}

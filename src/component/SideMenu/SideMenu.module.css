@@ -96,7 +96,7 @@
 
 @media screen and (max-width : 500px)  {
     .SideMenuDiv {    
-        width: clamp(20px, 20%, 50dvw);
+        width: clamp(20px, 30%, 50dvw);
         height: clamp(100px, 100dvh, 100dvh);
     }
 }

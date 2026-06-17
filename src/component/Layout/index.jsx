@@ -12,6 +12,8 @@ import menuIcone from '/src/assets/barra-de-menu-480px.png';
 const Layout = () => {
     const [ hiddenSideMenu, setHiddenSideMenu ] = useState( true )
     const [ showCookiesWindow, setShowCookiesWindow ] = useState( false )
+    const [ windowWidth, setWindowWidth ] = useState(0)
+    const [ windowHeight, setWindowHeight ] = useState(0)
 
     const handleShowMenu = () => {
         if( hiddenSideMenu ) {
@@ -24,8 +26,16 @@ const Layout = () => {
 
     useEffect(() => {
         let tmpData = JSON.parse( sessionStorage.getItem("currentAccount") )
+        console.log(" TMP DATA: ", tmpData)
+        try {
+            if( tmpData.lgpdConcentiment.askedToUserCookies === false ) {
+                setShowCookiesWindow( true )
+            }
 
-        if( !tmpData.accountId ) {
+            else {
+                setShowCookiesWindow( false )
+            }
+        } catch {
             tmpData = {
                 "name" : '',
                 "lgpdConcentiment" : {
@@ -40,16 +50,16 @@ const Layout = () => {
         }
 
 
-        if( tmpData.lgpdConcentiment.askedToUserCookies === false ) {
-            setShowCookiesWindow( true )
-        }
 
-        else {
-            setShowCookiesWindow( false )
-        }
+
         //console.log(" TMP DATA: ", tmpData)
-        let windowWidth = window.innerWidth 
-        if( windowWidth >= 1000 ) {
+        let tmpWindowWidth = window.innerWidth
+        let tmpWindowHeight = window.innerHeight
+        setWindowWidth( tmpWindowWidth )
+        setWindowHeight( tmpWindowHeight  )
+        console.log(" WIDTH: ", tmpWindowWidth, windowWidth)
+        console.log(" HEIGHT: ", tmpWindowHeight, windowHeight)
+        if( tmpWindowWidth >= 1000 ) {
             setHiddenSideMenu(true)
         }
     }, [])
@@ -74,11 +84,16 @@ const Layout = () => {
                         setControlFrame={ setShowCookiesWindow }
                     />
                 )}
-                <ButtonComp
-                    icon={menuIcone}
-                    onClickButton={ handleShowMenu }
-                    nameClass={ styles.buttomShowSideMenu }
-                />
+                { (windowWidth >= 500) && (
+                    <>
+                    <ButtonComp
+                        icon={menuIcone}
+                        onClickButton={ handleShowMenu }
+                        nameClass={ styles.buttomShowSideMenu }
+                    />
+                    </>
+                )}
+                
             </main>
 
             <BottomMenu
