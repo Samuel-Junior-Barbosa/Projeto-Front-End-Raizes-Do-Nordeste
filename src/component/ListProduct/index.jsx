@@ -50,7 +50,9 @@ const ListProduct = ({productListData, setProductListData=undefined, nameClass='
         }
         
         //console.log( productListData ) 
-        sessionStorage.setItem("shoppingCart", JSON.stringify(tmpProductList))
+        let tmpshoppingCart = JSON.parse(sessionStorage.getItem('shoppingCart'))
+        tmpshoppingCart .products = tmpProductList
+        sessionStorage.setItem("shoppingCart", JSON.stringify(tmpshoppingCart))
 
 
         if( setProductListData ) {

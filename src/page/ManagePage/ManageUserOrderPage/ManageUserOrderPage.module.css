@@ -1,0 +1,92 @@
+.ManageUserOrderPageMainDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: clamp(10px, 20px, 30px);
+    gap: clamp( 10px, 20px, 30px);
+    color: var(--color-font);
+}
+
+.ManageUserOrderPageDiv {
+    background-color: var(--background-label);
+
+    width: clamp(100px, 60dvw, 100%);
+    height: clamp(200px, 60dvh, 100%);
+    
+    border-radius: clamp(5px, 10px, 20px);
+
+    padding: clamp(5px, 15px, 30px);
+    box-shadow: 2px 3px 4px var(--shadow-color);
+    
+}
+
+.searchOrderInput {
+    border-radius: clamp(5px, 10px, 20px);
+    padding: clamp(5px, 8px, 10px);
+}
+
+.orderList {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(10px, 10px, 50px);
+    color: var(--color-font2);
+
+
+    & > li {
+        background-color: var(--background-option);
+        padding: clamp(2px, 4px, 10px);
+        border-radius: clamp(5px, 5px, 20px);
+        cursor: pointer;
+
+    }
+
+    & > li:hover {
+        background-color: var(--background-option-hover);
+    }
+}
+
+.orderAlterationMainDiv {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    gap: clamp(5px, 10px, 20px);
+    & > div {
+        display: flex;
+        flex-direction: row;
+        width: 60%;
+    }
+
+    & > div > label {
+        margin-left: auto;
+        margin-right: clamp(5px, 10px, 20px);
+    }
+    & > div > input, & > div > select {
+        border-radius: clamp(5px, 5px, 10px);
+        padding-left: clamp(2px, 5px, 10px);
+
+        width: clamp(20%, 60%, 60%);
+        height: 100%;
+    }
+
+}
+
+.alterationButtonDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    margin: auto;
+    margin-top: clamp(5px, 15px, 30px);
+
+    & > button {
+        padding: clamp(5px, 8px, 20px);
+    }
+}

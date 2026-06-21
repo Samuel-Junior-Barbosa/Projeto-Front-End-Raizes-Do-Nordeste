@@ -117,31 +117,34 @@
       "buyPoint": 9,
       "shoppingCart": [],
       "administrator": true,
+      "attendant": false,
       "status": true,
       "id": "uP9rUfJqjcE"
     },
     {
       "accountId": 2,
-      "name": "clienteteste",
+      "name": "atendente",
       "password": "123",
-      "email": "teste2@teste.com",
+      "email": "atendente@atendente.com",
       "lgpdConcentiment": {
         "systemAuthentication": false,
         "placingOrders": false,
         "participationInTheLoyaltyProgram": false,
         "askedToUserLgpdTerm": false,
-        "askedToUserCookies": false
+        "askedToUserCookies": true
       },
       "buyPoint": 3,
       "shoppingCart": [],
       "administrator": false,
+      "attendant": true,
       "status": true,
       "id": "M7djp_WLXYo"
     },
     {
       "accountId": 3,
-      "name": "teste",
-      "password": "teste123",
+      "name": "clienteteste",
+      "password": "123",
+      "email": "clienteteste@clienteteste.com",
       "lgpdConcentiment": {
         "systemAuthentication": true,
         "placingOrders": true,
@@ -150,6 +153,7 @@
       "buyPoint": 0,
       "shoppingCart": [],
       "administrator": false,
+      "attendant": false,
       "status": true,
       "id": "Gk6GTJPKeyI"
     }
@@ -235,7 +239,7 @@
         }
       ],
       "totalCusto": 1,
-      "status": "entregue",
+      "status": "a confirmar",
       "address": 0,
       "id": "pY3ZB1X1c6g"
     },
@@ -355,7 +359,7 @@
         }
       ],
       "totalCusto": 1,
-      "status": "preparando",
+      "status": "entregue",
       "address": 0,
       "id": "SGjy_eh7Plw"
     }

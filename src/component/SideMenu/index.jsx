@@ -14,18 +14,26 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
 
     const options = [
         {'name' : 'Cardapio', url : '/home'},
-        {'name' : 'Pedidos', url : '/orders'},
+        {'name' : 'Meus Pedidos', url : '/orders'},
         {'name' : 'minha-conta', url : '/my-account'},
         {'name' : 'sair', url : '/logout'},
     ]
 
     const adminOptions = [
         {'name' : 'Cardapio', url : '/home'},
-        {'name' : 'Pedidos', url : '/orders'},
+        {'name' : 'Meus Pedidos', url : '/orders'},
+        {'name' : 'Atualizar Pedidos', url : '/manage-user-orders'},
         {'name' : 'Cadastro de Unidades', url : '/manage-unity'},
         {'name' : 'Cadastro de Categorias', url : '/manage-category'},
         {'name' : 'Cadastro de Produtos', url : '/manage-product'},
         {'name' : 'Gerenciar promoção / Descontos ', url : '/manage-promotion-discount'},
+        {'name' : 'minha-conta', url : '/my-account'},
+        {'name' : 'sair', url : '/logout'},
+    ]
+    const attendantOptions = [
+        {'name' : 'Cardapio', url : '/home'},
+        {'name' : 'Meus Pedidos', url : '/orders'},
+        {'name' : 'Atualizar Pedidos', url : '/manage-user-orders'},
         {'name' : 'minha-conta', url : '/my-account'},
         {'name' : 'sair', url : '/logout'},
     ]
@@ -34,6 +42,7 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         handleHiddinSideMenu()
 
         let tmpClass = ' .' + styles.SideMenuDiv;
+        let tmpOptions;
 
         if( nameClass ) {
             tmpClass += ' .' + nameClass
@@ -41,19 +50,20 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         
         
         if( currentAccount.administrator === true ) {
-            for( let i = 0; i < adminOptions.length; i ++ ) {
-                if( adminOptions[i].name === option ) {
-                    navigate(adminOptions[i].url)
-                }
-                
+            tmpOptions = [...adminOptions ]
+        } 
+        else if ( currentAccount.attendant === true) {
+            tmpOptions = [...attendantOptions ]
+        }
+        else {
+            tmpOptions = [...option ]
+        }
+
+        for( let i = 0; i < tmpOptions.length; i ++ ) {
+            if( tmpOptions[i].name === option ) {
+                navigate(tmpOptions[i].url)
             }
-        } else {
-            for( let i = 0; i < options.length; i ++ ) {
-                if( options[i].name === option ) {
-                    navigate(options[i].url)
-                }
-                
-            }
+            
         }
         
     }
@@ -114,8 +124,7 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         <div className={ currentNameClass }>
             <ul className={ styles.SideMenuList }>
                 { 
-                    currentAccount.administrator  ?
-                    (
+                    currentAccount.administrator && (
                         adminOptions.map(( option, index) => (
                                 <li
                                     key={index}
@@ -125,8 +134,10 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
                                 </li>
                             )
                         )
-                    ) : (
-                        options.map(( option, index) => (
+                    )
+                 }
+                 { currentAccount.attendant && (
+                        attendantOptions.map(( option, index) => (
                                 <li
                                     key={index}
                                     onClick={ (e) => handleChooseOption(option.name) }
@@ -137,6 +148,18 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
                         )
                     )
                 }
+
+                { !currentAccount.administrator && !currentAccount.attendant  && (
+                        options.map(( option, index) => (
+                                <li
+                                    key={index}
+                                    onClick={ (e) => handleChooseOption(option.name) }
+                                >
+                                    {option.name}
+                                </li>
+                            )
+                        )
+                )}
             </ul>
         </div>
     );

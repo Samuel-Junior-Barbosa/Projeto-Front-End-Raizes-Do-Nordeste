@@ -26,7 +26,7 @@ const Layout = () => {
 
     useEffect(() => {
         let tmpData = JSON.parse( sessionStorage.getItem("currentAccount") )
-        console.log(" TMP DATA: ", tmpData)
+        //console.log(" TMP DATA: ", tmpData)
         try {
             if( tmpData.lgpdConcentiment.askedToUserCookies === false ) {
                 setShowCookiesWindow( true )
@@ -57,8 +57,8 @@ const Layout = () => {
         let tmpWindowHeight = window.innerHeight
         setWindowWidth( tmpWindowWidth )
         setWindowHeight( tmpWindowHeight  )
-        console.log(" WIDTH: ", tmpWindowWidth, windowWidth)
-        console.log(" HEIGHT: ", tmpWindowHeight, windowHeight)
+        //console.log(" WIDTH: ", tmpWindowWidth, windowWidth)
+        //console.log(" HEIGHT: ", tmpWindowHeight, windowHeight)
         if( tmpWindowWidth >= 1000 ) {
             setHiddenSideMenu(true)
         }

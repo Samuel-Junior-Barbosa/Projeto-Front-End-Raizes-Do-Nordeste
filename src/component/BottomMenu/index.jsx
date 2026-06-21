@@ -81,14 +81,16 @@ const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined, 
             const windowWidth = window.innerWidth;
             const windowHeight= window.innerHeight
             
-            if( windowWidth >= 660 && windowHeight >= 400) {
+            if( windowWidth >= 660 && windowHeight >= 660) {
+                //console.log(" windowWidth: ", windowWidth) ||
+                console.log(" windowHeight: ", windowHeight)
                 setHidden( false )
                 return
             }
 
 
-            const currentScroll =  controlHiddenScroll.scrollTop;
-            //console.log(" CURRENT SCROLL: ", currentScroll)
+            const currentScroll = controlHiddenScroll.scrollTop;
+            console.log(" CURRENT SCROLL: ", currentScroll)
             if( currentScroll > lastScroll && currentScroll > 30 ) {
                 setHidden( true );
             } else {

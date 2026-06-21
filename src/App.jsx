@@ -27,6 +27,7 @@ import ManageMenuPage from './page/ManagePage/ManageMenuPage/index.jsx';
 import ManageUnityPage from './page/ManagePage/ManageUnityPage/index.jsx';
 import ManageCategoryPage from './page/ManagePage/ManageCategoryPage/index.jsx';
 import NotPermissionPage from './page/NotPermissionPage/index.jsx';
+import ManageUserOrderPage from './page/ManagePage/ManageUserOrderPage/index.jsx';
 
 function App() {
 
@@ -75,14 +76,17 @@ function App() {
 
 
             {/* Rotas protegidas para ADMIN (SIMULADO) */}
-            <Route element={<RouteGuard administratorRoute={ true }/>}>
-              
-                <Route path="/register-product" element={<CreateProductPage />} />
-                <Route path="/manage-promotion-discount" element={<ManagePromotionDiscount />} />
-                <Route path="/manage-unity" element={<ManageUnityPage />} />
-                <Route path="/manage-category" element={<ManageCategoryPage />} />
-                <Route path="/manage-product" element={<ManageProductPage />} />
-                <Route path="/manage-menu" element={<ManageMenuPage />} />
+            <Route element={<RouteGuard administratorRoute={ true }/>}>             
+              <Route path="/register-product" element={<CreateProductPage />} />
+              <Route path="/manage-promotion-discount" element={<ManagePromotionDiscount />} />
+              <Route path="/manage-unity" element={<ManageUnityPage />} />
+              <Route path="/manage-category" element={<ManageCategoryPage />} />
+              <Route path="/manage-product" element={<ManageProductPage />} />
+              <Route path="/manage-menu" element={<ManageMenuPage />} />
+            </Route>
+
+            <Route element={<RouteGuard administratorRoute={ true } attendantRoute={true} />}>
+              <Route path="/manage-user-orders" element={<ManageUserOrderPage />} />
               
             </Route>
 
