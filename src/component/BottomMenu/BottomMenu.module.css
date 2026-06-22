@@ -217,7 +217,7 @@
 
 
 
-@media screen and (max-width : 700px)  {
+@media screen and (max-width : 1000px)  {
     .BottomMenuDivMain {
         width: clamp(300px, 50dvw, 100vw);
         height: clamp(50px, 20dvh, 30dvh);
@@ -259,6 +259,48 @@
 
 }
 
+
+@media screen and (max-width : 700px)  {
+    .BottomMenuDivMain {
+        width: clamp(300px, 50dvw, 100vw);
+        height: clamp(50px, 20dvh, 30dvh);
+        border-radius: clamp(10px, 20px, 30px);
+        bottom: clamp(0px, 0px, 20px);
+        position: fixed;
+
+        top: 70dvh;
+        left: 25dvw;
+
+    }
+
+    .bottomMenuButton {
+        display: flex;
+        border-radius: clamp(10px, 20px, 30px);
+        height: clamp(10px, 90%, 100px);
+        
+        & > img {
+            margin: auto;
+            width: clamp(20px, 25px, 50px);
+            height:  clamp(20px, 25px, 50px);
+        }
+    }
+
+    #shoppingCarButton {
+        height: clamp(10px, 80%, 100%);
+    }
+
+    #shoppingCarButton > img {
+        width: clamp(20px, 25px, 50px);
+        height:  clamp(20px, 25px, 50px);
+    }
+    
+    .countProductCart {
+        top: clamp(-60%, -80%, 20%);
+        left: clamp(-60%, 20%, 30%);
+        padding: clamp(2px, 5px, 10px);
+    }
+
+}
 
 
 
