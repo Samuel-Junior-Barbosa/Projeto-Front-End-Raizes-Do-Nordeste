@@ -75,7 +75,7 @@ const MenuUnity = () => {
                                 state : {'unityIdRecived' : item.unityId }
                             })
                         }}
-                        urlImage={`/src/assets/unidades/${item.unityId}-256px.jpg`}
+                        urlImage={`../assets/unidades/${item.unityId}-256px.jpg`}
                     />
                 
                 ))}
