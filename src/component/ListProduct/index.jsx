@@ -76,7 +76,7 @@ const ListProduct = ({productListData, setProductListData=undefined, nameClass='
                     <div className={styles.foodImageDiv}>
                         <img
                             className={styles.foodImage}
-                            src={`/assets/pratos/unidades/${unityId}/${item.id}-512px.jpg`}
+                            src={`${import.meta.env.BASE_URL}assets/pratos/unidades/${unityId}/${item.id}-512px.jpg`}
                         />
                         
                         {/* <label> imagem do prato </label> */}

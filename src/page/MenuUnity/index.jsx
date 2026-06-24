@@ -68,7 +68,7 @@ const MenuUnity = () => {
                             })
 
                         }}
-                        urlImage={`/assets/unidades/${item.unityId}-256px.jpg`}
+                        urlImage={`${import.meta.env.BASE_URL}assets/unidades/${item.unityId}-256px.jpg`}
                     />
                 
                 ))}
