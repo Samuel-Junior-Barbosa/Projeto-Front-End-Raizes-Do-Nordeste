@@ -20,7 +20,7 @@ const MenuUnity = () => {
     const handleGetUnityList = async() => {
         const response = await getUnityListApi()
         if( response ) {
-            console.log(" SALVANDO RESPONSE: ", response)
+            //console.log(" SALVANDO RESPONSE: ", response)
             setUnityList( response )
         }
     }
