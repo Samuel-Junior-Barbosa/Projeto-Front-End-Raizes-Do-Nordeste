@@ -59,21 +59,13 @@ function App() {
 
   return (
     <>
-      <BrowserRouter basename="/projeto-fond-end-pagina">
+      <BrowserRouter basename={`${import.meta.env.BASE_URL}`}>
         <Routes>
           <Route element={<Layout />}>
-            {/* Rotas para usuarios autenticados (SIMULADO) */}
-            <Route element={<RouteGuard />}>
-              
-                <Route path="/choose-place" element={<ChoosePlace />} />
-                <Route path="/finish-order" element={<FinishOrderPage />} />
-                <Route path="/track-order" element={<TrackOrderPage />} />
-                <Route path="/confirm-address" element={<ConfirmAddressPage />} />
-                <Route path="/orders" element={<OrdersPage/>} />
-                <Route path="/my-account" element={<MyAccountPage />} />
-              
+            
+            <Route element={<RouteGuard administratorRoute={ true } attendantRoute={true} />}>
+              <Route path="/manage-user-orders" element={<ManageUserOrderPage />} />
             </Route>
-
 
             {/* Rotas protegidas para ADMIN (SIMULADO) */}
             <Route element={<RouteGuard administratorRoute={ true }/>}>             
@@ -85,10 +77,17 @@ function App() {
               <Route path="/manage-menu" element={<ManageMenuPage />} />
             </Route>
 
-            <Route element={<RouteGuard administratorRoute={ true } attendantRoute={true} />}>
-              <Route path="/manage-user-orders" element={<ManageUserOrderPage />} />
+            {/* Rotas para usuarios autenticados (SIMULADO) */}
+            <Route element={<RouteGuard />}>
+                <Route path="/choose-place" element={<ChoosePlace />} />
+                <Route path="/finish-order" element={<FinishOrderPage />} />
+                <Route path="/track-order" element={<TrackOrderPage />} />
+                <Route path="/confirm-address" element={<ConfirmAddressPage />} />
+                <Route path="/orders" element={<OrdersPage/>} />
+                <Route path="/my-account" element={<MyAccountPage />} />
               
             </Route>
+
 
             {/* <Route element={<Layout />}> */}
               {/* Rotas para autenticação (SIMULADO) */}

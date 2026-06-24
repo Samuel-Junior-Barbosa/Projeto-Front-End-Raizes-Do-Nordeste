@@ -42,7 +42,7 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         handleHiddinSideMenu()
 
         let tmpClass = ' .' + styles.SideMenuDiv;
-        let tmpOptions;
+        let tmpOptions = [];
 
         if( nameClass ) {
             tmpClass += ' .' + nameClass
@@ -56,9 +56,9 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
             tmpOptions = [...attendantOptions ]
         }
         else {
-            tmpOptions = [...option ]
+            tmpOptions = [...options ]
         }
-
+        console.log(" TMP OPTIONS: ", tmpOptions)
         for( let i = 0; i < tmpOptions.length; i ++ ) {
             if( tmpOptions[i].name === option ) {
                 navigate(tmpOptions[i].url)

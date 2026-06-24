@@ -37,7 +37,7 @@ const RouteGuard = ({
 
     }
     
-    else if( user && !user.name ) {
+    else if( (user && !user.name ) || (user && user.name === '' )) {
         return <Navigate to="/login" />;
     }
     
