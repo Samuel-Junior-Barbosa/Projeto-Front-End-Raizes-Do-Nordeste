@@ -258,7 +258,7 @@
     .ListProductUl {
         width: clamp(300px, 100dvw, 2000px);
         height: clamp(300px, 70dvh, 2000px);
-
+        overflow-y: hidden !important;
         & > li {
             width: 100%;
             height: clamp(30px, 100%, 200px);

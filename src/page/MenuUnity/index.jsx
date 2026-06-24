@@ -20,7 +20,7 @@ const MenuUnity = () => {
     const handleGetUnityList = async() => {
         const response = await getUnityListApi()
         if( response ) {
-            //console.log(" SALVANDO RESPONSE: ", response)
+            console.log(" SALVANDO RESPONSE: ", response)
             setUnityList( response )
         }
     }
@@ -30,14 +30,7 @@ const MenuUnity = () => {
 
 
     useEffect(() => {
-
-
         handleGetUnityList()
-        /*
-        if( !JSON.parse(sessionStorage.getItem('shoppingCart')) ) {
-            sessionStorage.setItem('shoppingCart', '[]')
-        }
-            */
         
 
         let tmpData = JSON.parse(sessionStorage.getItem('currentAccount'))
@@ -51,8 +44,7 @@ const MenuUnity = () => {
             sessionStorage.setItem('currentAccount', JSON.stringify( tmpData ))
         }
         
-
-
+        
 
 
     }, [])  
@@ -74,6 +66,7 @@ const MenuUnity = () => {
                             navigate('/choose-unity-menu', {
                                 state : {'unityIdRecived' : item.unityId }
                             })
+
                         }}
                         urlImage={`/assets/unidades/${item.unityId}-256px.jpg`}
                     />

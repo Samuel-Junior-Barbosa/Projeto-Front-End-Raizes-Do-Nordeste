@@ -6,7 +6,7 @@ import SideMenu from '/src/component/SideMenu';
 import { useEffect, useState } from 'react';
 import CookieWindow from '../CookieWindow';
 import ButtonComp from '../ButtonComp';
-import menuIcone from '/src/assets/barra-de-menu-480px.png';
+import menuIcone from '/assets/barra-de-menu-480px.png';
 
 
 const Layout = () => {

@@ -1,9 +1,9 @@
 
 import ButtonComp from '../ButtonComp';
 import styles from './BottomMenu.module.css';
-import menuIcone from '/src/assets/barra-de-menu-480px.png';
-import shopping_car from '/src/assets/shopping-carts_120px.png';
-import settingsIcon from '/src/assets/menu.png';
+import menuIcone from '/assets/barra-de-menu-480px.png';
+import shopping_car from '/assets/shopping-carts_120px.png';
+import settingsIcon from '/assets/menu.png';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 

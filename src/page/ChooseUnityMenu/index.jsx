@@ -145,7 +145,7 @@ const ChooseUnityMenu = () => {
                                 }
                             })
                         }}
-                        urlImage={`/src/assets/categorias/unidades/${unityIdRecived}/${item.categoryId}-256px.jpg`}
+                        urlImage={`/assets/categorias/unidades/${unityIdRecived}/${item.categoryId}-256px.jpg`}
                     />
                 )) : (
                     <div className={styles.categoryEmptyListDiv}>

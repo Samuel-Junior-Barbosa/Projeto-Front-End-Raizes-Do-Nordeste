@@ -2,7 +2,7 @@ import styles from './Home.module.css';
 
 import { useEffect, useLayoutEffect, useState } from "react";
 import ListProduct from "../../component/ListProduct";
-import searchIcon from '/src/assets/search_icone2.svg'
+import searchIcon from '/assets/search_icone2.svg'
 import { useLocation, useNavigate } from 'react-router-dom';
 import PromoWindowComp from '/src/component/PromoWindowComp';
 

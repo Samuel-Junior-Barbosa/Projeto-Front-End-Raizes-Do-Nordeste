@@ -80,7 +80,7 @@ const ChooseItem = () => {
     return (
         <div className={styles.ChooseItemDivMain}>
             <div className={styles.foodImageDiv}>
-                <img src={`/src/assets/pratos/unidades/${unityId}/${id}-512px.jpg`} />
+                <img src={`/assets/pratos/unidades/${unityId}/${id}-512px.jpg`} />
                 {/* <label> Imagem do prato</label> */}
             </div>
             <label className={styles.productName}> PRODUTO: {produto} </label>
