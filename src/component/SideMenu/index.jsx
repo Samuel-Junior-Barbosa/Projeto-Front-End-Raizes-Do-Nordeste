@@ -48,17 +48,20 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
             tmpClass += ' .' + nameClass
         }
         
-        
-        if( currentAccount.administrator === true ) {
-            tmpOptions = [...adminOptions ]
-        } 
-        else if ( currentAccount.attendant === true) {
-            tmpOptions = [...attendantOptions ]
-        }
-        else {
+        try {
+            if( currentAccount.administrator === true ) {
+                tmpOptions = [...adminOptions ]
+            } 
+            else if ( currentAccount.attendant === true) {
+                tmpOptions = [...attendantOptions ]
+            }
+            else {
+                tmpOptions = [...options ]
+            }
+        } catch {
             tmpOptions = [...options ]
         }
-        console.log(" TMP OPTIONS: ", tmpOptions)
+        //console.log(" TMP OPTIONS: ", tmpOptions)
         for( let i = 0; i < tmpOptions.length; i ++ ) {
             if( tmpOptions[i].name === option ) {
                 navigate(tmpOptions[i].url)
