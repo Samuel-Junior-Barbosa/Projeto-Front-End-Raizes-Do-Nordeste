@@ -41,7 +41,7 @@ const ChooseUnityMenu = () => {
     const handleGetUnityData = async ( unityId ) => {
         const response = await getUnityDataById( unityId )
         setUnityData( response )
-        //console.log(" handleGetUnityData: ", response.openingHours[indexWeek])
+        //  console.log(" handleGetUnityData: ", response.openingHours[indexWeek])
         setInitDay( response.openingHours[indexWeek][1] )
         setEndDay( response.openingHours[indexWeek][2] )
     }

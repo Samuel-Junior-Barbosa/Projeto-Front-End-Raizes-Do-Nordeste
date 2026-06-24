@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/projeto-fond-end-pagina">
         <Routes>
           <Route element={<Layout />}>
             {/* Rotas para usuarios autenticados (SIMULADO) */}
