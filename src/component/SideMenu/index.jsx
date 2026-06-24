@@ -9,6 +9,7 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
     const [ currentNameClass, setCurrentNameClass ] = useState()
     const [ menuStatusState, setMenuStatusState ] = useState( menuStatus )
     const [ currentAccount, setCurrentAccount ] = useState([])
+    const [ permittedOptions, setPermittedOptions ] = useState([])
 
     //let currentAccount = JSON.parse( sessionStorage.getItem('currentAccount' ))
 
@@ -117,8 +118,27 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
     }, [menuStatus])
 
     
-    useEffect(() => {   
+    useEffect(() => {
         handleGetAccountData()
+
+        let tmpCurrentAccount = JSON.parse( sessionStorage.getItem("currentAccount"))
+        let tmpOptions = []
+        
+        try {
+            if( tmpCurrentAccount.administrator === true ) {
+                tmpOptions = [...adminOptions ]
+            } 
+            else if ( tmpCurrentAccount.attendant === true) {
+                tmpOptions = [...attendantOptions ]
+            }
+            else {
+                tmpOptions = [...options ]
+            }
+        } catch {
+            tmpOptions = [...options ]
+        }
+
+        setPermittedOptions(tmpOptions)
     }, [])
 
     
@@ -127,8 +147,8 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         <div className={ currentNameClass }>
             <ul className={ styles.SideMenuList }>
                 { 
-                    currentAccount.administrator && (
-                        adminOptions.map(( option, index) => (
+                    permittedOptions && (
+                        permittedOptions.map(( option, index) => (
                                 <li
                                     key={index}
                                     onClick={ (e) => handleChooseOption(option.name) }
@@ -139,30 +159,7 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
                         )
                     )
                  }
-                 { currentAccount.attendant && (
-                        attendantOptions.map(( option, index) => (
-                                <li
-                                    key={index}
-                                    onClick={ (e) => handleChooseOption(option.name) }
-                                >
-                                    {option.name}
-                                </li>
-                            )
-                        )
-                    )
-                }
-
-                { !currentAccount.administrator && !currentAccount.attendant  && (
-                        options.map(( option, index) => (
-                                <li
-                                    key={index}
-                                    onClick={ (e) => handleChooseOption(option.name) }
-                                >
-                                    {option.name}
-                                </li>
-                            )
-                        )
-                )}
+                 
             </ul>
         </div>
     );
