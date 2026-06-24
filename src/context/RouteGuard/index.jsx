@@ -15,11 +15,21 @@ const RouteGuard = ({
         console.log(" PERMISSIONS: ", user.administrator, user.attendant, administratorRoute, administratorRoute === true && user.administrator === false)
     }, [])
 
-    if( !user ) {
+
+    
+
+    try {
+        if ( user.administrator || user.attendant ) {
+            console.log();
+        }
+    } catch {
         return <Navigate to="/login" />;
     }
 
 
+    if( !user ) {
+        return <Navigate to="/login" />;
+    }
     else if( administratorRoute && attendantRoute ) {
         if( user.administrator === false && user.attendant === false ) {
             return <Navigate to="/not-permission" />;

@@ -38,8 +38,13 @@ const MenuUnity = () => {
         if( !tmpData ) {
             tmpData = {
                 "name" : '',
-                "askedToUserLgpdTerm" : false,
-                "askedToUserCookies" : false
+                'lgpdConcentiment' : {
+                  'systemAuthentication' : false,
+                  'placingOrders' : false,
+                  'participationInTheLoyaltyProgram' : false,
+                  'askedToUserLgpdTerm' : false,
+                  'askedToUserCookies' : false,
+              }
             }
             sessionStorage.setItem('currentAccount', JSON.stringify( tmpData ))
         }
