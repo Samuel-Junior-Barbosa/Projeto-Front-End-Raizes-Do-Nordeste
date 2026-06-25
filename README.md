@@ -3,6 +3,16 @@ Esse projeto foi desenvolvido para a atividade multidiciplinar, como uma simula�
 
 Esse repositorio contém os codigos fonte do app, mas para visualizalo, utilize esse link e navegue pelo app usando ele: https://samuel-junior-barbosa.github.io/projeto-fond-end-pagina/
 
+para testar o cupom de desconto, você pode testar os seguintes codigos e depois clicar em "adicionar", quando estiver na tela de confirmação do pedido:
+
+- teste1
+- teste2
+- teste3
+- teste4
+- desconto
+- desconto1
+- desconto2
+
 ## Expanding the ESLint configuration
 Para compilar e rodar localmente, baixe o NPM e rode o comando:
 
