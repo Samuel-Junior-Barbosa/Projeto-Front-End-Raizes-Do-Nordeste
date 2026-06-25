@@ -44,16 +44,71 @@
 
 
 
-@media screen and (max-width : 1400px)  {
+@media screen and (max-height : 600px)  {
     .productListDiv {
         margin: 0px auto;
-        height: clamp(300px, 55dvh, 2000px);
+        width: clamp(150px, 50dvw, 100dvw);
+        height: clamp(150px, 55dvh, 2000px);
+        overflow-y: scroll;
+        & > li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: clamp(40px, 40%, 100%);
+        }
+        & > li > div > img {
+            width: clamp(20px, 70%, 200px);
+            height: clamp(20px, 90%, 200px);
+            
+        }
+        & > li > label {
+            width: clamp(20px, 30%, 100%);
+            
+        }
     }
 }
 
 
-@media screen and (max-width : 400px)  {
-    .bottomButton {
-        
+
+
+@media screen and (min-width : 1901px)  {
+    .productListDiv {
+        margin: 0px auto;
+        height: clamp(300px, 55dvh, 2000px);
+        /*height: max-content; */
+        overflow-y: hidden;
+    }
+}
+@media screen and (max-width : 1900px)  {
+    .productListDiv {
+        margin: 0px auto;
+        height: clamp(300px, 55dvh, 2000px);
+        /*height: max-content; */
+        overflow-y: hidden;
+    }
+}
+
+
+
+@media screen and (max-width : 1400px)  {
+    .productListDiv {
+        margin: 0px auto;
+        /*height: clamp(300px, 55dvh, 2000px);*/
+        height: max-content;
+        overflow-y: hidden;
+    }
+}
+
+
+
+@media screen and (max-width : 300px)  {
+    .productListDiv {
+        margin: 0px auto;
+        width: clamp(150px, 100dvw, 100dvw);
+        height: clamp(150px, 50dvh, 2000px);
+
+        & > li {
+            height: max-content;
+        }
     }
 }

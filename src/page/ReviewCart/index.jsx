@@ -14,13 +14,12 @@ const ReviewCart = () => {
 
     let tmp_cart_list = []
     tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
-    if( !tmp_cart_list.products ) {
+    if( !tmp_cart_list.products || !tmp_cart_list.products.length ) {
         let tmp_template_cart = { 
             "unityId" : 0,
             "products" : []
         }
         sessionStorage.setItem('shoppingCart', JSON.stringify( tmp_template_cart))
-        tmp_cart_list = tmpCartData
     }
 
 

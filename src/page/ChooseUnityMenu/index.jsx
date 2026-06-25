@@ -72,22 +72,12 @@ const ChooseUnityMenu = () => {
         } else {
             setShowPromoWindow( false )
         }
-            
-
-        //console.log(" tmpAccountData2: ", tmpAccountData)
-        /*
-        let tmpShowPromoWindow = JSON.parse( sessionStorage.getItem('showPromoWindow'))
-        if( tmpShowPromoWindow === false || tmpShowPromoWindow === true ) {
-            setShowPromoWindow( tmpShowPromoWindow )
-        }
-        */
-        
-        
-
-
-
     }
 
+
+    const handleGoBack = () => {
+        navigate(-1)
+    }
 
 
     useEffect(() => {
@@ -130,8 +120,13 @@ const ChooseUnityMenu = () => {
                 > Aberto hoje das: {initDay} até ás: {endDay}</label>
             )}
             
-
-            <div className={ styles.ChooseUnityMenuDiv}>            
+            <div className={ styles.buttonDiv }>
+                <ButtonComp 
+                    text={"Voltar"}
+                    onClickButton={ handleGoBack }
+                />
+            </div>   
+            <div className={ styles.ChooseUnityMenuDiv}>    
                 { categoryList.length ? categoryList.map((item, i) => (
                     <ButtonComp
                         key = {i}

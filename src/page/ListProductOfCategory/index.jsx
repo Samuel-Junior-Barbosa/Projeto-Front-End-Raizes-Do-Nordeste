@@ -2,9 +2,11 @@ import styles from './ListProductOfCategory.module.css';
 
 import { useEffect, useLayoutEffect, useState } from "react";
 import ListProduct from "../../component/ListProduct";
+import ButtonComp from '../../component/ButtonComp';
 import searchIcon from '/assets/search_icone2.svg'
 import { useLocation, useNavigate } from 'react-router-dom';
 import getProductListOfCategoryByUnity from '../../function/Data/Get/getProductListOfCategoryByUnity';
+
 
 const ListProductOfCategory = () => {
 
@@ -157,6 +159,9 @@ const ListProductOfCategory = () => {
         }
         return
     }
+    const handleGoBack = () => {
+        navigate(-1)
+    }
 
     // Sempre que carregar a pagina, será chamada a feito a consulta dos itens no banco de dados
     useLayoutEffect(() => {
@@ -197,6 +202,12 @@ const ListProductOfCategory = () => {
             
 
             <div>
+                <div className={ styles.buttonDiv }>
+                    <ButtonComp 
+                        text={"Voltar"}
+                        onClickButton={ handleGoBack }
+                    />
+                </div>  
                 { productList.length > 0 && (
 
                     ( searchItemStatus === false && (

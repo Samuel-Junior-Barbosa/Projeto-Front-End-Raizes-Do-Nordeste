@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './ConfirmAddress.module.css';
 import LabelComp from '/src/component/LabelComp';
 import ButtonComp from '../../component/ButtonComp';
@@ -22,6 +22,12 @@ const ConfirmAddressPage = () => {
     const [ address, setAddress ] = useState({})
     const [ addressId, setAddressId  ] = useState('')
     
+    const cidadeRef = useRef(null)
+    const bairroRef = useRef(null)
+    const ruaRef = useRef(null)
+    const numeroRef = useRef(null)
+    const ufRef = useRef(null)
+
     const [ cidade, setCidade ] = useState('')
     const [ bairro, setBairro ] = useState('')
     const [ rua, setRua ] = useState('')
@@ -38,27 +44,62 @@ const ConfirmAddressPage = () => {
                 <div className={ styles.addressDiv}>
                     <label> Cidade: </label>
                     <input
+                        ref={cidadeRef}
+                        value={cidade}
                         onChange={(e) => setCidade(e.target.value.trim().toUpperCase())}
+                        onKeyDown={ (e) => {
+                            if( e.key === 'Enter' )  {
+                                bairroRef.current?.focus()      
+                            }
+                        }}
                     />
 
                     <label> Bairro: </label>
                     <input
+                        ref={bairroRef}
+                        value={bairro}
                         onChange={(e) => setBairro(e.target.value.trim().toUpperCase())}
+                        onKeyDown={ (e) => {
+                            if( e.key === 'Enter' )  {
+                                ruaRef.current?.focus()
+                            }
+                        }}
                     />
 
                     <label> Rua:</label>
                     <input
+                        ref={ruaRef}
+                        value={rua}
                         onChange={(e) => setRua(e.target.value.trim().toUpperCase())}
+                        onKeyDown={ (e) => {
+                            if( e.key === 'Enter' )  {
+                                numeroRef.current?.focus()
+                            }
+                        }}
                     />
 
                     <label> Numero:</label>
                     <input
+                        ref={numeroRef}
+                        value={numero}
                         onChange={(e) => setNumero(e.target.value.trim().toUpperCase())}
+                        onKeyDown={ (e) => {
+                            if( e.key === 'Enter' )  {
+                                ufRef.current?.focus()
+                            }
+                        }}
                     />
 
                     <label> UF:</label>
                     <input
+                        ref={ufRef}
+                        value={uf}
                         onChange={(e) => setUf(e.target.value.trim().toUpperCase())}
+                        onKeyDown={ (e) => {
+                            if( e.key === 'Enter' )  {
+                                handleSaveNewAddress()
+                            }
+                        }}
                     />
                 </div>
                 )
@@ -118,6 +159,20 @@ const ConfirmAddressPage = () => {
 
     }
 
+    const handleSaveNewAddress = () => {
+        /*
+        const confirmWindow = confirm("Deseja realmente criar o novo endereço? ")
+        if( !confirmWindow ) {
+            return
+        }
+            */
+
+
+        handleAddNewAddress()
+        setAddNewAddressStatus( false )
+
+    }
+
     const handleGoBack = () => {
         navigate(-1)
     }
@@ -164,10 +219,7 @@ const ConfirmAddressPage = () => {
                         {formCom}
                         <ButtonComp
                             text={"salvar"}
-                            onClickButton={() => (
-                                handleAddNewAddress(),
-                                setAddNewAddressStatus( false )
-                            )}
+                            onClickButton={ handleSaveNewAddress }
                         />
                     </div>
                 ) : (

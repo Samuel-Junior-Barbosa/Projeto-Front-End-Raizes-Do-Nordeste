@@ -64,6 +64,16 @@ const Layout = () => {
         }
     }, [])
 
+
+    useEffect(() => {
+        
+        const getWidth = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        window.addEventListener("resize", getWidth);
+        return () => window.removeEventListener("resize", getWidth);
+    }, []);
+
     return (
         <div className={styles.LayoutDivMain}>
             <header>

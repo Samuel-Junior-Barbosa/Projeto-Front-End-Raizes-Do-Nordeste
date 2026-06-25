@@ -77,21 +77,73 @@ label {
 
 .ChooseButtonAction {
     width: clamp(100px, 200px, 800px);
-
-
-    
     margin: auto;
-
     margin-top: clamp(5px, 20px, 100px);
 
 }
 
+.buttonDiv {
+    display: flex;
+    flex-direction: column;
+}
 
 
 
+@media screen and (min-width : 1901px)  {
+    .ChooseItemDivMain {
+        width: clamp(300px, 60dvw, 100dvw);
+        height: max-content;
+        overflow-y: scroll;
+        margin: auto;
+        & label {
+            font-size: clamp(1rem, 1.2rem, 2.5rem);
+        }
+
+    }
+
+    .foodImageDiv {
+        width: clamp(150px, 250px, 600px);
+        height: clamp(150px, 250px, 600px);
+    }
+
+    .buttonDiv {
+        
+        & > button > label {
+            font-size: clamp(1.2rem, 1.8rem, 3rem);
+        }
+    }
+}
 @media screen and (max-width : 1900px)  {
     .ChooseItemDivMain {
         width: clamp(300px, 60dvw, 100dvw);
+        margin: auto;
+    }
+}
+
+
+@media screen and (max-width : 900px)  {
+    .ChooseItemDivMain {
+        width: clamp(150px, 80dvw, 100dvw);
+
+        margin: auto;
+    }
+    .foodImageDiv {
+        width: clamp(100px, 150px, 600px);
+        height: clamp(100px, 150px, 600px);
+    }
+
+    .buttonDiv {
+        
+        & > button > label {
+            font-size: clamp(1rem, 1rem, 2rem);
+        }
+    }
+}
+
+
+@media screen and (max-width : 300px)  {
+    .ChooseItemDivMain {
+        width: clamp(150px, 80dvw, 100dvw);
         margin: auto;
     }
 }

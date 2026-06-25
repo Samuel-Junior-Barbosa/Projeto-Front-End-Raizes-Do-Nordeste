@@ -75,23 +75,21 @@
 @media screen and (max-width : 2000px)  {
     .BottomMenuDivMain {
         width: clamp(300px, 30dvw, 100vw);
-        height: clamp(50px, 15dvh, 30dvh);
+        height: clamp(50px, 10dvh, 30dvh);
         border-radius: clamp(10px, 20px, 30px);
         bottom: clamp(0px, 0px, 20px);
         box-shadow: 3px 4px 5px var(--shadow-color);
         margin: auto;
         position: fixed;
         top: 80dvh;
-        left: 25%;
+        left: 35%;
+
+        padding: clamp(4px, 10px, 10px);
         justify-content: space-evenly;
 
     }
     .cartButtonDiv {
         display: flex;
-    }
-
-    .bottomMenuButton:nth-child(1) {
-        display: none;  
     }
 
     
@@ -105,25 +103,22 @@
     }
 
     .bottomMenuButton {
-        height: clamp(50px, 80%,   300px);
+        height: 100%;
         & > img {
             width: clamp(20%, 50%, 100%);
             height: clamp(20%, 60%, 100%);
         }
     }
 
-
-    #shoppingCarButton {
-        height: clamp(10px, 100%, 100%);
+    .cartButtonDiv {
+        height: 100%;
     }
-
-    #shoppingCarButton > img {
-        width: clamp(20px, 100px, 100px);
-        height:  clamp(20px, 100px, 100px);
+    #shoppingCarButton {
+        height: 100%;
     }
     
     .countProductCart {
-        top: clamp(-60%, -80%, 20%);
+        top: clamp(-60%, -17%, 20%);
         left: clamp(-60%, 20%, 30%);
         padding: clamp(2px, 5px, 10px);
     }
@@ -134,10 +129,11 @@
 @media screen and (max-width : 1900px)  {
     .BottomMenuDivMain {
         width: clamp(300px, 50dvw, 100vw);
-        height: clamp(50px, 20dvh, 30dvh);
+        height: clamp(50px, 10dvh, 30dvh);
         border-radius: clamp(10px, 20px, 30px);
         bottom: clamp(0px, 0px, 20px);
-        left: 45%;
+        top: 85%;
+        left: 25%;
         box-shadow: 1px 1px 8px var(--shadow-color);
 
     }
@@ -153,7 +149,7 @@
     }
 
     #shoppingCarButton {
-        height: clamp(10px, 20%, 100%);
+        height: 100%;
     }
 
     #shoppingCarButton > img {
@@ -162,11 +158,13 @@
     }
     
     .countProductCart {
-        top: clamp(-60%, -40%, 20%);
-        left: clamp(-60%, 14%, 30%);
+        top: clamp(-60%, -6%, 20%);
+        left: clamp(-60%, 20%, 30%);
         padding: clamp(2px, 5px, 10px);
     }
-
+    .cartButtonDiv {
+        height: 100%;
+    }
 }
 
 
@@ -220,12 +218,12 @@
 @media screen and (max-width : 1000px)  {
     .BottomMenuDivMain {
         width: clamp(300px, 50dvw, 100vw);
-        height: clamp(50px, 20dvh, 30dvh);
+        height: clamp(50px, 10dvh, 30dvh);
         border-radius: clamp(10px, 20px, 30px);
         bottom: clamp(0px, 0px, 20px);
         position: fixed;
 
-        top: 70dvh;
+        top: 85dvh;
         left: 25dvw;
 
     }
@@ -243,7 +241,8 @@
     }
 
     #shoppingCarButton {
-        height: clamp(10px, 50%, 100%);
+        border-radius: clamp(10px, 20px, 30px);
+        
     }
 
     #shoppingCarButton > img {
@@ -252,18 +251,18 @@
     }
     
     .countProductCart {
-        top: clamp(-60%, -80%, 20%);
-        left: clamp(-60%, 20%, 30%);
+        top: clamp(-60%, -42%, 20%);
+        left: clamp(-60%, 6%, 30%);
         padding: clamp(2px, 5px, 10px);
     }
 
 }
 
 
-@media screen and (max-width : 700px)  {
+@media screen and (max-width : 750px)  {
     .BottomMenuDivMain {
         width: clamp(300px, 50dvw, 100vw);
-        height: clamp(50px, 20dvh, 30dvh);
+        height: clamp(50px, 10dvh, 30dvh);
         border-radius: clamp(10px, 20px, 30px);
         bottom: clamp(0px, 0px, 20px);
         position: fixed;
@@ -286,6 +285,7 @@
     }
 
     #shoppingCarButton {
+        border-radius: clamp(10px, 20px, 30px);
         height: clamp(10px, 80%, 100%);
     }
 
@@ -295,13 +295,62 @@
     }
     
     .countProductCart {
-        top: clamp(-60%, -80%, 20%);
-        left: clamp(-60%, 20%, 30%);
+        top: clamp(-60%, -42%, 20%);
+        left: clamp(-60%, 8%, 30%);
         padding: clamp(2px, 5px, 10px);
     }
 
 }
 
+
+@media screen and (max-width : 650px)  {
+    .BottomMenuDivMain {
+        display: flex;
+        flex-direction: row;
+        width: clamp(300px, 50dvw, 100vw);
+        height: clamp(50px, 8dvh, 30dvh);
+
+        border-radius: clamp(10px, 20px, 30px);
+        margin: auto;
+
+        bottom: clamp(0px, 0px, 20px);
+        top: 85dvh;
+        left: clamp(30%, 50%, 60%);
+        transform: translate(-50%, 0%);
+
+    }
+
+    .bottomMenuButton, #shoppingCarButton {
+        display: flex;
+        border-radius: clamp(10px, 20px, 30px);
+
+        /* width: clamp(10px, 50%, 100%); */
+        height: clamp(10px, 90%, 100%);
+        & > img {
+            margin: auto;
+            width: clamp(10px, 20px, 50px);
+            height:  clamp(10px, 20px, 50px);
+        }
+    }
+
+    .bottomMenuButton:nth-child(1) {
+        display: flex;
+    
+    }
+
+
+    #shoppingCarButton > img {
+        width: clamp(20px, 25px, 50px);
+        height:  clamp(20px, 25px, 50px);
+    }
+    
+    .countProductCart {
+        top: clamp(-90%, -42%, 30%);
+        left: clamp(-60%, 8%, 30%);
+        padding: clamp(2px, 2px, 8px);
+    }
+
+}
 
 
 @media screen and (max-width : 400px)  {
@@ -316,7 +365,7 @@
 
         bottom: clamp(0px, 0px, 20px);
         top: 80dvh;
-        left: 45%;
+        left: clamp(30%, 50%, 60%);
         transform: translate(-50%, 0%);
 
     }
@@ -351,4 +400,78 @@
         padding: clamp(2px, 2px, 8px);
     }
 
+}
+
+
+
+
+@media screen and (max-width : 300px)  {
+    .BottomMenuDivMain {
+        display: flex;
+        flex-direction: row;
+        width: clamp(150px, 80dvw, 100vw);
+        height: clamp(50px, 15dvh, 30dvh);
+
+        border-radius: clamp(10px, 20px, 30px);
+        margin: auto;
+
+        bottom: clamp(0px, 0px, 20px);
+        top: 80dvh;
+        left: 50%;
+        transform: translate(-50%, 0%);
+
+    }
+
+    .bottomMenuButton, #shoppingCarButton {
+        display: flex;
+        border-radius: clamp(10px, 20px, 30px);
+
+        /* width: clamp(10px, 50%, 100%); */
+        height: clamp(10px, 50%, 100%);
+        & > img {
+            margin: auto;
+            width: clamp(10px, 20px, 50px);
+            height:  clamp(10px, 20px, 50px);
+        }
+    }
+
+    .bottomMenuButton:nth-child(1) {
+        display: flex;
+    
+    }
+
+
+    #shoppingCarButton > img {
+        width: clamp(20px, 25px, 50px);
+        height:  clamp(20px, 25px, 50px);
+    }
+    
+    .countProductCart {
+        top: clamp(-90%, -20%, 30%);
+        left: clamp(-60%, 8%, 30%);
+        padding: clamp(2px, 2px, 8px);
+    }
+
+}
+
+
+@media screen and (max-height : 600px ) {
+    .BottomMenuDivMain {
+        height: clamp(10px, 40px, 100px);
+        top: 75dvh;
+        padding: clamp(1px, 4px, 10px);
+    }
+
+    #shoppingCarButton {
+        height: 100%;
+    }
+
+    .bottomMenuButton {
+        height: 100%;
+    }
+    .countProductCart {
+        top: clamp(-90%, -50%, 30%);
+        left: clamp(-60%, 6%, 30%);
+        padding: clamp(2px, 2px, 8px);
+    }
 }

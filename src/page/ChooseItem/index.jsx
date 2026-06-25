@@ -101,17 +101,18 @@ const ChooseItem = () => {
                 />
             </div>
 
-            <ButtonComp
-                text={"Adicionar ao pedido"}
-                onClickButton={ handleAddItemOnCar }
-                nameClass={styles.ChooseButtonAction}
-            />
-
-            <ButtonComp
-                text={"Voltar"}
-                onClickButton={ handleGoBack }
-                nameClass={styles.ChooseButtonAction}
-            />
+            <div className={ styles.buttonDiv }>
+                <ButtonComp
+                    text={"Adicionar ao pedido"}
+                    onClickButton={ handleAddItemOnCar }
+                    nameClass={styles.ChooseButtonAction}
+                />
+                <ButtonComp
+                    text={"Voltar"}
+                    onClickButton={ handleGoBack }
+                    nameClass={styles.ChooseButtonAction}
+                />
+            </div>
 
 
         </div>

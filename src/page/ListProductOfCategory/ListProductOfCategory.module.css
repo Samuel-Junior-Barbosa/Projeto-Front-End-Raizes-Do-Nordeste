@@ -20,6 +20,7 @@
     width: max-content;
     margin: auto;
     margin-top: clamp(5px, 40px, 100px);
+    margin-bottom: clamp(5px, 20px, 40px);
 
     & > div {
         
@@ -46,11 +47,30 @@
     padding-left: 5px;
 }
 
+
+.buttonDiv {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+
+    & > button {
+        padding: clamp(4px, 8px, 10px);
+    }
+}
+
+
+
 @media screen and (min-width : 800px)  {
+    .ListProductComp {
+        margin-top: clamp(5px, 15px, 100px);
+    }
     .searchDiv {
         height: clamp(10px, 15px, 20px);
         margin: auto;
         margin-top: clamp(5px, 20px, 100px);
+        margin-bottom: clamp(5px, 15px, 100px);
     }
 
     .icon_img {
@@ -64,6 +84,7 @@
         height: clamp(10px, 15px, 20px);
         margin: auto;
         margin-top: clamp(5px, 20px, 100px);
+        margin-bottom: clamp(5px, 20px, 40px);
     }
 
     .icon_img {
@@ -73,6 +94,27 @@
 
     .ListProductComp {
         overflow-y: hidden !important;
+        height: max-content;
+    }
+}
+
+
+@media screen and (max-width : 300px)  {
+    .searchDiv {
+        height: clamp(10px, 15px, 20px);
+        margin: auto;
+        margin-top: clamp(5px, 20px, 100px);
+        margin-bottom: clamp(5px, 20px, 40px);
+    }
+
+    .icon_img {
+        width: clamp(10px, 20px, 50px);
+        height: clamp(10px, 20px, 50px);
+    }
+
+    .ListProductComp {
+        overflow-y: hidden !important;
+        width: clamp(150px, 90dvw, 90dvw);
         height: max-content;
     }
 }

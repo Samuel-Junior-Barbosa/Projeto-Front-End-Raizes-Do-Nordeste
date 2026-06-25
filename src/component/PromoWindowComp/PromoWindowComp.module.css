@@ -48,3 +48,14 @@
         height: max-content;
     }
 }
+
+
+@media screen and (max-width: 300px) {
+    .promoWindowButtonDiv {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        gap: clamp(4px, 8px, 10px)
+    }
+}

@@ -28,7 +28,7 @@
     border-right: 0px;
 
     border-radius: 20px;
-
+    margin: auto;
     overflow-y: scroll;
 
     box-shadow: 3px 4px 5px var(--shadow-color);
@@ -148,12 +148,65 @@
 
 
 
+
+@media screen and (max-height : 300px)  {
+
+    .ListProductUl {
+        width: clamp(300px, 100dvw, 600px) !important;
+        height: max-content !important;
+        overflow-y: hidden !important;
+        & > li {
+            width: 100%;
+            height: clamp(30px, 100%, 200px);
+        }
+
+        & > li > div > img.foodImage {
+            width: clamp(10%, 100%, 100%);
+            height: clamp(10%, 100%, 100%);
+            margin: clamp(2px, 5px, 10px);
+            
+        }
+    }
+
+    .foodImageDiv {
+        width: clamp(20px, 20%, 200px);
+        height: clamp(20px, 60%, 200px);
+    }
+}
+
+
+
+@media screen and (min-width : 2001px)  {
+
+    .ListProductUl {
+        width: clamp(300px, 60dvw, 2000px);
+        height: clamp(300px, 60dvh, 2000px);
+        margin: auto;
+        & > li {
+            width: 100%;
+            height: clamp(30px, 200px, 200px);
+        }
+
+        & > li > div > img.foodImage {
+            width: clamp(10%, 100%, 100%);
+            height: clamp(10%, 100%, 100%);
+            margin: clamp(2px, 5px, 10px);
+            
+        }
+    }
+
+    .foodImageDiv {
+        width: clamp(40px, 90%, 200px);
+        height: clamp(40px, 90%, 200px);
+    }
+}
+
 @media screen and (max-width : 2000px)  {
 
     .ListProductUl {
         width: clamp(300px, 60dvw, 2000px);
         height: clamp(300px, 60dvh, 2000px);
-
+        margin: auto;
         & > li {
             width: 100%;
             height: clamp(30px, 200px, 200px);
@@ -253,15 +306,18 @@
 }
 
 
-@media screen and (max-height : 300px)  {
+@media screen and (max-width : 300px)  {
 
     .ListProductUl {
         width: clamp(300px, 100dvw, 2000px);
-        height: clamp(300px, 70dvh, 2000px);
-        overflow-y: hidden !important;
+        height: clamp(300px, 60dvh, 2000px);
+
         & > li {
+            display: flex;
+            flex-direction: column;
             width: 100%;
-            height: clamp(30px, 100%, 200px);
+            height: clamp(30px, 200px, 100%);
+            padding: clamp(4px, 10px, 30px) 0px;
         }
 
         & > li > div > img.foodImage {
@@ -273,7 +329,8 @@
     }
 
     .foodImageDiv {
-        width: clamp(20px, 20%, 200px);
-        height: clamp(20px, 60%, 200px);
+        width: clamp(40px, 90%, 200px);
+        height: clamp(40px, 90%, 200px);
     }
 }
+
