@@ -24,7 +24,7 @@ const PaymentParcelList = ({parcelList, setQuantitySelected, setControlFrame, pa
 
         //let tmpPaymentForm = JSON.parse( sessionStorage.getItem("paymentForm"))
         let tmpPaymentForm = paymentForm
-        console.log(" tmpPaymentForm: ", tmpPaymentForm)
+        //console.log(" tmpPaymentForm: ", tmpPaymentForm)
         tmpPaymentForm.quantity = quantidade
         //let tmpOrderTotalCost = JSON.parse( sessionStorage.getItem("orderTotalCost"))
         let tmpOrderTotalCost = tmpPaymentForm.paymentValue

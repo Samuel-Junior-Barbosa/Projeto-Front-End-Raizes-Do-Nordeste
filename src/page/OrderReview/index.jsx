@@ -78,16 +78,6 @@ const OrderReview = () => {
             return
         }   
 
-        /*
-        if( usePromotionCode === true ) {
-            return
-        }
-        */
-
-
-        /*let discountAmountValue = discountCodes[discountCode]
-        */
-
         setUsePromotionCode( true )
         let discountAmountValue = await handleGetDiscountCode( discountCode )
         discountAmountValue = Number( discountAmountValue )
@@ -183,7 +173,7 @@ const OrderReview = () => {
         }
 
         let tmpPaymentForm = JSON.parse( sessionStorage.getItem('paymentForm'))
-        console.log(" order review - tmpPaymentForm: ", tmpPaymentForm)
+        //console.log(" order review - tmpPaymentForm: ", tmpPaymentForm)
         if( tmpPaymentForm ) {
             tmpPaymentForm.paymentValue = Number( tmpPaymentForm.paymentValue ).toFixed(2)
             

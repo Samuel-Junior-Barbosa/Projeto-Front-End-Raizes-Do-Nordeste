@@ -37,7 +37,7 @@ const RegisteruserPage = () => {
 
         
         if( (!accountPassword || !accountPasswordConfirm) || ( accountPassword.length < 8) ) {
-            console.log(" CURRENT PASSWORD: ", accountPassword, accountPassword.length)
+            //console.log(" CURRENT PASSWORD: ", accountPassword, accountPassword.length)
             alert("Digite uma senha valida! no minimo 8 caracter")
             return 
         }

@@ -12,7 +12,7 @@ const getLastOrder = async () => {
 
     let lastOrder = orderData.data[0]
     //let maxId = Number(lastOrder?.id_pedido?? 1)
-    console.log(" lastOrder: ", lastOrder)
+    //console.log(" lastOrder: ", lastOrder)
 
     return lastOrder
 }

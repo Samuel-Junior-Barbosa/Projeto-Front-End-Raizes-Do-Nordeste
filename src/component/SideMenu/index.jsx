@@ -39,21 +39,16 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         {'name' : 'sair', url : '/logout'},
     ]
 
-    const handleChooseOption = ( option ) => {
-        handleHiddinSideMenu()
 
-        let tmpClass = ' .' + styles.SideMenuDiv;
-        let tmpOptions = [];
 
-        if( nameClass ) {
-            tmpClass += ' .' + nameClass
-        }
-        
+    const updateOptions = () => {
+        const tmpCurrentAccount = JSON.parse( sessionStorage.getItem('currentAccount'))
+        let tmpOptions = []
         try {
-            if( currentAccount.administrator === true ) {
+            if( tmpCurrentAccount.administrator === true ) {
                 tmpOptions = [...adminOptions ]
             } 
-            else if ( currentAccount.attendant === true) {
+            else if ( tmpCurrentAccount.attendant === true) {
                 tmpOptions = [...attendantOptions ]
             }
             else {
@@ -62,6 +57,23 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
         } catch {
             tmpOptions = [...options ]
         }
+        setPermittedOptions( tmpOptions )
+    }
+
+    const handleChooseOption = ( option ) => {
+        handleHiddinSideMenu()
+        updateOptions()
+        
+        //console.log('choosing option...')
+        let tmpClass = ' .' + styles.SideMenuDiv;
+        let tmpOptions = [...permittedOptions];
+
+        if( nameClass ) {
+            tmpClass += ' .' + nameClass
+        }
+        
+        
+        
         //console.log(" TMP OPTIONS: ", tmpOptions)
         for( let i = 0; i < tmpOptions.length; i ++ ) {
             if( tmpOptions[i].name === option ) {
@@ -69,7 +81,7 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
             }
             
         }
-        
+           
     }
 
     const handleHiddinSideMenu = () => {
@@ -115,30 +127,20 @@ const SideMenu = ({nameClass = '', menuStatus=true, setShowSideMenu=undefined}) 
     }
     useEffect(() => {
         handleHiddinSideMenu()
+        updateOptions()
     }, [menuStatus])
 
-    
+    useEffect(() => {
+        updateOptions()
+    }, [currentAccount])
+
     useEffect(() => {
         handleGetAccountData()
 
         let tmpCurrentAccount = JSON.parse( sessionStorage.getItem("currentAccount"))
         let tmpOptions = []
-        
-        try {
-            if( tmpCurrentAccount.administrator === true ) {
-                tmpOptions = [...adminOptions ]
-            } 
-            else if ( tmpCurrentAccount.attendant === true) {
-                tmpOptions = [...attendantOptions ]
-            }
-            else {
-                tmpOptions = [...options ]
-            }
-        } catch {
-            tmpOptions = [...options ]
-        }
+        updateOptions()
 
-        setPermittedOptions(tmpOptions)
     }, [])
 
     

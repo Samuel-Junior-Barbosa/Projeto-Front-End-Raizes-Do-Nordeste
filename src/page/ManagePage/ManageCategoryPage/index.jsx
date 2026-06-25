@@ -39,7 +39,7 @@ const ManageCategoryPage = () => {
             return
         }
         const response = await getCategoryListByUnityId( unitySelected.unityId, true )
-        console.log(" GET CATEGORY LIST: ", unitySelected,  response)
+        //console.log(" GET CATEGORY LIST: ", unitySelected,  response)
         setCategoryList( response )
     }
 
@@ -48,7 +48,7 @@ const ManageCategoryPage = () => {
         //console.log(" UNITY SELECT: ", unityId)
         
         const response = await getUnityDataById( unityId )
-        console.log(" UNITY SELECT response: ", response)
+        //console.log(" UNITY SELECT response: ", response)
         setUnitySelected( response )
 
         setShowUnityList( false )
@@ -56,7 +56,7 @@ const ManageCategoryPage = () => {
     }
 
     const handleSelectCategory = async( id ) => {
-        //  console.log(" CATEGORY SELECT: ", id)
+        //console.log(" CATEGORY SELECT: ", id)
         
         
         let response;

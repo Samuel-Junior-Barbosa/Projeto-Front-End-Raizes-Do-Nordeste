@@ -9,7 +9,7 @@ const getProductListOfUnity = async( unityId, listInative = false ) => {
     let response = await api.get(
             `/menuForUnity?unityId=${unityId}`
         )
-    console.log(" getProductListOfUnity: ", unityId, response.data[0].productList)
+    //console.log(" getProductListOfUnity: ", unityId, response.data[0].productList)
 
     if( !response.data[0] ) {
         return []
@@ -27,7 +27,7 @@ const getProductListOfUnity = async( unityId, listInative = false ) => {
         }
     }
     
-    console.log(" getProductListOfUnity 2: ", productList)
+    //console.log(" getProductListOfUnity 2: ", productList)
     return productList
 }
 

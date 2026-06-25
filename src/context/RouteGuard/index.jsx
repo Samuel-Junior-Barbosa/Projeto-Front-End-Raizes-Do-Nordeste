@@ -10,9 +10,9 @@ const RouteGuard = ({
  
     const user = JSON.parse( sessionStorage.getItem('currentAccount'))
     useEffect(() => {
-        console.log(" PARAMS: administratorRoute, attendantRoute ", administratorRoute, attendantRoute)
-        console.log("CURRENT USER: ", user )
-        console.log(" PERMISSIONS: ", user.administrator, user.attendant, administratorRoute, administratorRoute === true && user.administrator === false)
+        //console.log(" PARAMS: administratorRoute, attendantRoute ", administratorRoute, attendantRoute)
+        //console.log("CURRENT USER: ", user )
+        //console.log(" PERMISSIONS: ", user.administrator, user.attendant, administratorRoute, administratorRoute === true && user.administrator === false)
     }, [])
 
 
@@ -20,7 +20,7 @@ const RouteGuard = ({
 
     try {
         if ( user.administrator || user.attendant ) {
-            console.log();
+            let tmpNone = null
         }
     } catch {
         return <Navigate to="/login" />;

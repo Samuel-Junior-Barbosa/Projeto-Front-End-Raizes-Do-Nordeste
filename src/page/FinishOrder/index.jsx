@@ -36,7 +36,7 @@ const FinishOrderPage = () => {
         if( useFidelityPromotionRecived ) {
             let tmpUsername = JSON.parse( sessionStorage.getItem("currentAccount")).name
             let tmpIdUser = await getIdUser( tmpUsername )
-            console.log(" TMP ID USER: ", tmpIdUser, tmpUsername)
+            //console.log(" TMP ID USER: ", tmpIdUser, tmpUsername)
             await useFidelityPromotion(tmpIdUser, fidelityCode)
 
         }
@@ -58,6 +58,8 @@ const FinishOrderPage = () => {
         let idUser = await getIdUser( username )
 
         //console.log(" FINISH VALIDATION: ", idUser)
+        tmpShoppingCart.unityId = 0
+        tmpShoppingCart.products = []
 
         if( currentAccount.lgpdConcentiment.participationInTheLoyaltyProgram ) {
             await addNewBuyPoint( idUser )    
@@ -65,7 +67,7 @@ const FinishOrderPage = () => {
         await setNewOrder( idUser, tmpProducts, tmpTotal)
         
         //console.log(" CLEAN SHOPPING CART...")
-        sessionStorage.setItem('shoppingCart', JSON.stringify( []) )
+        sessionStorage.setItem('shoppingCart', JSON.stringify( tmpShoppingCart ) )
 
     }
 

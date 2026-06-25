@@ -10,7 +10,7 @@ const setNewOrder = async ( idUser, productList, total ) => {
     if( lastOrder ) {
         lastIdOrder = lastOrder.id_pedido
     }
-    console.log(" LAST ORDER: ", lastOrder)
+    //console.log(" LAST ORDER: ", lastOrder)
     let newIdOrder = Number(lastIdOrder) + 1
     let address = JSON.parse(sessionStorage.getItem('addressSelected'))
     
@@ -28,7 +28,7 @@ const setNewOrder = async ( idUser, productList, total ) => {
         
     }
 
-    console.log(" tmpOrder: ", tmpOrder)
+    //console.log(" tmpOrder: ", tmpOrder)
     await api.post(
         `/orders`,
         tmpOrder

@@ -22,7 +22,7 @@ const setLgpdConcentiment = async ( accountId, typeConcentiment, response) => {
     else if( typeConcentiment === 5 ) {
         tmpData.lgpdConcentiment.askedToUserCookies = response
     }
-    console.log(" setLgpdConcentiment: ", tmpData)
+    //console.log(" setLgpdConcentiment: ", tmpData)
 
     await api.patch(
         `/accountData/${tmpData.id}`, {

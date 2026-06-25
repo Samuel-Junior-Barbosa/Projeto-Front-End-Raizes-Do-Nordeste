@@ -53,12 +53,12 @@ const ManageUnityPage = () => {
 
 
     const handleSelectUnity = async ( unityId ) => {
-        console.log(" UNITY SELECT1: ", unityId)
+        //console.log(" UNITY SELECT1: ", unityId)
         
         setUnityIdSelect( unityId )
         const response = await getUnityDataById( unityId )
         
-        console.log(" UNITY SELECT2 response: ", response)
+        //console.log(" UNITY SELECT2 response: ", response)
 
         setUnitySelected( response )
         setUnityName( response.name )

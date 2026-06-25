@@ -34,12 +34,12 @@ const ManageUserOrderPage = () => {
         if( Number(value ) ) {
             setOrderId( tmp_value )
             const response = await handleSearchForOrder( tmp_value )
-            console.log(" handleSetOrderId: ", tmp_value, response)
+            //console.log(" handleSetOrderId: ", tmp_value, response)
         }
         else {
             setOrderId('')
             const response = await handleSearchForOrder( '' )
-            console.log(" handleSetOrderId: ", tmp_value, response)
+            //console.log(" handleSetOrderId: ", tmp_value, response)
 
         }
 
@@ -49,7 +49,7 @@ const ManageUserOrderPage = () => {
 
 
     const handleSearchForOrder = async ( order_id ) => {
-        console.log(" SEARCH ORDER: ", order_id)
+       //(" SEARCH ORDER: ", order_id)
         let response = {};
         if( order_id !== '' ) {
             response = await getOrderByIdDelivery( order_id )
@@ -66,7 +66,7 @@ const ManageUserOrderPage = () => {
         else {
             response = await getOrderData()
         }
-        console.log(" handleSearchForOrder: ", response)
+        //console.log(" handleSearchForOrder: ", response)
         setOrderList( response )
         return response
         
@@ -75,7 +75,7 @@ const ManageUserOrderPage = () => {
 
     const handleGetOrderData = async ( ) => {
         const response = await getAccountOrder()
-        console.log(" RESPONSE: ", response)
+        //console.log(" RESPONSE: ", response)
         setOrderList( response )
     }
 

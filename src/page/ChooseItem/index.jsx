@@ -24,7 +24,15 @@ const ChooseItem = () => {
         let added = false        
         let tmp_cart_list = JSON.parse(sessionStorage.getItem("shoppingCart"))
         //console.log(" TMP CART LIST ADD ITEM: ", tmp_cart_list)
-
+        if( Array.isArray(tmp_cart_list) ) {
+            if( !tmp_cart_list.length ) {
+                tmp_cart_list = {
+                    'unityId' : 0,
+                    'products' : []
+                }
+            }
+            
+        }
         if( tmp_cart_list.unityId !== 0 && tmp_cart_list.unityId != unityId ) {
             alert(" Não é possivel fazer pedidos de unidades diferentes. Faça 1 pedido em 1 unidade depois faça outro na proxima unidade que deseja.")
             return

@@ -21,9 +21,9 @@ const loginPage = () => {
 
     
     const handleLogin = async () => {
-        console.log(" LOGIN... ", username, password)
+        //console.log(" LOGIN... ", username, password)
         const response = await simulationLoginApi( username, password )
-        console.log(" HANDLE LOGIN: ", response)
+        //console.log(" HANDLE LOGIN: ", response)
         if( response.status === 0 && response.content.logged === true ) {
             //console.log(" LOGIN FOUND: ", response)
             sessionStorage.setItem('currentAccount', JSON.stringify( response.content.data ) )
@@ -52,7 +52,7 @@ const loginPage = () => {
     }
 
     const handleChangeInput = ( key ) => {
-        console.log(" KEY PRESSED: ", key)
+        //console.log(" KEY PRESSED: ", key)
         if( key === 'Enter' || key === 'NumpadEnter' ) {
             secondInputFocus.current?.focus()
         }

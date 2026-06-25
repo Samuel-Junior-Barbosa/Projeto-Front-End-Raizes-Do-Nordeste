@@ -21,14 +21,11 @@ const CookieWindow = ( {setControlFrame = undefined}) => {
         }
 
         sessionStorage.setItem("currentAccount", JSON.stringify(tmpData) )
-
         if( tmpData.accountId ) {
             await setLgpdConcentiment( Number(tmpData.accountId), typeConcentiment, response )
         }
         
         if( setControlFrame != undefined) {
-
-            
             setControlFrame( false )
         }
         

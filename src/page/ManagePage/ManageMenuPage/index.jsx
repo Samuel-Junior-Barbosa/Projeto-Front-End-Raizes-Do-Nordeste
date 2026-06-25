@@ -87,7 +87,7 @@ const ManageMenuPage = () => {
             return
         }
 
-        console.log(" ADDRESS: ", unitySelected)
+        //console.log(" ADDRESS: ", unitySelected)
         
         setUnityName( unitySelected.name)
         

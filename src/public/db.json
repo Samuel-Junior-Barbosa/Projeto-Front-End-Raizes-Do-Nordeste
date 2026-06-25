@@ -466,6 +466,54 @@
       "status": "entregue",
       "address": 0,
       "id": "LULa83irDys"
+    },
+    {
+      "id_pedido": 7,
+      "id_cliente": 1,
+      "itens": [
+        {
+          "id": 1,
+          "produto": "Carne de sol",
+          "precovenda": "01.00",
+          "quantidade": 1
+        }
+      ],
+      "totalCusto": 1,
+      "status": "entregue",
+      "address": 0,
+      "id": "pCIrs8xoZDo"
+    },
+    {
+      "id_pedido": 8,
+      "id_cliente": 1,
+      "itens": [
+        {
+          "id": 1,
+          "produto": "Carne de sol",
+          "precovenda": "01.00",
+          "quantidade": 2
+        }
+      ],
+      "totalCusto": 2,
+      "status": "entregue",
+      "address": 0,
+      "id": "EH8XXW-aJDQ"
+    },
+    {
+      "id_pedido": 9,
+      "id_cliente": 1,
+      "itens": [
+        {
+          "id": 2,
+          "produto": "TESTE1",
+          "precovenda": "1",
+          "quantidade": 1
+        }
+      ],
+      "totalCusto": 1,
+      "status": "preparando",
+      "address": 0,
+      "id": "J-BiATgOBzg"
     }
   ],
   "listOfUnits": [
