@@ -135,7 +135,6 @@
 
     .editPromotionDiscountDiv {
         margin: auto;
-        width: 50%;
         & > div > label, & > div > input, & > div > select {
             font-size: clamp(0.9rem, 1rem, 1.5rem);
         }
