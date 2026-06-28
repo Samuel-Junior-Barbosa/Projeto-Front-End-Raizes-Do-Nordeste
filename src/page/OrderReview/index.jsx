@@ -46,13 +46,14 @@ const OrderReview = () => {
 
         setDiscountCodeData( response )
         if( response.percentage ) {
-            tmpDiscountValue = sumProduct * ( response.percentage / 100)
-            alert(` parabens, você resgatou um codigo com ${response.percentage}% de desconto`)
+            tmpDiscountValue = Number( response.percentage )
+            tmpDiscountValue = sumProduct * ( tmpDiscountValue / 100)
+            alert(` parabens, você resgatou um codigo com ${tmpDiscountValue}% de desconto`)
         }
 
         else if( response.moneyDiscount ) {
-            tmpDiscountValue = response.moneyDiscount
-            alert(` parabens, você resgatou um codigo com R$${response.moneyDiscount.toFixed(2)} de desconto`)
+            tmpDiscountValue = Number(response.moneyDiscount)
+            alert(` parabens, você resgatou um codigo com R$${tmpDiscountValue.toFixed(2)} de desconto`)
         }
         
         //console.log("handleGetDiscountCode tmpDiscountValue: ", tmpDiscountValue)
@@ -69,9 +70,9 @@ const OrderReview = () => {
     }
 
     const addDiscountCode = async () => {
+        let tmpTotal = sumProduct + deliveryFee
+        tmpTotal -= fidelityDiscountValue
         if( !discountCode && usePromotionCode === true ) {
-            let tmpTotal = sumProduct + deliveryFee
-            tmpTotal -= fidelityDiscountValue
             setTotalValue( tmpTotal )
             setDiscountAmount( fidelityDiscountValue )
             setUsePromotionCode( false )
@@ -90,7 +91,7 @@ const OrderReview = () => {
             let newDiscountValue = fidelityDiscountValue + discountAmountValue
 
             setDiscountAmount( newDiscountValue )
-            setTotalValue( totalValue - newDiscountValue)
+            setTotalValue( tmpTotal - newDiscountValue)
 
             return discountAmountValue
         }
@@ -151,7 +152,14 @@ const OrderReview = () => {
             fidelityCode : fidelityCode,
             useFidelityPromotionRecived : useFidelityPromotion
         }
-        navigate('/finish-order', { state : data })
+
+        if( currentAccount.name !== '' ) {
+            navigate('/finish-order', { state : data })
+            return
+        }
+
+        navigate('/login')
+        return
     }
 
     useEffect(() => {

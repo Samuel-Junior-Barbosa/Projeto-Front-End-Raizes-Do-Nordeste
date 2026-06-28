@@ -1,0 +1,201 @@
+.promotionMainDiv {
+    display: flex;
+    gap: clamp(5px, 20px, 20px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    width: clamp(150px, 100dvw, 100dvw);
+    color: var(--color-font);
+}
+
+
+.promotionDiv {
+    width: clamp(150px, 90dvw, 90dvw);
+    background-color: var(--background-label);
+
+    border-radius: clamp(5px, 10px, 20px);
+}
+
+
+.promotionList {
+    display: flex;
+    flex-direction: column;
+
+    list-style: none;
+    gap: clamp(2px, 15px, 20px);
+    
+    width: clamp(200px, 50%, 100%);
+    height: clamp(200px, 60dvh, 100dvh);
+    margin: auto;
+    padding: clamp(2px, 10px, 20px);
+    overflow-y: scroll;
+    & > li {
+        background-color: var(--background-option);
+        border-radius: clamp(2px, 5px, 20px);
+        padding: clamp(2px, 10px, 30px);
+        font-size: clamp(1rem, 1rem, 3rem);
+        cursor: pointer;
+    }
+
+    & > li:hover {
+        background-color: var( --background-option-hover );
+    }
+}
+
+.promotionListEmpty {
+    padding: clamp(10px, 15px, 20px);
+}
+
+.editPromotionDiscountDiv, .createPromotionDiv {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    /*align-items: center;*/
+
+    width: 50%;
+
+    margin: auto;
+    font-size: clamp(0.8rem, 1rem, 2rem);
+    padding: clamp(10px, 20px, 40px);
+    gap: clamp( 5px, 10px, 30px);
+    & > div {
+        /*margin-right: auto;*/
+    }
+    & > div > label {
+        width: 30%;
+    }
+
+    & > div > input {
+        width: 40%;
+        border-radius: clamp(4px, 5px, 10px);
+        padding-right: clamp(2px, 5px, 10px);
+        text-align: center;
+    }
+
+    & > div > select {
+        width: 40%;
+        border-radius: clamp(4px, 5px, 10px);
+        padding-right: clamp(2px, 5px, 10px);
+        text-align: center;
+        
+    }
+}
+
+.createPromotionDiv {
+    justify-content: unset;
+}
+
+.createPromotionDiv {
+    width: clamp(150px, 80dvw, 100dvw);
+    height: clamp(150px, 60dvh, 80dvh);
+}
+
+.bottomButtonDiv {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: clamp(5px, 10px, 20px);
+    gap: clamp(5px, 12px, 20px);
+    
+    & > button {
+        padding: clamp(2px, 5px, 10px);
+    }
+}
+
+.inativePromotion {
+    background-color: gray !important;
+}
+
+
+@media screen and (max-height : 400px ) {
+    .promotionList {
+        height: max-content;
+        overflow-y: hidden;
+    }
+
+    .editPromotionDiscountDiv {
+        font-size: clamp(0.5rem, 0.5rem, 1.5rem);
+        height: clamp(150px, 250px, 400px);
+        
+        & > div > label, & > div > input, & > div > select {
+            font-size: clamp(0.5rem, 0.9rem, 1.5rem);
+        }
+    }
+
+    .bottomButtonDiv {
+        margin-top: clamp(10px, 45px, 50px);
+    }
+}
+
+@media screen and (max-width : 1200px ) {
+    .promotionList {
+    }
+
+    .editPromotionDiscountDiv {
+        margin: auto;
+        width: 50%;
+        & > div > label, & > div > input, & > div > select {
+            font-size: clamp(0.9rem, 1rem, 1.5rem);
+        }
+
+        
+        & > div > label {
+            margin-right: clamp(1px, 3px, 5px);
+        }
+
+    }
+
+    .bottomButtonDiv {
+        margin-top: clamp(10px, 45px, 50px);
+    }
+}
+
+@media screen and (max-width : 750px ) {
+    .promotionList {
+    }
+}
+
+@media screen and (max-width : 400px ) {
+    .promotionList {
+        height: max-content;
+        overflow-y: hidden;
+    }
+    .editPromotionDiscountDiv {
+        
+        & > div > label, & > div > input, & > div > select {
+            font-size: clamp(0.5rem, 0.7rem, 1.5rem);
+        }
+
+        & > div > label {
+            margin-right: clamp(1px, 3px, 5px);
+        }
+    }
+
+    .bottomButtonDiv {
+        margin-top: clamp(10px, 45px, 50px);
+    }
+}
+
+
+@media screen and (max-width : 350px ) {
+    .promotionList {
+        height: max-content;
+        overflow-y: hidden;
+    }
+    .editPromotionDiscountDiv {
+        
+        & > div > label, & > div > input, & > div > select {
+            font-size: clamp(0.5rem, 0.7rem, 1.5rem);
+        }
+
+        & > div > label {
+            margin-right: clamp(1px, 3px, 5px);
+        }
+    }
+
+    .bottomButtonDiv {
+        margin-top: clamp(10px, 45px, 50px);
+    }
+}

@@ -33,7 +33,7 @@ const loginPage = () => {
                 setTimeout(() => {
                     //console.log(" RETURNING....")
                     //console.log(" ROUTES: ", location)
-                    navigate( -2 )
+                    navigate( -1 )
                 }, 100)
                 
             }

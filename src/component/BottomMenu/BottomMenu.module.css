@@ -72,7 +72,7 @@
 
 
 
-@media screen and (max-width : 2000px)  {
+@media screen and (min-width : 2000px)  {
     .BottomMenuDivMain {
         width: clamp(300px, 30dvw, 100vw);
         height: clamp(50px, 10dvh, 30dvh);
@@ -88,6 +88,7 @@
         justify-content: space-evenly;
 
     }
+
     .cartButtonDiv {
         display: flex;
     }
@@ -108,6 +109,69 @@
             width: clamp(20%, 50%, 100%);
             height: clamp(20%, 60%, 100%);
         }
+    }
+    .bottomMenuButton:nth-child(1) {
+        display: none;
+    
+    }
+
+    .cartButtonDiv {
+        height: 100%;
+    }
+    #shoppingCarButton {
+        height: 100%;
+    }
+    
+    .countProductCart {
+        top: clamp(-60%, -17%, 20%);
+        left: clamp(-60%, 20%, 30%);
+        padding: clamp(2px, 5px, 10px);
+    }
+
+
+}
+
+@media screen and (max-width : 2000px)  {
+    .BottomMenuDivMain {
+        width: clamp(300px, 30dvw, 100vw);
+        height: clamp(50px, 10dvh, 30dvh);
+        border-radius: clamp(10px, 20px, 30px);
+        bottom: clamp(0px, 0px, 20px);
+        box-shadow: 3px 4px 5px var(--shadow-color);
+        margin: auto;
+        position: fixed;
+        top: 80dvh;
+        left: 35%;
+
+        padding: clamp(4px, 10px, 10px);
+        justify-content: space-evenly;
+
+    }
+
+    .cartButtonDiv {
+        display: flex;
+    }
+
+    
+    .bottomMenuButtonCartButton, .bottomMenuButton {
+        display: flex;
+        
+        text-align: center;
+
+        width: clamp(50px, 150px, 300px);
+        height: clamp(50px, 100%,   300px);
+    }
+
+    .bottomMenuButton {
+        height: 100%;
+        & > img {
+            width: clamp(20%, 50%, 100%);
+            height: clamp(20%, 60%, 100%);
+        }
+    }
+    .bottomMenuButton:nth-child(1) {
+        display: none;
+    
     }
 
     .cartButtonDiv {
@@ -146,6 +210,10 @@
             width: clamp(20px, 25px, 50px);
             height:  clamp(20px, 25px, 50px);
         }
+    }
+    .bottomMenuButton:nth-child(1) {
+        display: none;
+    
     }
 
     #shoppingCarButton {
@@ -195,6 +263,10 @@
             height:  clamp(20px, 25px, 50px);
         }
     }
+    .bottomMenuButton:nth-child(1) {
+        display: none;
+    
+    }
 
     #shoppingCarButton {
         height: clamp(10px, 80%, 100%);
@@ -238,6 +310,10 @@
             width: clamp(20px, 25px, 50px);
             height:  clamp(20px, 25px, 50px);
         }
+    }
+    .bottomMenuButton:nth-child(1) {
+        display: none;
+    
     }
 
     #shoppingCarButton {
@@ -283,7 +359,7 @@
             height:  clamp(20px, 25px, 50px);
         }
     }
-
+    
     #shoppingCarButton {
         border-radius: clamp(10px, 20px, 30px);
         height: clamp(10px, 80%, 100%);

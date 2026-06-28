@@ -67,11 +67,12 @@ const Layout = () => {
 
     useEffect(() => {
         
-        const getWidth = () => {
-            setWindowWidth(window.innerWidth);
+        const getWindowSize = () => {
+            setWindowWidth( window.innerWidth );
+            setWindowHeight( window.innerHeight );
         };
-        window.addEventListener("resize", getWidth);
-        return () => window.removeEventListener("resize", getWidth);
+        window.addEventListener("resize", getWindowSize);
+        return () => window.removeEventListener("resize", getWindowSize);
     }, []);
 
     return (
@@ -94,7 +95,7 @@ const Layout = () => {
                         setControlFrame={ setShowCookiesWindow }
                     />
                 )}
-                { (windowWidth >= 500) && (
+                { (windowWidth >= 500 && windowHeight > 500) && (
                     <>
                     <ButtonComp
                         icon={menuIcone}

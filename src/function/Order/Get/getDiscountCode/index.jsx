@@ -1,13 +1,24 @@
 import api from "../../../Api";
 
 
-const getDiscountCode = async ( discountCode ) => {
+const getDiscountCode = async ( discountCode = '') => {
+    discountCode = String( discountCode )
 
-    const response = await api.get(
-        `/discountCoupon?code=${discountCode}`
+    let responseData = await api.get(
+        '/discountCoupon'
     )
-    //console.log(" getDiscountCode: ", response.data)
-    return response.data[0]
+
+    responseData = responseData.data
+
+    let response;
+
+    for( let i = 0; i < responseData.length; i ++ ) {
+        if( responseData[i].code === discountCode ) {
+            response = responseData[i]
+        }
+    }
+    //console.log(" getDiscountCode: ", discountCode, response)
+    return response
 }
 
 export default getDiscountCode;
