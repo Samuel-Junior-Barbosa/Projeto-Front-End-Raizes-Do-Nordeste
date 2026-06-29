@@ -126,6 +126,7 @@
         top: clamp(-60%, -17%, 20%);
         left: clamp(-60%, 20%, 30%);
         padding: clamp(2px, 5px, 10px);
+        font-size: clamp(2rem, 4rem, 5rem);
     }
 
 
@@ -359,7 +360,11 @@
             height:  clamp(20px, 25px, 50px);
         }
     }
+
+    .bottomMenuButton:nth-child(1) {
+        display: none;
     
+    }
     #shoppingCarButton {
         border-radius: clamp(10px, 20px, 30px);
         height: clamp(10px, 80%, 100%);

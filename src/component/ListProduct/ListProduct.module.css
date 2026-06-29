@@ -187,6 +187,13 @@
             height: clamp(30px, 200px, 200px);
         }
 
+        & > li > label.labelDiv {
+            font-size: clamp(2rem, 3rem, 5rem);
+        }
+        & > li > label.labelDiv > label {
+            font-size: clamp(2rem, 3rem, 5rem);
+        }
+
         & > li > div > img.foodImage {
             width: clamp(10%, 100%, 100%);
             height: clamp(10%, 100%, 100%);
@@ -198,6 +205,21 @@
     .foodImageDiv {
         width: clamp(40px, 90%, 200px);
         height: clamp(40px, 90%, 200px);
+    }
+
+    .divInputQuantity {
+        
+        & > input {
+            font-size: clamp(2rem, 3rem, 5rem);
+            width: clamp(1dvw, 5dvw, 20dvw);
+        }
+
+        & > button {
+            font-size: clamp(2rem, 3rem, 5rem);
+            width: max-content;
+            height: max-content;
+            padding: clamp(10px, 15px, 100px);
+        }
     }
 }
 

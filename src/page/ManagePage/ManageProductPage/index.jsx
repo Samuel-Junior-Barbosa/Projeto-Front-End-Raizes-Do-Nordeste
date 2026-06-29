@@ -259,7 +259,7 @@ const ManageProductPage = () => {
                         <div className={ styles.editProductDiv}>
                             <div>
                                 <img
-                                    src={`/src/assets/pratos/unidades/${unitySelected.unityId}/${productSelected.id}-512px.jpg`}
+                                    src={`${import.meta.env.BASE_URL}assets/pratos/unidades/${unitySelected.unityId}/${productSelected.id}-512px.jpg`}
                                     className={ styles.imageDiv }
                                 >
                                 </img>

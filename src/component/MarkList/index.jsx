@@ -63,7 +63,7 @@ const MarkList = ({ list = [], nameClass='', setContentSelected = undefined }) =
     }, [listLineSelected])
 
     return (
-        <ul className={ completeClassName }>
+        <ul className={ styles.markList }>
             { list && (list.map((item, i) => (
                 <li
                     key={i}

@@ -36,6 +36,8 @@
         padding: clamp(2px, 10px, 30px);
         font-size: clamp(1rem, 1rem, 3rem);
         cursor: pointer;
+
+        box-shadow: 3px 4px 5px var(--shadow-color);
     }
 
     & > li:hover {
@@ -88,8 +90,11 @@
 }
 
 .createPromotionDiv {
-    width: clamp(150px, 80dvw, 100dvw);
+    /*width: clamp(150px, 80dvw, 100dvw);*/
+    width: max-content;
     height: clamp(150px, 60dvh, 80dvh);
+
+    margin: auto;
 }
 
 .bottomButtonDiv {
@@ -129,6 +134,44 @@
     }
 }
 
+@media screen and (min-width : 2001px ) {
+    .promotionMainDiv label, input, select {
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+    .promotionList li{
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+
+    .editPromotionDiscountDiv {
+
+
+        & > div > select > option {
+            font-size: clamp(2rem, 4rem, 6rem);
+        }
+    }
+
+    .createPromotionDiv {
+
+        & select > option {
+            font-size: clamp(2rem, 4rem, 6rem);
+        }
+    }
+
+    .bottomButtonDiv {
+        gap: clamp(20px, 40px, 60px);
+
+        & > div {
+            display: flex;
+            flex-direction: row;
+
+        }
+        & > div > input {
+            width: clamp(2dvh, 4dvh, 10dvh);
+            height: clamp(2dvh, 4dvh, 10dvh);
+        }
+    }
+}
+
 @media screen and (max-width : 1200px ) {
     .promotionList {
     }
@@ -152,8 +195,12 @@
 }
 
 @media screen and (max-width : 750px ) {
-    .promotionList {
+    .promotionDiv {
+
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
     }
+
 }
 
 @media screen and (max-width : 400px ) {
@@ -184,6 +231,17 @@
         overflow-y: hidden;
     }
     .editPromotionDiscountDiv {
+        
+        & > div > label, & > div > input, & > div > select {
+            font-size: clamp(0.5rem, 0.7rem, 1.5rem);
+        }
+
+        & > div > label {
+            margin-right: clamp(1px, 3px, 5px);
+        }
+    }
+    
+    .createPromotionDiv {
         
         & > div > label, & > div > input, & > div > select {
             font-size: clamp(0.5rem, 0.7rem, 1.5rem);

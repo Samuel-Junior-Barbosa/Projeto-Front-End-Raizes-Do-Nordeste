@@ -27,6 +27,7 @@
         font-size: clamp(1rem, 2rem, 4rem);
         padding: clamp( 5px, 10px, 20px);
         border-radius: 10px;
+        box-shadow: 3px 4px 5px var(--shadow-color);
     }
 
     & > li:hover {
@@ -103,6 +104,67 @@
     }
 }
 
+
+@media screen and (min-width: 2001px) {
+    
+    .paymentListMainDiv {
+        margin: auto;    
+        width: clamp(40dvw, 80dvw, 90dvw);
+    }
+    .moneyInputDiv {
+        box-shadow: 1px 2px 5px var(--shadow-color);
+        width: clamp(20dvw, 60dvw, 80dvw);
+        height: clamp(20dvh, 60dvh, 80dvh);
+        top: 40dvh; 
+        
+        & > label {
+            font-size: clamp(2rem, 4rem, 5rem)
+        }
+
+        & > div > label {
+            font-size: clamp(2rem, 4rem, 5rem)
+        }
+
+        & > div > input {
+            font-size: clamp(2rem, 4rem, 5rem)
+        }
+    }
+
+    .moneyinputLabel {
+        font-size: clamp(2rem, 5rem, 5rem) !important;
+        height: clamp(2dvh, 5dvh, 10dvh);
+        padding: clamp(0dvw, 0dvw, 5dvw);
+    }
+    
+    .paymentListDiv {
+        top: 40dvh; 
+        padding: clamp(2dvh, 5dvh, 10dvh) clamp(10dvh, 18dvh, 40dvh);
+        
+        margin: clamp(2dvh, 5dvh, 10dvh);
+    }
+
+    .paymentList {
+        margin: auto;
+        height: max-content;
+        & > li {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+
+
+    .bottomDivButton {
+
+        & > button > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+
+    .confirmButtonMoneyValue {
+        & > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+}
 
 
 @media screen and (max-width: 1400px) {

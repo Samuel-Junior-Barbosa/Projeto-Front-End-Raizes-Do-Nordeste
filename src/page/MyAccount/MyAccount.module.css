@@ -57,3 +57,37 @@
 .MyAccountFooter {
     color: var(--color-font);
 }
+
+
+
+@media screen and (min-width : 2001px ) {
+    .myAccountMainDiv {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center;
+        width: clamp( 40dvw, 100dvw, 100dvw);
+        height: clamp( 40dvh, 60dvh, 80dvh);
+        font-size: clamp(2rem, 4rem, 6rem);
+
+    }
+
+    .accountDiv {
+        width: clamp( 40dvw, 60dvw, 80dvw);
+        height: clamp( 40dvh, 60dvh, 80dvh);
+        
+    }
+
+    .accountDiv label{
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+
+    .buttonGrid {
+        width: clamp( 20dvw, 40dvw, 60dvw);
+    }
+
+    .MyAccountFooter {
+        font-size: clamp(2rem, 3rem, 6rem);
+    }
+}

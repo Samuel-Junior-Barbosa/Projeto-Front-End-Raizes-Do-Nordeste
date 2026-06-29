@@ -58,6 +58,33 @@ label {
 }
 
 
+@media screen and (min-width: 2001px ) {
+    .menuUnityDiv {
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0px;
+        margin: 0px;
+        gap: clamp(1px, 50%, 60px);
+        
+
+        & > button {
+            width: clamp(100px, 25dvw, 1200px);
+            height: clamp(100px, 25dvh, 1200px);
+            margin-top: clamp(5px, 10px, 30px);
+        }
+
+
+        & > button > label {
+            font-size: clamp(2rem, 3rem, 5rem);
+            top: clamp(20%, 50%, 80%);
+            text-shadow: 1px 2px 0px var(--shadow-color);
+
+        }
+    }
+
+    
+}
+
 
 @media screen and (max-width: 2000px ) {
     .menuUnityDiv {
@@ -91,17 +118,25 @@ label {
 
 
 @media screen and (max-width : 750px)  {
+    .menuUnityDivMain {
+        height: max-content;
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
+    }
     .menuUnityDiv {
         display: flex;
         flex-direction: row;
+        flex: 1 1 200px;
         width: clamp(400px, 60dvw, 100dvw);
-        /* height: clamp(500px, 70dvh, 100dvh); */
-        height: max-content;
+        height: clamp(500px, 70dvh, 100dvh);
+        
 
         padding: clamp(40px, 80px, 200px);
         padding-top: clamp(5px, 10px, 20px);
         
+        
         margin: auto;
+        
         
         & > button {
             width: clamp(100px, 90dvw, 1200px);

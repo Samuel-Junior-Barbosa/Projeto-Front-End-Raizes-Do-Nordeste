@@ -137,3 +137,20 @@
 .inativeStatus {
     background-color: gray !important;
 }
+
+@media screen and (min-width : 2001px ) {
+    
+    .manageMenuMainDiv label {
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+}
+
+
+@media screen and (max-width : 750px ) {
+    .manageMenuDiv {
+        overflow-y: hidden;
+        height: max-content;
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
+    }
+}

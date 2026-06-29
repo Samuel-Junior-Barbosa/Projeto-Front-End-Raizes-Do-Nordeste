@@ -61,6 +61,44 @@
 }
 
 
+@media screen and (min-width : 2001px) {
+    .loginMainDiv {
+        position: relative;
+
+        width: clamp(100px, 90%, 100%);
+        padding: clamp(4px, 10px, 20px);
+
+        
+
+        top: 25%;
+        
+        
+
+    }
+    .loginDiv {
+
+        & > label {
+            font-size: clamp(2rem, 3rem, 5rem);
+        }
+
+        & > input {
+            font-size: clamp(2rem, 3rem, 5rem);
+        }
+
+        
+    }
+
+    .loginFunctionButtonDiv {
+        & > button > label {
+            font-size: clamp(2rem, 3rem, 5rem);
+        }
+    }
+
+    .forgetPasswordAlert {
+        font-size: clamp(2rem, 3rem, 5rem);
+    }
+}
+
 
 @media screen and (max-width : 400px) {
     .loginMainDiv {

@@ -130,3 +130,34 @@
 .inativeStatus {
     background-color: gray;
 }
+
+
+
+@media screen and (min-width : 2001px ) {
+    .manageProductPageDiv label, textarea, input, select {
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+
+    .editProductDiv {
+
+
+        & > div > input {
+            
+        }
+    }
+
+    .labelId {
+        width: unset !important;
+    }
+}
+
+
+
+@media screen and (max-width : 750px ) {
+    .manageProductPageDiv {
+        overflow-y: hidden;
+        height: min-content;
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
+    }
+}

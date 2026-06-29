@@ -95,8 +95,8 @@ label {
         height: max-content;
         overflow-y: scroll;
         margin: auto;
-        & label {
-            font-size: clamp(1rem, 1.2rem, 2.5rem);
+        & label, & input {
+            font-size: clamp(2rem, 3rem, 5rem);
         }
 
     }
@@ -109,7 +109,7 @@ label {
     .buttonDiv {
         
         & > button > label {
-            font-size: clamp(1.2rem, 1.8rem, 3rem);
+            font-size: clamp(2rem, 3rem, 5rem);
         }
     }
 }

@@ -61,8 +61,35 @@
 }
 
 
+@media screen and (min-width : 2001px)  {
+    .ListProductComp {
+        margin-top: clamp(5px, 15px, 100px);
+        
+    }
+    .searchDiv {
+        width: clamp(2dvw, 30dvw, 80dvw);;
+        height: clamp(2dvh, 60dvh, 10dvh);
+        margin: auto;
+        margin-top: clamp(5px, 20px, 100px);
+        margin-bottom: clamp(5px, 15px, 100px);
 
-@media screen and (min-width : 800px)  {
+        & > input {
+            font-size: clamp(2rem, 3rem, 5rem);
+        }
+    }
+
+    .icon_img {
+        width: clamp(2dvw, 6dvw, 50dvw);
+        height: clamp(2dvh, 6dvh, 10dvh);
+    }
+
+    .buttonDiv > button > label {
+        font-size: clamp(2rem, 3rem, 5rem);
+    }
+}
+
+
+@media screen and (min-width : 800px) and (max-width : 2000px)  {
     .ListProductComp {
         margin-top: clamp(5px, 15px, 100px);
     }
@@ -95,6 +122,11 @@
     .ListProductComp {
         overflow-y: hidden !important;
         height: max-content;
+    }
+
+    .listProductDiv {
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
     }
 }
 

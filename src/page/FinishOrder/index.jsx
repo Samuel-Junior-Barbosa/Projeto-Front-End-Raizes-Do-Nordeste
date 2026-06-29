@@ -22,6 +22,15 @@ const FinishOrderPage = () => {
     const [ currentAccount, setCurrentAccount ] = useState('')
     const [ username, setUsername ] = useState('')
 
+    const windowWidth = window.innerWidth 
+    const windowHeigth = window.innerHeight
+    let circularSize = 120
+    if( windowWidth > 2001 ) {
+        circularSize = 500
+    }
+
+    const [ circularComp, setCircularComp ] = useState(  )
+
     const location = useLocation()
 
     const { fidelityCode, useFidelityPromotionRecived } = location.state || { fidelityCode : '', useFidelityPromotionRecived : false }
@@ -103,7 +112,7 @@ const FinishOrderPage = () => {
     >   
         <div className={ progress < 100 ? styles.subProgressCircleDiv : styles.hiddenComp }
         >
-            <CircularProgress progress={progress} />
+            <CircularProgress progress={progress} size={circularSize}/>
             <label> Validando pagamento... </label>
         </div>
 

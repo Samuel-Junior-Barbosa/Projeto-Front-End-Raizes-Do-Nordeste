@@ -18,3 +18,12 @@
     margin: auto;
 
 }
+
+@media screen and (min-width: 2001px ) {
+    
+    .labelDiv {
+        height: clamp(1rem, 3rem, 4rem);
+        padding: clamp(1rem, 1.5rem, 3rem);
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+}

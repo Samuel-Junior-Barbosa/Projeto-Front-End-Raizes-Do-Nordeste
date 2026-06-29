@@ -104,3 +104,52 @@
 
 
 
+@media screen and (min-width : 2001px ) {
+    .OrderReviewMainDiv {
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+
+    .OrderReviewDiv label {
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+
+
+    .discountDiv {
+
+    }
+    .productList {
+        & > li {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+
+    .inputDiscountCode {
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+
+    .paymentDiv {
+
+        & > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+        & > label:nth-child(1) {
+            font-size: clamp(3rem, 5rem, 5rem);
+        }
+    }
+}
+
+
+@media screen  and ( max-width : 750px ){
+    .discountDiv {
+        display: flex;
+        gap: clamp( 5px, 10px, 15px );
+        & > label {
+            font-size: clamp(0.8rem, 0.8rem, 1.3rem );
+            margin-left: 0px;
+        }
+
+        & > input {
+            width: clamp(10px, 120px, 200px);
+        }
+    }
+}

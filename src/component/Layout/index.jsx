@@ -95,7 +95,7 @@ const Layout = () => {
                         setControlFrame={ setShowCookiesWindow }
                     />
                 )}
-                { (windowWidth >= 500 && windowHeight > 500) && (
+                { (windowWidth >= 500 && windowHeight <= 500) && (
                     <>
                     <ButtonComp
                         icon={menuIcone}

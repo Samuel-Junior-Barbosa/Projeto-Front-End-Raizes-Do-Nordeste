@@ -97,6 +97,12 @@ const ManagePromotionDiscount = () => {
         setShowPromotionDiscountList( true )
     }
 
+    const handleCancelCreation = () => {
+        handleResetValues()
+
+        setShowCreatePromotionDiscount( false )
+        setShowPromotionDiscountList( true )
+    }
     const handleCreatePromotionDiscount = async () => {
 
         if( !discountCode ) {
@@ -177,13 +183,18 @@ const ManagePromotionDiscount = () => {
                                 onClickButton={ handleShowCreatePromotionDiscount }
                             />
 
-                            <input
-                                type={'checkbox'}
-                                checked={ listInative }
-                                onClick={ () => (
-                                    setListInative( listInative ? false : true )
-                                )}
-                            />
+                            <div>
+                                <label>
+                                    Listar inativos
+                                </label>
+                                <input
+                                    type={'checkbox'}
+                                    checked={ listInative }
+                                    onClick={ () => (
+                                        setListInative( listInative ? false : true )
+                                    )}
+                                />
+                            </div>
                         </div>
                     </>
                 )}
@@ -242,7 +253,7 @@ const ManagePromotionDiscount = () => {
                                 />
                                 <ButtonComp
                                     text={"Cancelar"}
-                                    onClickButton={ handleCancelAlteration }
+                                    onClickButton={ handleCancelCreation }
                                 />
                             </div>
                         </div>

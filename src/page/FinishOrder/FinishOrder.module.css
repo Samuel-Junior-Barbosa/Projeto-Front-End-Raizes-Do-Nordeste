@@ -14,6 +14,8 @@
     margin: auto;
     margin-top: clamp(10px, 40px, 100px);
 
+    box-shadow: 3px 4px 5px var(--shadow-color);
+
     transition: 1s;
 }
 
@@ -59,3 +61,49 @@
     }
 }
 
+
+@media screen and (min-width : 2001px ) {
+
+    .progressCircleDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: clamp(10px, 25px, 40px);
+        padding-bottom: clamp(1dvh, 2dvh, 5dvh);
+
+        & > button > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+
+            margin-bottom: clamp(1dvh, 2dvh, 5dvh);
+        }
+    }
+    .subProgressCircleDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: clamp(200px, 70dvw, 100dvw);
+        height: clamp(200px, 55dvh, 60dvh);
+
+        & > div {
+            margin: clamp(10px, 50px, 100px) 0px;
+        }
+
+        & > div > svg {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+        & > div > div  {
+            font-size: clamp(2rem, 4rem, 5rem) !important; 
+        }
+
+        & > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+
+    .thankDiv > label {
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+
+  
+}

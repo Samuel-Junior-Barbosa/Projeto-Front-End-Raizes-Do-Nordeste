@@ -43,6 +43,8 @@
         border-radius: clamp(5px, 5px, 20px);
         cursor: pointer;
 
+        box-shadow: 3px 4px 5px var(--shadow-color);
+
     }
 
     & > li:hover {
@@ -88,5 +90,77 @@
 
     & > button {
         padding: clamp(5px, 8px, 20px);
+    }
+}
+
+@media screen and (min-width : 2001px ) {
+
+    .ManageUserOrderPageMainDiv label {
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+
+    .ManageUserOrderPageDiv label {
+        display: flex;
+        flex-direction: column;
+
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+
+    .orderAlterationMainDiv label, input, select, select > option {
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+    .orderList {
+        display: flex;
+        flex-direction: column;        
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+        height: clamp(10dvh, 60dvh, 70dvh);
+    }
+    .orderList > li {
+
+        width: clamp(15dvw, 50dvw, 50dvw);
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+    
+}
+
+@media screen and (max-width : 1000px ) {
+
+    .orderList {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+
+        height: 100%;
+    }
+    
+}
+
+
+@media screen and (max-width : 750px ) {
+    .ManageUserOrderPageDiv {
+        
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
+
+        height: max-content;
+    }
+    
+    .orderList {
+        overflow-y: hidden;
+        height: max-content;
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+    }
+
+    .orderAlterationMainDiv {
+
+
+        &  label {
+            width: 30%;
+        }
+
+        & input {
+            width: 35%;
+        }
     }
 }

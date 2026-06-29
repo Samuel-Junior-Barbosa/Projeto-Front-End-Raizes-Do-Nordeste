@@ -47,3 +47,52 @@
     }
 
 }
+
+
+@media screen and (min-width : 2001px ) {
+
+    .orderListDiv {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+
+
+        width: clamp(40dvw, 70dvw, 90dvw);
+        height: clamp(40dvh, 70dvh, 70dvh);
+
+        & > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+            margin: 0px;
+        }
+    }
+
+    .orderList {    
+        width: clamp(40dvw, 70dvw, 90dvw);
+        height: clamp(40dvh, 70dvh, 70dvh);
+
+        padding: clamp(10px, 30px, 100px);
+
+        & > li > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+}
+
+@media screen and (max-width : 750px ) {
+    .orderListDiv {
+
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
+    }
+
+    .orderList {
+
+        overflow-y: hidden;
+        height: max-content;
+
+        margin: clamp(2dvh, 4dvh, 10dvh) 0px;
+        padding: 0px 0px;
+    }
+}

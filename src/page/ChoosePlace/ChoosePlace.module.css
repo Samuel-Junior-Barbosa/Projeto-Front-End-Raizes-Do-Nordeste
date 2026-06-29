@@ -29,6 +29,7 @@
 
         margin: clamp(10px, 20px, 100px) auto;
         padding: clamp(10px, 20px, 100px);
+        box-shadow: 3px 4px 5px var(--shadow-color);
         border-radius: 5px;
         cursor: pointer;
     }
@@ -52,6 +53,29 @@
 
 
 
+
+
+@media screen and (min-width: 2001px) {
+    .ListPlaceDiv {
+        width: 60dvw;
+        border-radius: clamp(10px, 40px, 100px);
+        margin: clamp(2dvh, 5dvh, 10dvh) auto;
+        top: 40dvh; 
+    }
+
+    .ListPlace {
+        & > li {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+
+    .bottomButton {
+
+        & > button > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+    }
+}
 
 @media screen and (max-width: 1400px) {
     

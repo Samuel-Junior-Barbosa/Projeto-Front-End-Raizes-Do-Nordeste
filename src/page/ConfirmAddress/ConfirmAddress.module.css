@@ -85,6 +85,24 @@
 
 
 
-@media screen and (max-width : 400px) {
-    
+@media screen and (min-width : 2001px) {
+    .confirmAddressMainDiv {
+        width: clamp(30dvw, 60dvw, 90dvw);
+        height: clamp(30dvh, 60dvh, 90dvh);
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+
+    .addressDiv label, input {
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+
+    .chooseAddressDiv button > label  {
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+    .addNewAddressDiv > button > label {
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
+    .bottomButton button > label{
+        font-size: clamp(2rem, 4rem, 5rem);
+    }
 }

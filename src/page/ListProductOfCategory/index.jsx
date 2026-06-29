@@ -201,7 +201,7 @@ const ListProductOfCategory = () => {
             </div>
             
 
-            <div>
+            <div className={ styles.listProductDiv }>
                 <div className={ styles.buttonDiv }>
                     <ButtonComp 
                         text={"Voltar"}

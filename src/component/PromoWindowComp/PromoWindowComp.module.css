@@ -50,6 +50,24 @@
 }
 
 
+@media screen and (min-width: 2001px) {
+    .promoWindowButtonDiv {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-size: clamp(2rem, 3rem, 5rem);
+        gap: clamp(4px, 8px, 10px);
+
+        & > button > label {
+            font-size: clamp(2rem, 3rem, 5rem);
+        }
+    }
+
+    .promoWindowLabelDiv > label{
+        font-size: clamp(2rem, 3rem, 5rem);
+    }
+}
+
 @media screen and (max-width: 300px) {
     .promoWindowButtonDiv {
         display: flex;

@@ -46,3 +46,25 @@
     background-color: var(--background-option-hover) !important;
     color: var(--color-font-option-hover) !important;
 }
+
+
+@media screen and (min-width : 2001px ) {
+    
+
+
+
+    .markList {
+
+        & > li > label {
+            font-size: clamp(2rem, 4rem, 5rem);
+        }
+
+        & > li > input {
+            width: clamp(2rem, 4rem, 6rem);
+            height: clamp(2rem, 4rem, 6rem);
+        }
+    }
+
+
+    
+}

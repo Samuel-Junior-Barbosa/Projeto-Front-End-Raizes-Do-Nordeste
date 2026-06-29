@@ -91,7 +91,7 @@ const BottomMenu = ({controlSideMenuState = false, controlSideMenu = undefined, 
 
             const currentScroll = controlHiddenScroll.scrollTop;
             //console.log(" CURRENT SCROLL: ", currentScroll)
-            if( currentScroll > lastScroll && currentScroll > 30 ) {
+            if( currentScroll > lastScroll && currentScroll > 20 ) {
                 setHidden( true );
             } else {
                 setHidden( false )

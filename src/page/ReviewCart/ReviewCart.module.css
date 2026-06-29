@@ -78,6 +78,16 @@
         /*height: max-content; */
         overflow-y: hidden;
     }
+
+    .titleLabel, .bottomLabel {
+        height: clamp(4dvh, 6dvh, 15dvh);
+        font-size: clamp(2rem, 3rem, 5rem);
+    }
+
+    .finishShopButton > label {
+        font-size: clamp(2rem, 3rem, 5rem);
+        padding: clamp(50px, 150px, 500px);
+    }
 }
 @media screen and (max-width : 1900px)  {
     .productListDiv {

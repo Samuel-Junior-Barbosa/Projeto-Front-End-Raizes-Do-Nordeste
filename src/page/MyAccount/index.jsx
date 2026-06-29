@@ -69,7 +69,7 @@ const MyAccountPage = () => {
         handleVerifyFidelity()
     }, [])
     return (
-        <div>
+        <div className={ styles.myAccountMainDiv }>
             <LabelComp
                 text={'Minha conta'}
             />    

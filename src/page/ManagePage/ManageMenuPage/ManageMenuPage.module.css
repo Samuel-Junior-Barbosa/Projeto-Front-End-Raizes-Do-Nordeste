@@ -72,3 +72,19 @@
         padding: clamp(5px, 10px, 20px);
     }
 }
+
+
+@media screen and (min-width : 2001px ) {
+    
+    .manageMenuMainDiv label{
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+
+    .manageMenuDiv label{
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+
+    .unityListDiv > button > label {
+        font-size: clamp(2rem, 4rem, 6rem);
+    }
+}
