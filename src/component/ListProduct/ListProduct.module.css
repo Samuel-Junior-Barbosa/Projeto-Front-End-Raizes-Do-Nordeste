@@ -321,6 +321,7 @@
         }
     }
 
+
     .foodImageDiv {
         width: clamp(40px, 90%, 200px);
         height: clamp(40px, 90%, 200px);

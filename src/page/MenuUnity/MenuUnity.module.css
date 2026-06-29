@@ -165,6 +165,9 @@ label {
 
         padding: clamp(1px, 4px, 10px);
         margin: auto;
+
+        padding-bottom: clamp(2dvh, 4dvh, 10dvh);
+        margin-bottom: clamp(2dvh, 20dvh, 20dvh);
         
             
         & > button {

@@ -111,7 +111,7 @@
         }
     }
     .bottomMenuButton:nth-child(1) {
-        display: none;
+        display: flex;
     
     }
 
@@ -171,7 +171,7 @@
         }
     }
     .bottomMenuButton:nth-child(1) {
-        display: none;
+        display: flex;
     
     }
 
@@ -213,7 +213,7 @@
         }
     }
     .bottomMenuButton:nth-child(1) {
-        display: none;
+        display: flex;
     
     }
 
@@ -265,7 +265,7 @@
         }
     }
     .bottomMenuButton:nth-child(1) {
-        display: none;
+        display: flex;
     
     }
 
@@ -288,7 +288,7 @@
 
 
 
-@media screen and (max-width : 1000px)  {
+@media screen and (max-width : 1000px) and ( min-height : 650px)  {
     .BottomMenuDivMain {
         width: clamp(300px, 50dvw, 100vw);
         height: clamp(50px, 10dvh, 30dvh);
@@ -313,7 +313,7 @@
         }
     }
     .bottomMenuButton:nth-child(1) {
-        display: none;
+        display: flex;
     
     }
 
@@ -362,7 +362,7 @@
     }
 
     .bottomMenuButton:nth-child(1) {
-        display: none;
+        display: flex;
     
     }
     #shoppingCarButton {
@@ -465,7 +465,7 @@
     }
 
     .bottomMenuButton:nth-child(1) {
-        display: flex;
+        display: none;
     
     }
 
@@ -536,13 +536,16 @@
 }
 
 
-@media screen and (max-height : 600px ) {
+@media screen and (max-width : 1000px) and (min-width : 500px) and ( max-height : 649px)  {
     .BottomMenuDivMain {
         height: clamp(10px, 40px, 100px);
         top: 75dvh;
         padding: clamp(1px, 4px, 10px);
     }
-
+    .bottomMenuButton:nth-child(1) {
+        display: none;
+    }
+    
     #shoppingCarButton {
         height: 100%;
     }

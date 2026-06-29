@@ -99,13 +99,24 @@
 }
 
 
-
 @media screen and (max-width : 1400px)  {
     .productListDiv {
         margin: 0px auto;
         /*height: clamp(300px, 55dvh, 2000px);*/
         height: max-content;
         overflow-y: hidden;
+    }
+}
+
+@media screen and (max-width : 650px)  {
+    .productListDiv {
+        margin: 0px auto;
+        width: clamp(150px, 100dvw, 100dvw);
+        height: max-content;
+
+        & > li {
+            height: max-content;
+        }
     }
 }
 
